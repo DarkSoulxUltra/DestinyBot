@@ -71,6 +71,12 @@
          "description": "to get your bot_id using other bot or userbot",
          "value": ""
       },
+      
+      "ARQ_API_KEY": {
+         "description": "Get your own from @ARQRobot, this will be used for chatbots and anitnsfw filters. If not entered, those things won't work duh.",
+         "required": "false"
+         "value": ""
+      },
 
       "OWNER_USERNAME": {
          "description": "Your username without the @",
