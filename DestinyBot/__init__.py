@@ -63,6 +63,7 @@ if ENV:
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
     REQUEST_CHAT_ID = os.environ.get("REQUEST_CHAT_ID", None)
     SUPPORT_CHAT_ID = os.environ.get("SUPPORT_CHAT_ID", None)
+    ARQ_API_KEY = os.environ.get("ARQ_API_KEY", None)
     try:
         DRAGONS = {int(x) for x in os.environ.get("DRAGONS", "").split()}
         DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
@@ -89,6 +90,7 @@ if ENV:
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
     REQUEST_CHAT_ID = os.environ.get("REQUEST_CHAT_ID", None)
     SUPPORT_CHAT_ID = os.environ.get("SUPPORT_CHAT_ID", None)
+    ARQ_API_KEY = os.environ.get("ARQ_API_KEY", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
@@ -127,7 +129,7 @@ if ENV:
     WELCOME_DELAY_KICK_SEC = os.environ.get("WELCOME_DELAY_KICL_SEC", None)
     BOT_ID = int(os.environ.get("BOT_ID", None))
     ARQ_API_URL = "https://thearq.tech/"
-    ARQ_API_KEY = "HYSKMG-VATBRH-KDHVEF-QHXPZM-ARQ"
+    ARQ_API_KEY = os.environ.get("ARQ_API_KEY", None)
 
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
