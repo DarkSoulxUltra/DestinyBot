@@ -19,7 +19,7 @@ def wall(update: Update, context: CallbackContext):
     if not query:
         msg.reply_text("Please enter a query!")
         return
-    caption = query+"\n**Powered by Wallpaper Abyss**"
+    caption = query
     term = query.replace(" ", "%20")
     
     
