@@ -39,7 +39,7 @@ async def repo(_, message):
 **Telethon Version :** `{s}`
 **Pyrogram Version :** `{z}`
 
-**Create your own with click button bellow.**
+**Wanna create your own Bot? Check my repo below.**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
