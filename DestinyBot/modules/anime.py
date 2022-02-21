@@ -480,10 +480,17 @@ def request(update: Update, context: CallbackContext):
     message = update.effective_message
     #args = context.args
     #log_message = ""
+    IMAGE = "https://telegra.ph/file/5a6c8550a81576df19be9.jpg"
+    reqChannelLink = "t.me/+0laY9Q97Djo3OTg1"
+    tasLink = "t.me/tas_support"
     chat = update.effective_chat
     ANIME_NAME = message.text.split(' ', 1)
     user = update.effective_user
     bot = context.bot
+    buttons = [
+        [InlineKeyboardButton("⏱️ Anime Request Queue ⏱️", url=reqChannelLink)],
+        [InlineKeyboardButton("🚀 Escalate to Uploaders 🚀", url=tasLink)]
+    ]
     try:
         chat_id = REQUEST_CHAT_ID
     except TypeError:
@@ -495,8 +502,14 @@ def request(update: Update, context: CallbackContext):
 
     if len(to_send.split(" ")) >= 2:
         try:
+            msg = "Request Submitted successfully, please have some patience.\n If your request not processed yet, check the below:\n"
             to_send = f"{to_send}\nRequester: @{user.username}\nRequester ID: {user.id}\n\nFrom Chat: {chat.title}\nChat Username: @{chat.username}\nChat ID: {chat.id}\n"
-            update.effective_message.reply_text("Request Submitted.")
+            update.effective_message.reply_photo(
+	        IMAGE,
+                caption=msg,
+                parse_mode=ParseMode.HTML,
+                reply_markup=InlineKeyboardMarkup(buttons)
+            )
             bot.sendMessage(int(chat_id), str(to_send))
         except TelegramError:
             LOGGER.warning("Couldn't send to group %s", str(chat_id))
