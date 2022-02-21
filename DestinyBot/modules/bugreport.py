@@ -27,7 +27,7 @@ def bug(update: Update, context: CallbackContext):
     to_send = to_send.replace("@Destiny_x_Bot","")
     buttons = [
         [InlineKeyboardButton("Check Bugs Queue?", url=bugChannelLink)],
-        [InlineKeyboardButton("Escalate it to Support?", url=bugChannelLink)]
+        [InlineKeyboardButton("Escalate it to Support?", url=supportLink)]
     ]
 
     msg = f"Bug details Submitted successfully.\n"
