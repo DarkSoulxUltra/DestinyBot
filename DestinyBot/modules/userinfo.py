@@ -314,7 +314,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/unmei_updates/4">Ⓤ</a>]'.format(
+        text += ' [<a href="https://t.me/unmei_updates/4"> 𝒾 </a>]'.format(
             bot.username,
         )
 
@@ -461,7 +461,7 @@ def stats(update, context):
                         "\n*Bot statistics*:\n"
                         + "\n".join(mod.__stats__() for mod in STATS)
                     )
-                    + f"\n\n➥ [Support](https://t.me/{SUPPORT_CHAT}) | ➲ [Updates](https://t.me/unmei_updates/4)\n\n"
+                    + f"\n\n➥ [Support](https://t.me/{SUPPORT_CHAT}) | ➲ [Updates](https://t.me/unmei_updates)\n\n"
                 )
                 + "╘══『 by [𝚂𝙷𝙾𝚃𝙾](https://t.me/yameteee_yamete_kudasai) 』\n"
             ),
