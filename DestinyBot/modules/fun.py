@@ -43,21 +43,6 @@ def sanitize(update: Update, context: CallbackContext):
     reply_animation(TEMP, caption=f"*Sanitizes {name}*")
 
 
-def sanitize(update: Update, context: CallbackContext):
-    message = update.effective_message
-    name = (
-        message.reply_to_message.from_user.first_name
-        if message.reply_to_message
-        else message.from_user.first_name
-    )
-    reply_animation = (
-        message.reply_to_message.reply_animation
-        if message.reply_to_message
-        else message.reply_animation
-    )
-    reply_animation(random.choice(fun_strings.GIFS), caption=f"*Sanitizes {name}*")
-
-
 def slap(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
