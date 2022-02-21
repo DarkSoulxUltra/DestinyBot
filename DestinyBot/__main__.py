@@ -800,7 +800,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}", 
-                "👋 Hey there,\nI['](https://telegra.ph/file/fdaa7b5fbf2ebb380e714.mp4)m awake again.",
+                "👋 Hey there Symphonicas,\nI['](https://telegra.ph/file/6931b8ee3a04aef8af314.mp4)m awake again.",
                 parse_mode=ParseMode.MARKDOWN
             )
         except Unauthorized:
