@@ -8,9 +8,11 @@ from telegram.ext import CallbackContext, CallbackQueryHandler
 
 def bug(update: Update, context: CallbackContext):
     message = update.effective_message
+    IMAGE = "https://telegra.ph/file/0ec3d2fadf05511e819c1.jpg"
     #args = context.args
     #log_message = ""
-    bugChannelLink = "https://t.me/+Q3UyHDVMVUdhY2Fl"
+    bugChannelLink = "t.me/+Q3UyHDVMVUdhY2Fl"
+    supportLink = "t.me/unmei_support"
     chat = update.effective_chat
     BUG_DETAILS = message.text.split(' ', 1)
     user = update.effective_user
@@ -23,13 +25,23 @@ def bug(update: Update, context: CallbackContext):
     #req_by = f"<b>Requested By:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     to_send = to_send.replace("/","#")
     to_send = to_send.replace("@Destiny_x_Bot","")
-    #buttons = [[InlineKeyboardButton("Bugs in the Queue", url=bugChannelLink)]]
+    buttons = [
+        [
+            InlineKeyboardButton("Check Bugs Queue?", url=bugChannelLink),
+            InlineKeyboardButton("Escalate it to Support?", url=bugChannelLink)
+        ]
+    ]
 
-    msg = f"Bug request Submitted successfully, contact @unmei_support for escalations.\n\nView Bugs in the Queue : ({bugChannelLink})"
+    msg = f"Bug details Submitted successfully.\n"
     if len(to_send.split(" ")) >= 2:
         try:
             to_send = f"{to_send}\nRequester: @{user.username}\nRequester ID: {user.id}\n\nFrom Chat: {chat.title}\nChat Username: @{chat.username}\nChat ID: {chat.id}\n"
-            update.effective_message.reply_text(msg)
+            update.effective_message.reply_photo(
+	        IMAGE,
+                caption=msg,
+                parse_mode=ParseMode.HTML,
+                reply_markup=InlineKeyboardMarkup(buttons)
+            )
             bot.sendMessage(int(chat_id), str(to_send))
         except TelegramError:
             LOGGER.warning("Couldn't send to group %s", str(chat_id))
