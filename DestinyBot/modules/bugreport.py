@@ -25,7 +25,7 @@ def bug(update: Update, context: CallbackContext):
     to_send = to_send.replace("@Destiny_x_Bot","")
     #buttons = [[InlineKeyboardButton("Bugs in the Queue", url=bugChannelLink)]]
 
-    msg = f"Bug request Submitted successfully, contact @unmei_support for escalations.\nView Bugs Queue Here : ({bugChannelLink})"
+    msg = f"Bug request Submitted successfully, contact @unmei_support for escalations.\n\nView Bugs in the Queue : ({bugChannelLink})"
     if len(to_send.split(" ")) >= 2:
         try:
             to_send = f"{to_send}\nRequester: @{user.username}\nRequester ID: {user.id}\n\nFrom Chat: {chat.title}\nChat Username: @{chat.username}\nChat ID: {chat.id}\n"
