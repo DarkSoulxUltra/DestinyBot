@@ -23,17 +23,13 @@ def bug(update: Update, context: CallbackContext):
     #req_by = f"<b>Requested By:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     to_send = to_send.replace("/","#")
     to_send = to_send.replace("@Destiny_x_Bot","")
-    buttons = [[InlineKeyboardButton("Bugs in the Queue", url=bugChannelLink)]]
+    #buttons = [[InlineKeyboardButton("Bugs in the Queue", url=bugChannelLink)]]
 
-    msg = "Bug request Submitted successfully, contact @unmei_support for escalations."
+    msg = "Bug request Submitted successfully, contact @unmei_support for escalations.\n[View Bugs Queue]({bugChannelLink})"
     if len(to_send.split(" ")) >= 2:
         try:
             to_send = f"{to_send}\nRequester: @{user.username}\nRequester ID: {user.id}\n\nFrom Chat: {chat.title}\nChat Username: @{chat.username}\nChat ID: {chat.id}\n"
-            update.effective_message.reply_text(
-                msg,
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(buttons)
-            )
+            update.effective_message.reply_text(msg)
             bot.sendMessage(int(chat_id), str(to_send))
         except TelegramError:
             LOGGER.warning("Couldn't send to group %s", str(chat_id))
