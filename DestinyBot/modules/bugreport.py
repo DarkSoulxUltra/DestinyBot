@@ -24,6 +24,7 @@ def bug(update: Update, context: CallbackContext):
     to_send = " ".join(BUG_DETAILS)
     #req_by = f"<b>Requested By:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     to_send = to_send.replace("/","#")
+    to_send = to_send.replace("!bug","#bug")
     to_send = to_send.replace("@Destiny_x_Bot","")
     buttons = [
         [InlineKeyboardButton("👾 Check Bugs Queue 👾", url=bugChannelLink)],
