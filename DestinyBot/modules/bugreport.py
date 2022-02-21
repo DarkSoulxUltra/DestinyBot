@@ -1,6 +1,6 @@
 import datetime
 from telegram import TelegramError
-from DestinyBot import dispatcher, SUPPORT_CHAT_ID
+from DestinyBot import dispatcher, SUPPORT_CHAT_ID, LOGGER
 from DestinyBot.modules.disable import DisableAbleCommandHandler
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update, Message)
