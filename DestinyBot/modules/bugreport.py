@@ -52,20 +52,6 @@ def bug(update: Update, context: CallbackContext):
         update.effective_message.reply_text("Bruh, this will work like `/bug <report about a bug>`, don't comedy me..")
 
 
-
-__help__ = """
-
- ──「 Bug Report 」──                           
-
-✮ `/bug <report text>`: Sends a string containing the bot issues directly to Unmei's support private channel.
-
-Note: This command will also collect the details about the user like telegram ID and username, if someone
-tried to spam it, they might suffer a gban.
-
-Reach out to @unmei_support for any queries.
-
-"""
-
 BUG_HANDLER = DisableAbleCommandHandler("bug", bug, run_async=True)
 
 dispatcher.add_handler(BUG_HANDLER)
