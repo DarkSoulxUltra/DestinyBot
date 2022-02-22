@@ -274,7 +274,7 @@ __help__ = """
 ✮ If done in pm, toggles your status.
 ✮ If in group, toggles that groups's status.
 
-──「 Bug Report 」──
+* Bug Report *
 
 ✮ `/bug <report text>`: Sends a string containing the bot issues
 directly to Unmei's support private channel.
