@@ -10,18 +10,19 @@ from DestinyBot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
 __mod_name__ = "Anti-NSFW​"
 
 __help__ = """
-
 * Anti-NSFW *
 
-✮ /antinsfw [on/off] : To enable or disable antinsfw option
-in your chats
+✮ /antinsfw [on/off] : To enable or disable 
+antinsfw option in your chats
 
-✮ /nsfwscan : Reply to image/sticker/gif/video to check if it's
-a NSFW content or not.
+✮ /nsfwscan : Reply to image/sticker/gif/video
+to check if it's a NSFW content or not.
 
-✮ /profanity [on/off] : To restrict the use of some profanity words.
+✮ /profanity [on/off] : To restrict the use of
+some profanity/slang words.
 
-Reach out to @unmei_support if you want the list of profanity words.
+Reach out to @unmei_support if you want the 
+list of profanity words.
 
 """
 
