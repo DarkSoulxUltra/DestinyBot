@@ -536,7 +536,8 @@ def __migrate__(old_chat_id, new_chat_id):
 def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *gbans*: `{sql.does_chat_gban(chat_id)}`."
 
-__help__ = """*Admins only:*
+__help__ = """
+*Admins only:*
 ✮ `/antispam <on/off/yes/no>`: Will toggle our antispam tech
     or return your current settings.
 
@@ -554,6 +555,7 @@ Note: Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
 ✮ `/setfloodmode <action type>`: Choose which action to take on
    a user who has been flooding.
    Options: ban/kick/mute/tban/tmute.
+
 """
 
 GBAN_HANDLER = CommandHandler("gban", gban, run_async=True)
