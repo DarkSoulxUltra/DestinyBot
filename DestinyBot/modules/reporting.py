@@ -283,7 +283,6 @@ like telegram ID and username, if someone tried to spam it,
 they might suffer from a gban.
 
 Reach out to @unmei_support for any queries.
-
 """
 
 SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
