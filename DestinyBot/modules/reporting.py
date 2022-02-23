@@ -275,11 +275,10 @@ __help__ = """
 ✮ If in group, toggles that groups's status.
 
 * Bug Report *
+✮ /bug <report text>*:* Sends a string containing the bot issues
+directly to Unmei support's private channel.
 
-✮ `/bug <report text>`: Sends a string containing the bot issues
-directly to Unmei's support private channel.
-
-Note: This command will also collect the details about the user
+*NOTE:* This command will also collect the details about the user
 like telegram ID and username, if someone tried to spam it,
 they might suffer from a gban.
 
