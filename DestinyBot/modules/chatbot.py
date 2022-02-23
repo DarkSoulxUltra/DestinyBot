@@ -29,7 +29,7 @@ async def fetch(url):
             async with aiohttp.ClientSession() as session:
                 async with session.get(url) as resp:
                     try:
-                        data = await resp.json()
+                        data = await resp.json(content_type=None)
                     except:
                         data = await resp.text()
             return data
