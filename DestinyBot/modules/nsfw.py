@@ -829,4 +829,4 @@ __help__ = """
 """
 
 
-__mod_name__ = "Nsfw​"
+__mod_name__ = "NSFW"
