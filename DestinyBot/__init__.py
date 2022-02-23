@@ -130,6 +130,7 @@ if ENV:
     BOT_ID = int(os.environ.get("BOT_ID", None))
     ARQ_API_URL = "https://thearq.tech/"
     ARQ_API_KEY = os.environ.get("ARQ_API_KEY", None)
+    ARQ_API_KEY = "JSTHYI-JSMIOA-KSAEWA-GQLTYS-ARQ"
 
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
