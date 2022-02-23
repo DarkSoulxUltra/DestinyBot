@@ -337,6 +337,7 @@ async def inuka(client, message):
 
 @pbot.on_message(filters.regex("Unmei|unmei|robot|UNMEI|Destiny|destiny|DESTINY|Shoto|shoto") & ~filters.bot & ~filters.via_bot  & ~filters.forwarded & ~filters.reply & ~filters.channel & ~filters.edited)
 async def inuka(client, message):
+    msg = ""
     msg = message.text
     if msg.startswith("/") or msg.startswith("@"):
         message.continue_propagation()
