@@ -1,5 +1,3 @@
-# AI Chat (C) 2020-2021 by @InukaAsith
-
 import emoji
 import re
 import aiohttp
@@ -15,12 +13,15 @@ url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
 
 translator = google_translator()
 
+
 async def lunaQuery(query: str, user_id: int):
     luna = await arq.luna(query, user_id)
     return luna.result
 
+
 def extract_emojis(s):
     return "".join(c for c in s if c in emoji.UNICODE_EMOJI)
+
 
 async def fetch(url):
     try:
@@ -36,8 +37,10 @@ async def fetch(url):
         print("AI response Timeout")
         return
 
+
 ewe_chats = []
 en_chats = []
+
 
 @pbot.on_message(filters.command(["chatbot", f"chatbot@{bu}"]) & ~filters.edited & ~filters.bot & ~filters.private)
 @admins_only
@@ -432,10 +435,8 @@ async def inuka(client, message):
 
 
 __help__ = """
-
 ✮ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
 ✮ /chatbot EN : Enables English only chatbot.
-
 """
 
 __mod_name__ = "Chatbot"
