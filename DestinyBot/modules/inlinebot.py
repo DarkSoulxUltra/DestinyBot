@@ -107,21 +107,7 @@ async def inline_query_handler(client, query):
             answerss = await saavn_func(answers, tex)
             await client.answer_inline_query(query.id, results=answerss)
 
-        elif text.split()[0] == "torrent":
-            if len(text.split()) < 2:
-                return await client.answer_inline_query(
-                    query.id,
-                    results=answers,
-                    switch_pm_text="Torrent Search | torrent [QUERY]",
-                    switch_pm_parameter="inline",
-                )
-            tex = text.split(None, 1)[1].strip()
-            answerss = await torrent_func(answers, tex)
-            await client.answer_inline_query(
-                query.id,
-                results=answerss,
-            )
-
+        
         elif text.split()[0] == "yt":
             if len(text.split()) < 2:
                 return await client.answer_inline_query(
