@@ -61,7 +61,6 @@ keywords_list = [
     "info",
     "google",
     "gh",
-    "torrent",
     "pokedex",
     "saavn",
     "wiki",
@@ -257,47 +256,6 @@ async def wall_func(answers, text):
                 caption=f"[Source]({i.url_image})",
             )
         )
-    return answers
-
-
-async def torrent_func(answers, text):
-    results = await arq.torrent(text)
-    if not results.ok:
-        answers.append(
-            InlineQueryResultArticle(
-                title="Error",
-                description=results.result,
-                input_message_content=InputTextMessageContent(results.result),
-            )
-        )
-        return answers
-    results = results.result[0:48]
-    for i in results:
-        title = i.name
-        size = i.size
-        seeds = i.seeds
-        leechs = i.leechs
-        upload_date = i.uploaded
-        magnet = i.magnet
-        caption = f"""
-**Title:** __{title}__
-**Size:** __{size}__
-**Seeds:** __{seeds}__
-**Leechs:** __{leechs}__
-**Uploaded:** __{upload_date}__
-**Magnet:** `{magnet}`"""
-
-        description = f"{size} | {upload_date} | Seeds: {seeds}"
-        answers.append(
-            InlineQueryResultArticle(
-                title=title,
-                description=description,
-                input_message_content=InputTextMessageContent(
-                    caption, disable_web_page_preview=True
-                ),
-            )
-        )
-        pass
     return answers
 
 
