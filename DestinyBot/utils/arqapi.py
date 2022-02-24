@@ -16,6 +16,7 @@ from DestinyBot import pbot
 
 SUDOERS = OWNER_ID
 ARQ_API_URL = "https://thearq.tech"
+ARQ_API_KEY = "BFQHDW-PXKPWW-LHRZCV-LWBBRL-ARQ"
 
 # Aiohttp Client
 print("[INFO]: INITIALZING AIOHTTP SESSION")
