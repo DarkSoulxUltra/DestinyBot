@@ -467,7 +467,7 @@ def makepack_internal(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Unblock", url=f"t.me/{context.bot.username}"
+                                text="Unblock", url=f"t.me/{context.bot.username}?start="
                             )
                         ]
                     ]
