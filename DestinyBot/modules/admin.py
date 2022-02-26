@@ -383,15 +383,9 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
             message.reply_text("An error occured while promoting.")
         return
 
-    keyboard = InlineKeyboardMarkup([[
-        InlineKeyboardButton(
-            "Demote", callback_data="demote_({})".format(user_member.user.id))
-    ]])
-
     bot.sendMessage(
         chat.id,
         f"Fullpromoting a user in <b>{chat.title}</b>\n\n<b>User: {mention_html(user_member.user.id, user_member.user.first_name)}</b>\n<b>Promoter: {mention_html(user.id, user.first_name)}</b>",
-        keyboard,
         parse_mode=ParseMode.HTML,
     )
 
