@@ -391,6 +391,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     bot.sendMessage(
         chat.id,
         f"Fullpromoting a user in <b>{chat.title}</b>\n\n<b>User: {mention_html(user_member.user.id, user_member.user.first_name)}</b>\n<b>Promoter: {mention_html(user.id, user.first_name)}</b>",
+        keyboard,
         parse_mode=ParseMode.HTML,
     )
 
