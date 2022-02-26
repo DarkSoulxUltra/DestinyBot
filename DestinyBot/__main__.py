@@ -109,7 +109,7 @@ List of all the Modules:
     dispatcher.bot.first_name, "" if not ALLOW_EXCL else "📝All commands can either be used with / or !.")
 buttons = [
     [
-        InlineKeyboardButton(text=f"『 ➕ Add Me 』",url=f"https://telegram.dog/Destiny_x_Bot?startgroup=true"),
+        InlineKeyboardButton(text="『 ➕ Add Me 』",url="https://telegram.dog/Destiny_x_Bot?startgroup=true"),
         InlineKeyboardButton(text="『 🙇 Help 』", callback_data="help_back")
     ],
     [
@@ -117,7 +117,7 @@ buttons = [
         InlineKeyboardButton(text="『 ❔ Otaku Talks 』", url="https://t.me/tas_support")
     ],
     [
-        InlineKeyboardButton(text="『 🚑 Support 』",url=f"https://telegram.dog/unmei_support"),
+        InlineKeyboardButton(text="『 🚑 Support 』",url="https://telegram.dog/unmei_support"),
         InlineKeyboardButton(text="『 📢 Updates 』",url="https://t.me/unmei_updates")
     ]
 ]
