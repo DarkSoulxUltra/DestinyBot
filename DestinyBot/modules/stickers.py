@@ -430,7 +430,7 @@ def makepack_internal(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Start", url=f"t.me/{context.bot.username}"
+                                text="Start", url=f"t.me/{context.bot.username}?start="
                             )
                         ]
                     ]
