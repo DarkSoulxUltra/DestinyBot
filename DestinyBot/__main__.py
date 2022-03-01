@@ -105,6 +105,7 @@ To make me functional, make sure that i have enough rights in your group[.](http
 Helpful commands:
 
 - /start: It will starts me! You've probably used this, as you are here now.
+- /donate: To show pity to my Dev... Shhhh! Just don't tell him I said this.
 
 All commands can be used with the following: / !
 List of all the Modules:
@@ -129,9 +130,10 @@ GROUP_START_IMG = "https://telegra.ph/file/2d9b9613c4c7f8310c6d1.mp4"
 DESTINY_IMG = "https://telegra.ph/file/a4f96c30605ece22664ea.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @yameteee_yamete_kudasai \
- Supporting isn't always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at ."""
+ You can support the project by contacting [Shoto](t.me/yameteee_yamete_kudasai)
+ Supporting isn't always financial!
+ Those who cannot provide monetary support are welcome to help us develop the bot at our
+[Support Group](t.me/unmei_support)."""
 
 IMPORTED = {}
 MIGRATEABLE = []
