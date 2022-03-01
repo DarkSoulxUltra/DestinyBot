@@ -687,9 +687,7 @@ Group admins/group owners do not need these commands.
        works by reply too
  ╠ ✮ `/ungban`*:* Ungbans the user, same usage as gban
  ╚ ✮ `/gbanlist`*:* Outputs a list of gbanned users
-
 Visit @unmei_support for more information.
-
 """
 
 DEV_HANDLER = CommandHandler(("adddev", "addconductor"), adddev)
