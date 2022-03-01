@@ -7,25 +7,6 @@ from DestinyBot.utils.errors import capture_err
 from DestinyBot.utils.permissions import adminsOnly
 from DestinyBot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
 
-__mod_name__ = "Anti-NSFW​"
-
-__help__ = """
-* Anti-NSFW *
-
-✮ /antinsfw [on/off] : To enable or disable 
-antinsfw option in your chats
-
-✮ /nsfwscan : Reply to image/sticker/gif/video
-to check if it's a NSFW content or not.
-
-✮ /profanity [on/off] : To restrict the use of
-some profanity/slang words.
-
-Reach out to @unmei_support if you want the 
-list of profanity words.
-
-"""
-
 async def get_file_id_from_message(message):
     file_id = None
     if message.document:
@@ -175,3 +156,17 @@ async def nsfw_enable_disable(_, message):
         await message.reply_text("Disabled AntiNSFW System. Yeah, enjoy your fap now.")
     else:
         await message.reply_text("Unknown Suffix, Use /antinsfw [on/off]")
+
+__help__ = """
+* Anti-NSFW *
+
+✮ /antinsfw [on/off] : To enable or disable antinsfw option in your chats
+
+✮ /nsfwscan : Reply to image/sticker/gif/video to check if it's a NSFW content or not.
+
+✮ /profanity [on/off] : To restrict the use of some profanity/slang words.
+
+Reach out to @unmei_support if you want the list of profanity words.
+"""
+
+__mod_name__ = "Anti-NSFW​"
