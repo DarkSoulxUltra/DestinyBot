@@ -2,6 +2,7 @@ future
 emoji
 lxml
 wget
+coffeehouse
 gtts
 beautifulsoup4
 requests
