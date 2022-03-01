@@ -273,16 +273,6 @@ __help__ = """
 ✮ /reports <on/off>*:* change report setting, or view current status.
 ✮ If done in pm, toggles your status.
 ✮ If in group, toggles that groups's status.
-
-* Bug Report *
-✮ /bug <report text>*:* Sends a string containing the bot issues
-directly to Unmei support's private channel.
-
-*NOTE:* This command will also collect the details about the user
-like telegram ID and username, if someone tried to spam it,
-they might suffer from a gban.
-
-Reach out to @unmei_support for any queries.
 """
 
 SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
