@@ -67,6 +67,8 @@ BUG_HANDLER = DisableAbleCommandHandler("bug", bug, run_async=True)
 
 dispatcher.add_handler(BUG_HANDLER)
 
+__main__ = "bug"
+
 __mod_name__ = "Bug Report"
 __command_list__ = [
     "bug"
