@@ -54,8 +54,8 @@ __help__ = """
 ✮ /bug <report text>*:* Sends a report text mentioned by user directly to
 Unmei Support's private channel.
 
-*NOTE:* it will also collect user's information, specially their ID
-Think twice before spamming this command.
+*NOTE:* it will also collect user's information, specially their Telegram ID.
+So, think twice before spamming this command without any reason.
 """
 
 BUG_HANDLER = DisableAbleCommandHandler("bug", bug, run_async=True)
