@@ -92,6 +92,9 @@ PM_START_TEXT = """
 ღღ    *Uptime:* `{}`    ღღ
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 
+➥ Users Interacted : `{}`
+➥ Total Chats : `{}`
+
 ♡ Try The Help Button below To Know My Abilities[.](https://telegra.ph/file/9473d3f0e989ee67bb4cd.jpg) ♡
 """
 
