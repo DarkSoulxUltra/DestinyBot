@@ -50,29 +50,20 @@ def bug(update: Update, context: CallbackContext):
     else:
         #to_send = f"{to_send}\n Requested By : {mention_html(user.id, html.escape(user.first_name))}\n From Chat: <b>{html.escape(chat.title)}:</b>\n"
         update.effective_message.reply_text("Bruh, this will work like `/bug <report about a bug>`, don't comedy me..")
-
 __help__ = """
-* Bug Report *
-✮ /bug <report text>*:* Sends a string containing the bot issues
-directly to Unmei support's private channel.
+✮ /bug <report text>*:* Sends a report text mentioned by user directly to
+Unmei Support's private channel.
 
-*NOTE:* This command will also collect the details about the user
-like telegram ID and username, if someone tried to spam it,
-they might suffer from a gban.
-
-Reach out to @unmei_support for any queries.
+*NOTE:* it will also collect user's information, specially their ID
+Think twice before spamming this command.
 """
 
 BUG_HANDLER = DisableAbleCommandHandler("bug", bug, run_async=True)
 
 dispatcher.add_handler(BUG_HANDLER)
 
-__main__ = "bug"
-
 __mod_name__ = "Bug Report"
-__command_list__ = [
-    "bug"
-]
+
 __handlers__ = [
     BUG_HANDLER
 ]
