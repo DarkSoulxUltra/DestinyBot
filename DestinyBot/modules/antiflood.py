@@ -398,8 +398,6 @@ def __chat_settings__(chat_id, user_id):
     return "Antiflood has been set to`{}`.".format(limit)
 
 __help__ = """
-Here is the help for the Anti-Flood module:
-
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood will result in restricting that user.
  This will mute users if they send more than 10 messages in a row, bots are ignored.
  ✮ /flood: Get the current flood control setting
