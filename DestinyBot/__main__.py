@@ -84,7 +84,7 @@ uptime_pm = get_readable_time((time.time() - StartTime))
 first_name_pm = ""
 
 PM_START_TEXT = """
-────「 {} 」────
+───『 {} 』───
 *Hey there {}!,*
 * I am an advance group management bot with a lots of Features. My Anime theme is from Takt OP. Destiny *
 
