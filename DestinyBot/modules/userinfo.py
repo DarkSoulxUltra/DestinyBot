@@ -246,7 +246,7 @@ def info(update: Update, context: CallbackContext):
     else:
         return
 
-    rep = message.reply_text("<code>Appraising...</code>", parse_mode=ParseMode.HTML)
+    rep = message.reply_text("<code>Retrieving Info from the Symphonica DB...</code>", parse_mode=ParseMode.HTML)
 
     text = (
         f"╒═══「<b> Appraisal results:</b> 」\n"
@@ -295,7 +295,7 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\n This person is my Maestro - <b>'Takt'</b>."
+        text += "\n\n This person is my Maestro❤️ - <b>'Takt'</b>."
         disaster_level_present = True
     elif user.id in DEV_USERS:
         text += "\n\nThis user is member of the 'Conductors', a Dev level member."
@@ -513,7 +513,7 @@ def set_about_bio(update: Update, context: CallbackContext):
 
         if user_id == message.from_user.id:
             message.reply_text(
-                "Ha, you can't set your own bio! You're at the mercy of others here...",
+                "Haaah, you can't set your own bio! You're at the mercy of others here...",
             )
             return
 
