@@ -43,10 +43,28 @@ def afk(update: Update, context: CallbackContext):
     else:
         reason = ""
 
+    
     sql.set_afk(update.effective_user.id, reason)
     fname = update.effective_user.first_name
+    random_afk_msg = (
+        "Naruhodo! Watching porn again?",
+        "Yeah sleep already.",
+        "Haah! Maybe doing something lewd behind my back.",
+        "Okay, updating your ask status, be grateful to me.",
+        "I know you are reading..... May be Doujins",
+        "I don't think you got a girl that you are ignoring this precious chat, so what are you upto?",
+        "Wakatta! Sayonara",
+        "Wtf, going already? Not like I care about it.",
+        "Do you know what it feels like in lava? Just go and sink in it 🔥",
+        "Bye bye!!! Cum back soon",
+        "Do you know anything about a Thigh massage Job? Oops my bad, I meant Thai* Massage Jobs.",
+        "Mind if I come along with you? Only if you are not thinking something lewd.",
+        "Hmmmmmmmm. Wanking off?",
+        "Yeah, Go away Horny."
+    )
+    afk_msg = random.choice(random_afk_msg)
     try:
-        update.effective_message.reply_text("{} is now away!{}.\nMay be {} is doing something lewd behind my back?".format(fname, notice,fname))
+        update.effective_message.reply_text("{} is now away!{}.\n{}".format(fname, notice,afk_msg))
     except BadRequest:
         pass
 
@@ -76,7 +94,7 @@ def no_longer_afk(update: Update, context: CallbackContext):
                 "Dear {}, Are you a BTS Lover. I know you were watching it?",
                 "{}, I know were watching something dirty, that's why you were away.",
                 "Why came back, {}? Girls are away from chat already.",
-                "Okairinasai {} Nii-Chan!!"
+                "Okairinasai {} Nii-Chan!!",
                 "Where is {}?\nIn the chat!",
                 "{}, were you doing something lewd?\nI just saw a white stain on your T-shirt."
             ]
