@@ -145,7 +145,7 @@ def aniflirt(update: Update, context: CallbackContext):
     try:
         temp = random.choice(fun_strings.ANIME_FLIRT_LINES)
     except BadRequest:
-        update.message.reply_text(random.choice(funstrings.ANIME_FLIRT_LINES)
+        update.message.reply_text(random.choice(fun_strings.ANIME_FLIRT_LINES)
     #bot = context.bot
     #args = context.args
     message = update.effective_message
@@ -332,6 +332,7 @@ __help__ = """
 ✮ /sanitize*:* always use this before /pat or any contact
 ✮ /pat*:* pats a user, or get patted
 ✮ /8ball*:* predicts using 8ball method
+✮ /aniflirt*:* Sends cheesy anime pick-up lines.
 
 - Animation
 ✮ /love 
@@ -353,6 +354,7 @@ __help__ = """
 ✮ /lined <text>: lined your text!
 """
 
+ANIFLIRT_HANDLER = DisableAbleCommandHandler("aniflirt", aniflirt, run_async=True)
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
@@ -368,6 +370,7 @@ TABLE_HANDLER = DisableAbleCommandHandler("table", table, run_async=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 
+dispatcher.add_handler(ANIFLIRT_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -399,8 +402,10 @@ __command_list__ = [
     "shout",
     "weebify",
     "8ball",
+    "aniflirt",
 ]
 __handlers__ = [
+    ANIFLIRT_HANDLER,
     RUNS_HANDLER,
     SLAP_HANDLER,
     PAT_HANDLER,
