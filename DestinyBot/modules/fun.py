@@ -77,7 +77,13 @@ def slap(update: Update, context: CallbackContext):
         temp = random.choice(fun_strings.SLAP_SAITAMA_TEMPLATES)
 
         if isinstance(temp, list):
-            if temp[2] == "tmute":
+            if temp[6] == "tmute":
+                NonAdminList = []
+                for i in range(len(temp)):
+                    if i==1 or i==6:
+                        pass
+                    else:
+                        NonAdminList.append(temp(i))
                 if is_user_admin(chat, message.from_user.id):
                     reply_text(temp[1])
                     return
@@ -89,7 +95,7 @@ def slap(update: Update, context: CallbackContext):
                     until_date=mutetime,
                     permissions=ChatPermissions(can_send_messages=False),
                 )
-            reply_text(temp[0])
+            reply_text(random.choice(NonAdminList))
         else:
             reply_text(temp)
         return
