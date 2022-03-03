@@ -161,6 +161,7 @@ def aniflirt(update: Update, context: CallbackContext):
     temp = random.choice(fun_strings.ANIME_FLIRT_LINES)
     bottemp= random.choice(BOT_FLIRTED)
     message = update.effective_message
+    user_id = extract_user(message, args)
     bot = context.bot
     reply_to = message.reply_to_message if message.reply_to_message else message
     if user_id == bot.id:
