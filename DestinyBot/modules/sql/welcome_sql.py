@@ -103,6 +103,10 @@ DEFAULT_WELCOME_MESSAGES = [
     "Welcome {first}, may the force be with you.",
     "May the {first} be with you.",
     "{first} just joined. Hey, where's Perry?",
+    "Okairinasai {first} Nii-Chan, are you a female? Then Onee-Chan*",
+    "{first}, you might wanna ask about my Maestro, afterall, he is the best spirit conductor.",
+    "Takt, is that a D2, ohh it is just {first}.",
+    "{first}, Welcome to this mess, Gambatte!!!",
     "{first} just joined. Oh, there you are, Perry.",
     "Ladies and gentlemen, I give you ...  {first}.",
     "Behold my new evil scheme, the {first}-Inator.",
@@ -164,7 +168,8 @@ DEFAULT_WELCOME_MESSAGES = [
     "I'm Gonna Destroy Them! Every last one of those titans thats on this earth",
     "Hey {first} If we kill all our enemies over there will we finally be free?",
     "You're Not a Soldier {first}",
-    " Sasageyo, Sasageyo! {first}wa Sasageyo",
+    "Hello {first}. I, Beethoven's Symphony No.5 in C Minor Op.67, welcomes you. Be grateful to me.",
+    "Sasageyo, Sasageyo! {first}wa Sasageyo",
 ]
 DEFAULT_GOODBYE_MESSAGES = [
     "{first} will be missed.",
@@ -210,6 +215,7 @@ DEFAULT_GOODBYE_MESSAGES = [
     "Trust good people",
     "Live to die.",
     "When life gives you lemons reroll!",
+    "Argh! A D2 left afterall",
     "Well, that was worthless",
     "I fell asleep!",
     "May your troubles be many",
