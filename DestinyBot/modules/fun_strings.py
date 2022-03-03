@@ -32,18 +32,24 @@ GIFS = [
 
 SLAP_SAITAMA_TEMPLATES = (
     "Slap me one more time and I'll mute you.",
-    "Stop slapping me. REEEEEEEEEEEEEE.",
-    "Stop slapping me just because I can't mute you. REEEEEEEEEE.",  # reply to admin
-    "Shut up!",
-    "Shut the f*** up",
-    "Silence!",
-    "Urusei!",
-    "Baka ka Omae? Why slapping me?",
-    "Are waah.... Bhamiya!!!",
-    "Yamenasaai!",
-    "Yameteeee!",
-    "Yamete Kudasai!",
-    "Yameroo!"
+    [
+        "Stop slapping me. REEEEEEEEEEEEEE.",
+        "Stop slapping me just because I can't mute you. REEEEEEEEEE.",  # reply to admin
+        "Baka ka Omae? Why slapping me?",
+        "Are waah.... Bhamiya!!!",
+        "Yamenasaai!",
+        "Yameteeee!",
+        "Yamete Kudasai!",
+        "Yameroo!"
+    ]
+    [
+        "Yeah, Noob... Get wrecked!!",
+        "I am muting you for a minute. Be grateful, Hmmph!!",
+        "Shut up!",
+        "Shut the f*** up",
+        "Silence!",
+        "Urusei!",
+    ]
 )
 
 SLAP_TEMPLATES = (
