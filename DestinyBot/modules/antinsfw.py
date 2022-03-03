@@ -124,7 +124,7 @@ async def nsfw_scan_command(_, message):
     remove(file)
     if not results.ok:
         return await m.edit(results.result)
-    #results = results.result
+    results = results.result
     await m.edit(
         f"""
 **Neutral:** `{results.neutral} %`
