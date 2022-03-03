@@ -142,14 +142,8 @@ def pat(update: Update, context: CallbackContext):
 
 
 def aniflirt(update: Update, context: CallbackContext):
-    try:
-        temp = random.choice(fun_strings.ANIME_FLIRT_LINES)
-    except BadRequest:
-        update.message.reply_text(random.choice(fun_strings.ANIME_FLIRT_LINES)
-    #bot = context.bot
-    #args = context.args
+    temp = random.choice(fun_strings.ANIME_FLIRT_LINES)
     message = update.effective_message
-
     reply_to = message.reply_to_message if message.reply_to_message else message
     reply_to.reply_text(temp, parse_mode=ParseMode.HTML)
 
