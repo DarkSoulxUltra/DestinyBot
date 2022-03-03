@@ -13,6 +13,7 @@ DEFAULT_WELCOME_MESSAGES = [
     "Ready player {first}",
     "Armin, {first} is here.",
     "A wild {first} appeared.",
+    "{first} just landed here. Ryoukai",
     "{first} came in like a Lion!",
     "{first} has joined your party.",
     "{first} just joined. Can I get a heal?",
@@ -173,6 +174,8 @@ DEFAULT_WELCOME_MESSAGES = [
 ]
 DEFAULT_GOODBYE_MESSAGES = [
     "{first} will be missed.",
+    "{first} left the chat, Shikatanai",
+    "{first}, Akiramenaide!!",
     "{first} just went offline.",
     "{first} has left the lobby.",
     "{first} has left the clan.",
