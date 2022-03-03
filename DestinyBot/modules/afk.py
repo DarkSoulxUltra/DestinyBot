@@ -57,9 +57,19 @@ def afk(update: Update, context: CallbackContext):
         "Wtf, going already? Not like I care about it.",
         "Do you know what it feels like in lava? Just go and sink in it 🔥",
         "Bye bye!!! Cum back soon",
+        "Before leaving, He told me \"Be the tsun to my dere\". Such a lewd brat",
+        "Enjoy fapping.. I mean napping*.",
+        "Stop dreaming that you'll find a date.",
+        "A Snowball fight? No thanks! You might hit me on my chest.",
+        "I think there is no Girl in this chat, that's why you are going away.",
+        "*Don't tell my Maestro about this*, if you'll wait I can flirt with you a little.",
         "Do you know anything about a Thigh massage Job? Oops my bad, I meant Thai* Massage Jobs.",
         "Mind if I come along with you? Only if you are not thinking something lewd.",
+        "A steamy bath, I am back without a Towel. Thank God you are leaving, perv.",
         "Hmmmmmmmm. Wanking off?",
+        "Did you just shot some sticky stuff on your phone by seeing my pic? That's why going away.",
+        "Fine! I won't be a bother, like I care if you are away. Hmmphh",
+        "You playing CS:GO now? My kill streak is 13, but I don't play any games.🔪🪓🩸",
         "Yeah, Go away Horny."
     )
     afk_msg = random.choice(random_afk_msg)
