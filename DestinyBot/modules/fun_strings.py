@@ -41,13 +41,14 @@ SLAP_SAITAMA_TEMPLATES = (
         "Yameteeee!",
         "Yamete Kudasai!",
         "Yameroo!"
-    ]
+    ],
     [
         "Yeah, Noob... Get wrecked!!",
         "I am muting you for a minute. Be grateful, Hmmph!!",
         "Shut up!",
         "Shut the f*** up",
         "Silence!",
+        "tmute", #command
         "Urusei!",
     ]
 )
