@@ -163,11 +163,16 @@ def aniflirt(update: Update, context: CallbackContext):
     message = update.effective_message
     bot, args = context.bot, context.args
     user_id = extract_user(message, args)
-    reply_to = message.reply_to_message if message.reply_to_message else message
+    
+    reply_text = (
+        message.reply_to_message.reply_text
+        if message.reply_to_message
+        else message.reply_text
+    )
     if user_id == bot.id:
-        reply_to.reply_text(bottemp, parse_mode=ParseMode.HTML)
+        reply_text(bottemp, parse_mode=ParseMode.HTML)
     else:
-        reply_to.reply_text(temp, parse_mode=ParseMode.HTML)
+        reply_text(temp, parse_mode=ParseMode.HTML)
 
 
 def roll(update: Update, context: CallbackContext):
