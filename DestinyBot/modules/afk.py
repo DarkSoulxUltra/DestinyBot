@@ -50,7 +50,7 @@ def afk(update: Update, context: CallbackContext):
         "Naruhodo! Watching porn again?",
         "Yeah sleep already.",
         "Haah! Maybe doing something lewd behind my back.",
-        "Okay, updating your ask status, be grateful to me.",
+        "Okay, updating your afk status, be grateful to me.",
         "I know you are reading..... May be Doujins",
         "I don't think you got a girl that you are ignoring this precious chat, so what are you upto?",
         "Wakatta! Sayonara",
