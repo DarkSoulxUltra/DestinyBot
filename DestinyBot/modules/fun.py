@@ -19,6 +19,22 @@ GIF_ID = [
     "CgACAgQAAx0CXiWt4wACjE9iEKrBCDgQng6sVbqmU-LxGkFbsQAC3AIAAiudtFIUgy45-_1c2iME"
 ]
 
+BOT_FLIRTED = (
+    "Ohh my, trying to hitting on me with my powers?",
+    "If you try something on me, I'll feel weird.🥵",
+    "Haah! Better you should use it on someone else. I will only fall for my Maestro.",
+    "Wait, are you really flirting with the Robot?",
+    "Aaah, you found no girl, that's why hitting on me.",
+    "Fine, if you say so. But it's not like I like you and all. I'm just being generous to you. Be grateful to me.",
+    "Nope, I only like Maestro. Don't try to seduce me.",
+    "Hell no, I won't fall for the likes of you.",
+    "Okay! You can flirt with me, but don't think anything would happen between us",
+    "B.. Baka, don't flirt with me out of nowhere, I feel little bit shy.",
+    "I always thought of you as my Onii-Chan, you sure wanna ruin our relationship?",
+    "Ara Ara! My kouhai is trying to flirt with me, O Kawaii Kotto.",
+    "Urusei, leave me alone, find some partner already to flirt with."
+)
+
 
 def runs(update: Update, context: CallbackContext):
     temp = random.choice(fun_strings.RUN_STRINGS)
@@ -143,9 +159,14 @@ def pat(update: Update, context: CallbackContext):
 
 def aniflirt(update: Update, context: CallbackContext):
     temp = random.choice(fun_strings.ANIME_FLIRT_LINES)
+    bottemp= random.choice(BOT_FLIRTED)
     message = update.effective_message
+    bot = context.bot
     reply_to = message.reply_to_message if message.reply_to_message else message
-    reply_to.reply_text(temp, parse_mode=ParseMode.HTML)
+    if user_id == bot.id:
+        reply_to.reply_text(bottemp, parse_mode=ParseMode.HTML)
+    else:
+        reply_to.reply_text(temp, parse_mode=ParseMode.HTML)
 
 
 def roll(update: Update, context: CallbackContext):
