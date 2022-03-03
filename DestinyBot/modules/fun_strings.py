@@ -44,6 +44,7 @@ SLAP_SAITAMA_TEMPLATES = (
     ],
     [
         "Yeah, Noob... Get wrecked!!",
+        "Stop slapping me just because I can't mute you. REEEEEEEEEE.",
         "I am muting you for a minute. Be grateful, Hmmph!!",
         "Shut up!",
         "Shut the f*** up",
