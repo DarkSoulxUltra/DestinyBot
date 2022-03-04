@@ -63,7 +63,7 @@ def slap(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
     chat = update.effective_chat
-
+    NonAdminList = []
     reply_text = (
         message.reply_to_message.reply_text
         if message.reply_to_message
@@ -78,7 +78,7 @@ def slap(update: Update, context: CallbackContext):
 
         if isinstance(temp, list):
             if temp[6] == "tmute":
-                NonAdminList = []
+                
                 for i in range(len(temp)):
                     if i==1 or i==6:
                         pass
