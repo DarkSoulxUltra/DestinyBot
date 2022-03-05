@@ -47,6 +47,62 @@ SLAP_SAITAMA_TEMPLATES = (
     ],
 )
 
+ATTEMPT_WITH_BOT = (
+    "Really {user1}? Know your place! Fool.",
+    "{user1}, Dude, get a girlfriend already!",
+    "Are you really trying to do it with a robot? {user1}?",
+    "{user1}-NiiChan no Ecchi, Lolicon, Hentai!!*Calls Police*",
+    "No way {user1}, I thought you as a friend without your benifits",
+    "Hi Everyone, {user1} is trying to do dirty things with me, such a jerk.",
+    "{user1}, you dirty perv. I'm not even of your age.",
+    "Haah, have you ever look at your size, {user1}? It's like a caterpillar.",
+    "{user1}, Lol, such a cute little puny weiner. Grow up kiddo.",
+    "Dear {user1}, this command is not meant to be attempted upon me.\n*Dials 911*",
+    "Hooo! You dare try to attempt such lewd act with me.\n*Stabs 🔪🩸 {user1}*",
+    "If it is Maestro, then I'm ready for it. Else 'GO TO HEEEELLLL'!!",
+    "Fu fu fu, {user1}, it will happen just in your dreams.",
+    "Haah! a pipsqueak boy got some nerve to act lewd with me.",
+    "*Runs away from {user1}*",
+    "Ohhhh! Someone's getting horny here. I should hide now.",
+    "LMAO bruh! I'm really not interested in a 5 second round.",
+    "Dude, you unzip your pants and held me down, but 'No thanks! I don't smoke.'",
+    "Yeah, keep trying that! I might sit on your face. Be grateful.",
+    "*Sits on {user1}'s face.*\n You perv masochist, take this."
+)
+
+SAVAGE_BOT = (
+    "{user1} nutted in his pants.",
+    "{user1} wetted the entire floor.",
+    "{user1} starts wanking openly in the public.",
+    "{user1} became a man from a kid and f*cks his Girlfriend i.e.\"His Hand\"",
+    "{user1} moans with pleasure.\n*Wanking continues*",
+    "Have you saw a foundtain in the group? if not then {user1} has created one with the white liquid.",
+    "{user1} tries to put his screw in the pillow.",
+    "{user1} ate his own cucumber.",
+    "{user1} dies due to excessive wanking.",
+    "{user1} made some biceps, but only on his right hand.",
+    "{user1} drills a hole in a wall, and you know the rest.",
+    "{user1} creampie's his shoe."
+)
+
+WRECKED_TEMPLATES = (
+    "{user1} puts his screw in {user2}'s nutbolt.",
+    "{user2} ate {user1}'s cucumber.",
+    "{user1} blowed {user2}'s face with some sticky stuff.",
+    "{user2} bent down like a horse, *{user1} smiles*.",
+    "{user1} did it inside {user2}.",
+    "{user1} spanks {user2}'s melons.",
+    "{user2} was foreplayed by {user1}.",
+    "{user1} puts his sausage inside {user2}'s donut.",
+    "{user1} fired a liquid all over {user2}. Damn so sticky.",
+    "{user2} shakes of {user1}'s sausage for the inside sauce.",
+    "{user1} unzips {user2}'s pants",
+    "{user1} uses thousand years of deaths but on {user2}'s down lips.",
+    "{user1} comforts {user2} with the fingers in the A$$h0le.",
+    "{user2} screams 'Yameteeeee', {user1} keeps pushing it in.",
+    "{user1} fondles {user2}'s Apples",
+)
+
 SLAP_TEMPLATES = (
     "{user2} was killed by magic.",
     "{user2} became more useless than Sakura Haruno!!",
