@@ -143,7 +143,7 @@ def semx(update: Update, context: CallbackContext):
 
     else:
         user1 = curr_user
-        temp = random.choice(funs_trings.SAVAGE_BOT)
+        temp = random.choice(fun_strings.SAVAGE_BOT)
         reply = temp.format(user1=user1)
         reply_text(reply, parse_mode=ParseMode.HTML)
         return
