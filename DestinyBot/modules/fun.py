@@ -115,6 +115,44 @@ def slap(update: Update, context: CallbackContext):
 
     reply_text(reply, parse_mode=ParseMode.HTML)
 
+    
+def semx(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    message = update.effective_message
+    chat = update.effective_chat
+    reply_text = (
+        message.reply_to_message.reply_text
+        if message.reply_to_message
+        else message.reply_text
+    )
+
+    curr_user = html.escape(message.from_user.first_name)
+    user_id = extract_user(message, args)
+
+    if user_id == bot.id:
+        temp = random.choice(fun_strings.ATTEMPT_WITH_BOT)
+        user1 = curr_user
+        reply = temp.format(user1=user1)
+        reply_text(reply, parse_mode=ParseMode.HTML)
+        return
+
+    if user_id:
+        slapped_user = bot.get_chat(user_id)
+        user1 = curr_user
+        user2 = html.escape(slapped_user.first_name)
+
+    else:
+        user1 = curr_user
+        temp = random.choice(funs_trings.SAVAGE_BOT)
+        reply = temp.format(user1=user1)
+        reply_text(reply, parse_mode=ParseMode.HTML)
+        return
+
+    temp = random.choice(fun_strings.WRECKED_TEMPLATES)
+
+    reply = temp.format(user1=user1, user2=user2)
+
+    reply_text(reply, parse_mode=ParseMode.HTML)
 
 def pat(update: Update, context: CallbackContext):
     bot = context.bot
@@ -377,6 +415,7 @@ __help__ = """
 ANIFLIRT_HANDLER = DisableAbleCommandHandler("aniflirt", aniflirt, run_async=True)
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
+SEMX_HANDLER = DisableAbleCommandHandler(("sex", "fuck"), semx, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
 PAT_HANDLER = DisableAbleCommandHandler("pat", pat, run_async=True)
 ROLL_HANDLER = DisableAbleCommandHandler("roll", roll, run_async=True)
@@ -391,6 +430,7 @@ SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 
 dispatcher.add_handler(ANIFLIRT_HANDLER)
+dispatcher.add_handler(SEMX_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
 dispatcher.add_handler(SHOUT_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -423,6 +463,7 @@ __command_list__ = [
     "weebify",
     "8ball",
     "aniflirt",
+    "sex",
 ]
 __handlers__ = [
     ANIFLIRT_HANDLER,
@@ -440,4 +481,5 @@ __handlers__ = [
     SHOUT_HANDLER,
     WEEBIFY_HANDLER,
     EIGHTBALL_HANDLER,
+    SEMX_HANDLER,
 ]
