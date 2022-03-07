@@ -35,7 +35,7 @@ def latest():
         title = x['title']
         time = x['time']
         aired = bool(x['aired'])
-        aired_string = "~[{}](https://subsplease.org/shows/{})~".format(title,x['page'])
+        aired_string = "~~[{}](https://subsplease.org/shows/{})~~".format(title,x['page'])
         title = f"[{title}](https://subsplease.org/shows/{x['page']})" if not aired else f"{aired_string}"
         data = f"{title} - {time}"
         if k:
