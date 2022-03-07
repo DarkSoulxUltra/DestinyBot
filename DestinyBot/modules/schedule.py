@@ -27,7 +27,7 @@ def call_back_in_filter(data):
     )
 
 def latest():
-    url = 'https://subsplease.org/api/?f=schedule&h=true&tz=Japan'
+    url = 'https://subsplease.org/api/?f=schedule&h=true&tz=UTC'
     res = get(url).json()
     k = None 
     for x in res['schedule']:
@@ -35,7 +35,7 @@ def latest():
         time = x['time']
         aired = bool(x['aired'])
         title = f"**[{title}](https://subsplease.org/shows/{x['page']})**" if not aired else f"**~~[{title}](https://subsplease.org/shows/{x['page']})~~**"
-        data = f"{title} :: {time}"
+        data = f"{title} :: `{time}`"
         if k:
             k = f"{k}\n{data}"
         else:
@@ -46,7 +46,7 @@ def latest():
 def lates(_,message):
     mm = latest()
     message.reply_text(
-        f"Today's Schedule:\nTZ: Japan\n{mm}" , reply_markup=InlineKeyboardMarkup(
+        f"Today's Schedule:\nTZ: UTC\n{mm}" , reply_markup=InlineKeyboardMarkup(
             [    
                 [InlineKeyboardButton("Refresh" , callback_data="fk")]
             ]        
@@ -60,7 +60,7 @@ def callbackk(_,query):
         time_ = datetime.now(timezone.utc).strftime("%H:%M")
 
         try:
-            query.message.edit(f"Today\'s Schedule:\nTZ: Japan\n{mm}", reply_markup=InlineKeyboardMarkup(
+            query.message.edit(f"Today\'s Schedule:\nTZ: UTC\n{mm}", reply_markup=InlineKeyboardMarkup(
         [    
             [InlineKeyboardButton("Refresh" , callback_data="fk")]
 
@@ -78,5 +78,5 @@ __help__ = """
 To check the scheduled Anime for the current day
  ✮ `/latest`*:* to see latest anime episode
 
-Note: Timezone is set to Japan by default as per API.
+Note: Timezone is set to UTC by default, as IST was showing incorrect results in the API.
 """
