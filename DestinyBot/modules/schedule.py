@@ -35,11 +35,10 @@ def latest():
     for x in res['schedule']:
         title = x['title']
         time = datetime.strptime(x['time'],"%H:%M")
-   
         aired = bool(x['aired'])
         aired_string = "~~[{}](https://subsplease.org/shows/{})~~".format(title,x['page'])
         title = f"[{title}](https://subsplease.org/shows/{x['page']})" if not aired else f"{aired_string}"
-        data = "**{}** => `{}`".format(title, time)
+        data = f"{title} => `{time}`"
         if k:
             k = f"{k}\n{data}"
         else:
@@ -79,5 +78,8 @@ def callbackk(_,query):
 __mod_name__ = "✧Scheldude✧"
 
 __help__ = """
- ✮ /latest: to see latest anime episode
+To check the scheduled Anime for the current day
+ ✮ `/latest`*:* to see latest anime episode
+
+Note: Timezone is set to Japan by default as per API.
 """
