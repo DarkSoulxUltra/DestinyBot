@@ -15,7 +15,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from requests import get
-import time , datetime
+import time
+import datetime as dt
 from datetime import datetime
 from pyrogram import Client , filters
 from DestinyBot import pbot as bot
@@ -62,7 +63,7 @@ def lates(_,message):
 def callbackk(_,query):
     if query.data == "fk":
         mm = latest()
-        time_ = datetime.now(datetime.timezone.utc).strftime("%H:%M")
+        time_ = datetime.now(dt.timezone.utc).strftime("%H:%M")
 
         try:
             query.message.edit(f"Today\'s Schedule:\nTZ: UTC 00:00\n{mm}", reply_markup=InlineKeyboardMarkup(
