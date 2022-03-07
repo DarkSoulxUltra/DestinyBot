@@ -16,6 +16,7 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeybo
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from requests import get
 import time , datetime
+from datetime import datetime
 from pyrogram import Client , filters
 from DestinyBot import pbot as bot
 
@@ -34,10 +35,12 @@ def latest():
     for x in res['schedule']:
         title = x['title']
         time = x['time']
+        time_diff = datetime.strptime("03:30", "%H:%M")
+        in_time = time - time_diff
         aired = bool(x['aired'])
         aired_string = "~~[{}](https://subsplease.org/shows/{})~~".format(title,x['page'])
         title = f"[{title}](https://subsplease.org/shows/{x['page']})" if not aired else f"{aired_string}"
-        data = f"{title} - {time}"
+        data = f"{title} - {in_time} IST"
         if k:
             k = f"{k}\n{data}"
         else:
@@ -48,7 +51,7 @@ def latest():
 def lates(_,message):
     mm = latest()
     message.reply_text(
-        f"Today's Schedule:\nTZ: Japan\n{mm}" , reply_markup=InlineKeyboardMarkup(
+        f"Today's Schedule:\nTZ: India\n{mm}" , reply_markup=InlineKeyboardMarkup(
             [    
                 [InlineKeyboardButton("Refresh" , callback_data="fk")]
             ]        
