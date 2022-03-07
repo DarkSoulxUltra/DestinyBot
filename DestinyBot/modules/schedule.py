@@ -27,18 +27,15 @@ def call_back_in_filter(data):
     )
 
 def latest():
-
     url = 'https://subsplease.org/api/?f=schedule&h=true&tz=Japan'
     res = get(url).json()
-
     k = None 
     for x in res['schedule']:
         title = x['title']
-        time = datetime.strptime(x['time'],"%H:%M")
+        time = x['time']
         aired = bool(x['aired'])
-        aired_string = "~~[{}](https://subsplease.org/shows/{})~~".format(title,x['page'])
-        title = f"[{title}](https://subsplease.org/shows/{x['page']})" if not aired else f"{aired_string}"
-        data = f"{title} => `{time}`"
+        title = f"**[{title}](https://subsplease.org/shows/{x['page']})**" if not aired else f"**~~[{title}](https://subsplease.org/shows/{x['page']})~~**"
+        data = f"{title} :: {time}"
         if k:
             k = f"{k}\n{data}"
         else:
