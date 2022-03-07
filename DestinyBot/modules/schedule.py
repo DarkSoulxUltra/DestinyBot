@@ -34,7 +34,7 @@ def latest():
     k = None 
     for x in res['schedule']:
         title = x['title']
-        time = datetime.striptime(x['time'],"%H:%M")
+        time = datetime.strptime(x['time'],"%H:%M")
         time_diff = datetime.strptime("03:30", "%H:%M")
         in_time = time - time_diff
         aired = bool(x['aired'])
