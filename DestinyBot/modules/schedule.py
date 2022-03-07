@@ -44,7 +44,7 @@ def latest():
 @bot.on_message(filters.command('latest'))
 def lates(_,message):
     mm = latest()
-    message.reply_text(f"Today's Schedule:\nTZ: Japan\n{mm}" , reply_markup=InlineKeyboardMarkup(
+    message.reply_text(f"Today's Schedule:\nTZ: UTC\n{mm}" , reply_markup=InlineKeyboardMarkup(
     [    
         [InlineKeyboardButton("Refresh" , callback_data="fk")]
     ]      
