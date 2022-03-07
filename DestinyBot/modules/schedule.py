@@ -62,10 +62,10 @@ def lates(_,message):
 def callbackk(_,query):
     if query.data == "fk":
         mm = latest()
-        time_ = datetime.datetime.now(datetime.timezone.ist).strftime("%H:%M")
+        time_ = datetime.now(datetime.timezone.utc).strftime("%H:%M")
 
         try:
-            query.message.edit(f"Today\'s Schedule:\nTZ: India\n{mm}", reply_markup=InlineKeyboardMarkup(
+            query.message.edit(f"Today\'s Schedule:\nTZ: UTC 00:00\n{mm}", reply_markup=InlineKeyboardMarkup(
         [    
             [InlineKeyboardButton("Refresh" , callback_data="fk")]
 
