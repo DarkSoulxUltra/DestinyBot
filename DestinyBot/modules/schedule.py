@@ -36,11 +36,11 @@ def latest():
         title = x['title']
         time = datetime.strptime(x['time'],"%H:%M")
         time_diff = datetime.strptime("03:30", "%H:%M")
-        in_time = time - time_diff
+        in_time = str(time - time_diff)[:5]
         aired = bool(x['aired'])
         aired_string = "~~[{}](https://subsplease.org/shows/{})~~".format(title,x['page'])
         title = f"[{title}](https://subsplease.org/shows/{x['page']})" if not aired else f"{aired_string}"
-        data = f"{title} - {in_time} IST"
+        data = f"{title} :: '{in_time} IST'"
         if k:
             k = f"{k}\n{data}"
         else:
