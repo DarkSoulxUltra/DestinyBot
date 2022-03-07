@@ -15,8 +15,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from requests import get
-import time, datetime
-from datetime import datetime, timezone
+import time , datetime
 from pyrogram import Client , filters
 from DestinyBot import pbot as bot
 
@@ -45,25 +44,21 @@ def latest():
 @bot.on_message(filters.command('latest'))
 def lates(_,message):
     mm = latest()
-    message.reply_text(
-        f"Today's Schedule:\nTZ: UTC\n{mm}" , reply_markup=InlineKeyboardMarkup(
-            [    
-                [InlineKeyboardButton("Refresh" , callback_data="fk")]
-            ]        
-        )
-    )
+    message.reply_text(f"Today's Schedule:\nTZ: Japan\n{mm}" , reply_markup=InlineKeyboardMarkup(
+    [    
+        [InlineKeyboardButton("Refresh" , callback_data="fk")]
+    ]      
+    ))
 
 @bot.on_callback_query(call_back_in_filter("fk"))
 def callbackk(_,query):
     if query.data == "fk":
         mm = latest()
-        time_ = datetime.now(timezone.utc).strftime("%H:%M")
-
+        time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
         try:
             query.message.edit(f"Today\'s Schedule:\nTZ: UTC\n{mm}", reply_markup=InlineKeyboardMarkup(
         [    
             [InlineKeyboardButton("Refresh" , callback_data="fk")]
-
         ]
             
         ))
@@ -71,7 +66,6 @@ def callbackk(_,query):
         except:
             query.answer("Refreshed!")
         
-
 __mod_name__ = "✧Scheldude✧"
 
 __help__ = """
