@@ -35,7 +35,8 @@ def latest():
         title = x['title']
         time = x['time']
         aired = bool(x['aired'])
-        title = f"[{title}](https://subsplease.org/shows/{x['page']})" if not aired else f"[{title}](https://subsplease.org/shows/{x['page']})"
+        aired_string = "~~[{}](https://subsplease.org/shows/{})~~".format(title,x['page'])
+        title = f"{aired_string}" if not aired else f"[{title}](https://subsplease.org/shows/{x['page']})"
         data = f"{title} - {time}"
         if k:
             k = f"{k}\n{data}"
@@ -56,7 +57,6 @@ def lates(_,message):
 
 @bot.on_callback_query(call_back_in_filter("fk"))
 def callbackk(_,query):
-
     if query.data == "fk":
         mm = latest()
         time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
@@ -70,14 +70,12 @@ def callbackk(_,query):
             
         ))
             query.answer("Refreshed!")
-
-
         except:
             query.answer("Refreshed!")
         
 
 mod_name = "✧Scheldude✧"
 
-help = """
+__help__ = """
  ✮ /latest: to see latest anime episode
 """
