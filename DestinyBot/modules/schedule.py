@@ -15,9 +15,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from requests import get
-import time
-import datetime as dt
-from datetime import datetime
+import time, datetime
+from datetime import datetime, timezone
 from pyrogram import Client , filters
 from DestinyBot import pbot as bot
 
@@ -29,19 +28,18 @@ def call_back_in_filter(data):
 
 def latest():
 
-    url = 'https://subsplease.org/api/?f=schedule&h=true&tz=Japan'
+    url = 'https://subsplease.org/api/?f=schedule&h=true&tz=UTC +5:30'
     res = get(url).json()
 
     k = None 
     for x in res['schedule']:
         title = x['title']
         time = datetime.strptime(x['time'],"%H:%M")
-        time_diff = datetime.strptime("03:30", "%H:%M")
-        in_time = time - time_diff
+   
         aired = bool(x['aired'])
         aired_string = "~~[{}](https://subsplease.org/shows/{})~~".format(title,x['page'])
         title = f"[{title}](https://subsplease.org/shows/{x['page']})" if not aired else f"{aired_string}"
-        data = f"{title} :: '{in_time} IST'"
+        data = "**{}** => `{}`".format(title, time)
         if k:
             k = f"{k}\n{data}"
         else:
@@ -52,7 +50,7 @@ def latest():
 def lates(_,message):
     mm = latest()
     message.reply_text(
-        f"Today's Schedule:\nTZ: India\n{mm}" , reply_markup=InlineKeyboardMarkup(
+        f"Today's Schedule:\nTZ: Japan\n{mm}" , reply_markup=InlineKeyboardMarkup(
             [    
                 [InlineKeyboardButton("Refresh" , callback_data="fk")]
             ]        
@@ -63,7 +61,7 @@ def lates(_,message):
 def callbackk(_,query):
     if query.data == "fk":
         mm = latest()
-        time_ = datetime.now(dt.timezone.utc).strftime("%H:%M")
+        time_ = datetime.now(timezone.utc).strftime("%H:%M")
 
         try:
             query.message.edit(f"Today\'s Schedule:\nTZ: UTC 00:00\n{mm}", reply_markup=InlineKeyboardMarkup(
