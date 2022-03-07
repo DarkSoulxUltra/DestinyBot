@@ -28,7 +28,7 @@ def call_back_in_filter(data):
 
 def latest():
 
-    url = 'https://subsplease.org/api/?f=schedule&h=true&tz=UTC +5:30'
+    url = 'https://subsplease.org/api/?f=schedule&h=true&tz=Japan'
     res = get(url).json()
 
     k = None 
@@ -64,7 +64,7 @@ def callbackk(_,query):
         time_ = datetime.now(timezone.utc).strftime("%H:%M")
 
         try:
-            query.message.edit(f"Today\'s Schedule:\nTZ: UTC 00:00\n{mm}", reply_markup=InlineKeyboardMarkup(
+            query.message.edit(f"Today\'s Schedule:\nTZ: Japan\n{mm}", reply_markup=InlineKeyboardMarkup(
         [    
             [InlineKeyboardButton("Refresh" , callback_data="fk")]
 
