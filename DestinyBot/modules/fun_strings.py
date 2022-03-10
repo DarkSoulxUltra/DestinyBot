@@ -76,7 +76,7 @@ SAVAGE_BOT = (
     "{user1} starts wanking openly in the public.",
     "{user1} became a man from a kid and f*cks his Girlfriend i.e.\"His Hand\"",
     "{user1} moans with pleasure.\n*Wanking continues*",
-    "Have you saw a foundtain in the group? if not then {user1} has created one with the white liquid.",
+    "Have you saw a fountain in the group? if not then {user1} has created one with the white liquid.",
     "{user1} tries to put his screw in the pillow.",
     "{user1} ate his own cucumber.",
     "{user1} dies due to excessive wanking.",
