@@ -51,7 +51,7 @@ ATTEMPT_WITH_BOT = (
     "Really {user1}? Know your place! Fool.",
     "{user1}, Dude, get a girlfriend already!",
     "Are you really trying to do it with a robot? {user1}?",
-    "{user1}-NiiChan no Ecchi, Lolicon, Hentai!!*Calls Police*",
+    "{user1}-NiiChan no Ecchi, Lolicon, Hentai!!\n*Calls Police*",
     "No way {user1}, I thought you as a friend without your benifits",
     "Hi Everyone, {user1} is trying to do dirty things with me, such a jerk.",
     "{user1}, you dirty perv. I'm not even of your age.",
