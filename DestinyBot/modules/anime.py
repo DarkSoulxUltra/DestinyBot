@@ -407,7 +407,7 @@ def gsearch(update: Update, context: CallbackContext):
     for entry_no in range(len(gresults)):
         if entry_no == 10:
             break
-        sendMessage += f"{entry_no + 1}. {gsearch[entry_no]}\n"
+        sendMessage += str(entry_no + 1)+". "+str(gresults[entry_no])+"\n"
     
     update.effective_message.reply_text(sendMessage)
 
