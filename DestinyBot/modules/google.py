@@ -33,7 +33,7 @@ useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) 
 opener.addheaders = [("User-agent", useragent)]
 
 
-@register(pattern="^/google (.*)")
+'''@register(pattern="^/google (.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -62,7 +62,7 @@ async def _(event):
     await webevent.edit(
         "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
     )
-
+'''
 
 @register(pattern="^/img (.*)")
 async def img_sampler(event):
