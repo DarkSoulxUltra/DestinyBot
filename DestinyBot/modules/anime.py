@@ -592,6 +592,7 @@ def button(update: Update, context: CallbackContext):
             query.answer("You are not allowed to use this.")
 
 def nhentai(update: Update, context: CallbackContext):
+    message = update.effective_message
     code = message.text.split(' ', 1)
     link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
     match = re.match(link_regex, input_str)
