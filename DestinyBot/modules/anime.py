@@ -601,7 +601,7 @@ def button(update: Update, context: CallbackContext):
             progress_message.delete()
         else:
             query.answer("You are not allowed to use this.")
-
+'''
 @register(pattern=r"^/doujin ?(.*)")
 @register(pattern=r"^/nhentai ?(.*)")
 async def nhentai(event):
@@ -682,7 +682,8 @@ async def nhentai(event):
         msg += "\n" + " ".join(natsorted(categories))
     msg += f"\n**Pages :**\n{doujin.num_pages}"
     await event.reply(msg)	
-	
+'''
+
 def site_search(update: Update, context: CallbackContext, site: str):
     message = update.effective_message
     args = message.text.strip().split(" ", 1)
