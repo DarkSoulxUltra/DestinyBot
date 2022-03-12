@@ -609,7 +609,7 @@ def nhentai(update: Update, context: CallbackContext):
     imgs = "".join(f"<img src='{url}'/>" for url in doujin.image_urls)
     imgs = f"&#8205; {imgs}"
     title = doujin.title()
-    graph_link = await post_to_telegraph(title, imgs)
+    graph_link = post_to_telegraph(title, imgs)
     msg += f"[{title}]({graph_link})"
     msg += f"\n**Source :**\n[{code}]({doujin.url})"
     if doujin.parody:
