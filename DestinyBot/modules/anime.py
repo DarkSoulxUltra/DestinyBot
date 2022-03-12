@@ -597,13 +597,7 @@ def nhentai(update: Update, context: CallbackContext):
 
     if code == "random":
         code = Utils.get_random_id()
-    try:
-        doujin = Hentai(code)
-    except BaseException as n_e:
-        if "404" in str(n_e):
-            update.effective_message.reply_text(
-                f"No doujin found for `{code}`. You shouldn't use nhentai :-("
-            )
+    doujin = Hentai(code)
     msg = ""
     imgs = "".join(f"<img src='{url}'/>" for url in doujin.image_urls)
     imgs = f"&#8205; {imgs}"
