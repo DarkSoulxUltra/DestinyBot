@@ -1,6 +1,6 @@
 import datetime
 import re
-from DestinyBot.modules.helper_funs.tools import post_to_telegraph
+from DestinyBot.modules.helper_funcs.tools import post_to_telegraph
 from hentai import Hentai, Utils
 from natsort import natsorted
 import html
