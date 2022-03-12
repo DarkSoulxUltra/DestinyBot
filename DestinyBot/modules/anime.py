@@ -397,7 +397,7 @@ def awake(update: Update, context: CallbackContext):
 
 def gsearch(update: Update, context: CallbackContext):
     message = update.effective_message
-    query = message.text.split(' ', 1)
+    query = str(message.text.split(' ', 1))
     gresults = []
     for j in search(query, tld="com", tbs='0', safe='off', num=10, start=0,
            stop=10, pause=2.0, country='India', extra_params=None,
