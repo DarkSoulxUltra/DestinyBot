@@ -1,4 +1,8 @@
 import datetime
+import re
+from DestinyBot.modules.helper_funs.tools import post_to_telegraph
+from hentai import Hentai, Utils
+from natsort import natsorted
 import html
 import textwrap
 from platform import python_version as py_ver
@@ -587,7 +591,78 @@ def button(update: Update, context: CallbackContext):
         else:
             query.answer("You are not allowed to use this.")
 
+def nhentai(update: Update, context: CallbackContext):
+    code = message.text.split(' ', 1)
+    link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
+    match = re.match(link_regex, input_str)
+    code = match.group(1)
+    if code == "random"
+        Utils.get_random_id()
+    try:
+        doujin = Hentai(code)
+    except BaseException as n_e:
+        if "404" in str(n_e):
+            update.effective_message.reply_text(
+                f"No doujin found for `{code}`. You shouldn't use nhentai :-("
+            )
+    msg = ""
+    imgs = "".join(f"<img src='{url}'/>" for url in doujin.image_urls)
+    imgs = f"&#8205; {imgs}"
+    title = doujin.title()
+    graph_link = await post_to_telegraph(title, imgs)
+    msg += f"[{title}]({graph_link})"
+    msg += f"\n**Source :**\n[{code}]({doujin.url})"
+    if doujin.parody:
+        msg += "\n**Parodies :**"
+        parodies = [
+            "#" + parody.name.replace(" ", "_").replace("-", "_")
+            for parody in doujin.parody
+        ]
 
+        msg += "\n" + " ".join(natsorted(parodies))
+    if doujin.character:
+        msg += "\n**Characters :**"
+        charas = [
+            "#" + chara.name.replace(" ", "_").replace("-", "_")
+            for chara in doujin.character
+        ]
+
+        msg += "\n" + " ".join(natsorted(charas))
+    if doujin.tag:
+        msg += "\n**Tags :**"
+        tags = [
+            "#" + tag.name.replace(" ", "_").replace("-", "_") for tag in doujin.tag
+        ]
+
+        msg += "\n" + " ".join(natsorted(tags))
+    if doujin.artist:
+        msg += "\n**Artists :**"
+        artists = [
+            "#" + artist.name.replace(" ", "_").replace("-", "_")
+            for artist in doujin.artist
+        ]
+
+        msg += "\n" + " ".join(natsorted(artists))
+    if doujin.language:
+        msg += "\n**Languages :**"
+        languages = [
+            "#" + language.name.replace(" ", "_").replace("-", "_")
+            for language in doujin.language
+        ]
+
+        msg += "\n" + " ".join(natsorted(languages))
+    if doujin.category:
+        msg += "\n**Categories :**"
+        categories = [
+            "#" + category.name.replace(" ", "_").replace("-", "_")
+            for category in doujin.category
+        ]
+
+        msg += "\n" + " ".join(natsorted(categories))
+    msg += f"\n**Pages :**\n{doujin.num_pages}"
+    update.effective_message.reply_text(msg)
+	
+	
 def site_search(update: Update, context: CallbackContext, site: str):
     message = update.effective_message
     args = message.text.strip().split(" ", 1)
@@ -678,6 +753,7 @@ Anime will be posted on [The Channel](https://t.me/trending_anime_series) then t
  """
 
 REQUEST_HANDLER = DisableAbleCommandHandler("request", request, run_async=True)
+DOUJIN_HANDLER = DisableAbleCommandHandler(("nhentai","doujin"), nhentai, run_async=True)
 G_HANDLER = DisableAbleCommandHandler("google", gsearch, run_async=True)
 check_handler = DisableAbleCommandHandler("alive", awake, run_async=True)
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
@@ -691,6 +767,7 @@ KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo, run_async=True)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(REQUEST_HANDLER)
+dispatcher.add_handler(DOUJIN_HANDLER)
 dispatcher.add_handler(G_HANDLER)
 dispatcher.add_handler(check_handler)
 dispatcher.add_handler(BUTTON_HANDLER)
@@ -706,10 +783,10 @@ dispatcher.add_handler(UPCOMING_HANDLER)
 __mod_name__ = "Anime"
 __command_list__ = [
     "anime", "manga", "character", "user", "upcoming", "kaizoku", "airing",
-    "kayo", "alive", "request", "gsearch"
+    "kayo", "alive", "request", "gsearch", "nhentai"
 ]
 __handlers__ = [
     ANIME_HANDLER, CHARACTER_HANDLER, MANGA_HANDLER, USER_HANDLER,
     UPCOMING_HANDLER, KAIZOKU_SEARCH_HANDLER, KAYO_SEARCH_HANDLER,
-    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER
+    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER, DOUJIN_HANDLER
 ]
