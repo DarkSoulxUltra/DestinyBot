@@ -595,7 +595,7 @@ def nhentai(update: Update, context: CallbackContext):
     message = update.effective_message
     code = message.text.split(' ', 1)
     link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
-    match = re.match(link_regex, input_str)
+    match = re.match(link_regex, code)
     code = match.group(1)
     if code == "random":
         Utils.get_random_id()
