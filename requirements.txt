@@ -90,3 +90,4 @@ google
 hentai --only-binary all
 natsort
 html-telegraph-poster
+NHentai-API
