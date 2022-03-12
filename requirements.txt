@@ -1,4 +1,5 @@
 future
+urllib
 emoji
 lxml
 wget
