@@ -596,7 +596,7 @@ def nhentai(update: Update, context: CallbackContext):
     link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
     match = re.match(link_regex, input_str)
     code = match.group(1)
-    if code == "random"
+    if code == "random":
         Utils.get_random_id()
     try:
         doujin = Hentai(code)
