@@ -5,6 +5,16 @@ from hentai import Hentai, Utils
 from natsort import natsorted
 import html
 import textwrap
+client = tbot
+import asyncio
+import os
+import time
+from datetime import datetime
+from DestinyBot import OWNER_ID, DEV_USERS
+from DestinyBot import TEMP_DOWNLOAD_DIRECTORY as path
+from DestinyBot import TEMP_DOWNLOAD_DIRECTORY
+from datetime import datetime
+from DestinyBot.events import register
 from platform import python_version as py_ver
 from telegram import __version__ as tg_ver
 from pyrogram import __version__ as pyro_ver
@@ -591,10 +601,11 @@ def button(update: Update, context: CallbackContext):
         else:
             query.answer("You are not allowed to use this.")
 
-def nhentai(update: Update, context: CallbackContext):
-    message = update.effective_message
-    input_str = message.pattern_match.group(1)
-
+@register(pattern=r"^/doujin ?(.*)")
+@register(pattern=r"^/nhentai ?(.*)")
+async def nhentai(event):
+    message_id = event.message.id
+    input_str = event.pattern_match.group(1)
     code = input_str
     if "nhentai" in input_str:
         link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
@@ -605,12 +616,16 @@ def nhentai(update: Update, context: CallbackContext):
     try:
         doujin = Hentai(code)
     except BaseException as n_e:
-        update.effective_message.reply_text(f"No doujin found for `{code}`. You shouldn't use nhentai :-(")
+        if "404" in str(n_e):
+            return await event.reply(
+                f"No doujin found for `{code}`. You shouldn't use nhentai :-("
+            )
+
     msg = ""
     imgs = "".join(f"<img src='{url}'/>" for url in doujin.image_urls)
     imgs = f"&#8205; {imgs}"
     title = doujin.title()
-    graph_link = post_to_telegraph(title, imgs)
+    graph_link = await post_to_telegraph(title, imgs)
     msg += f"[{title}]({graph_link})"
     msg += f"\n**Source :**\n[{code}]({doujin.url})"
     if doujin.parody:
@@ -661,8 +676,7 @@ def nhentai(update: Update, context: CallbackContext):
 
         msg += "\n" + " ".join(natsorted(categories))
     msg += f"\n**Pages :**\n{doujin.num_pages}"
-    update.effective_message.reply_text(msg)
-	
+    await event.reply(event, msg, link_preview=True)	
 	
 def site_search(update: Update, context: CallbackContext, site: str):
     message = update.effective_message
@@ -754,7 +768,7 @@ Anime will be posted on [The Channel](https://t.me/trending_anime_series) then t
  """
 
 REQUEST_HANDLER = DisableAbleCommandHandler("request", request, run_async=True)
-DOUJIN_HANDLER = DisableAbleCommandHandler(("nhentai","doujin"), nhentai, run_async=True)
+#DOUJIN_HANDLER = DisableAbleCommandHandler(("nhentai","doujin"), nhentai, run_async=True)
 G_HANDLER = DisableAbleCommandHandler("google", gsearch, run_async=True)
 check_handler = DisableAbleCommandHandler("alive", awake, run_async=True)
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
@@ -768,7 +782,7 @@ KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo, run_async=True)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(REQUEST_HANDLER)
-dispatcher.add_handler(DOUJIN_HANDLER)
+#dispatcher.add_handler(DOUJIN_HANDLER)
 dispatcher.add_handler(G_HANDLER)
 dispatcher.add_handler(check_handler)
 dispatcher.add_handler(BUTTON_HANDLER)
@@ -784,10 +798,10 @@ dispatcher.add_handler(UPCOMING_HANDLER)
 __mod_name__ = "Anime"
 __command_list__ = [
     "anime", "manga", "character", "user", "upcoming", "kaizoku", "airing",
-    "kayo", "alive", "request", "gsearch", "nhentai"
+    "kayo", "alive", "request", "gsearch"
 ]
 __handlers__ = [
     ANIME_HANDLER, CHARACTER_HANDLER, MANGA_HANDLER, USER_HANDLER,
     UPCOMING_HANDLER, KAIZOKU_SEARCH_HANDLER, KAYO_SEARCH_HANDLER,
-    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER, DOUJIN_HANDLER
+    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER
 ]
