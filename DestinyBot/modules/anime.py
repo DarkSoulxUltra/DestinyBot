@@ -605,7 +605,7 @@ def nhentai(update: Update, context: CallbackContext):
     try:
         doujin = Hentai(code)
     except BaseException as n_e:
-	update.effective_message.reply_text(f"No doujin found for `{code}`. You shouldn't use nhentai :-(")
+        update.effective_message.reply_text(f"No doujin found for `{code}`. You shouldn't use nhentai :-(")
     msg = ""
     imgs = "".join(f"<img src='{url}'/>" for url in doujin.image_urls)
     imgs = f"&#8205; {imgs}"
