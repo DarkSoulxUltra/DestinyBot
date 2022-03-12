@@ -1,5 +1,6 @@
 import datetime
 import re
+from DestinyBot import telethn as tbot
 from DestinyBot.modules.helper_funcs.tools import post_to_telegraph
 from hentai import Hentai, Utils
 from natsort import natsorted
