@@ -18,6 +18,7 @@ from DestinyBot.modules.disable import DisableAbleCommandHandler
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update, Message)
 from telegram.ext import CallbackContext, CallbackQueryHandler
+from urllib import quote_plus
 
 info_btn = "More Information"
 kaizoku_btn = "Kaizoku ☠️"
@@ -399,7 +400,9 @@ def gsearch(update: Update, context: CallbackContext):
     message = update.effective_message
     query = message.text.split(' ', 1)
     gresults = []
-    for j in search(query, tld="co.in", num=10, stop=10, pause=2):
+    for j in search(query, tld="com", tbs='0', safe='off', num=10, start=0,
+           stop=10, pause=2.0, country='India', extra_params=None,
+           user_agent=None, verify_ssl=True):
         gresults.append(j)
     sendMessage=""
     for entry_no in range(len(gresults)):
