@@ -92,8 +92,6 @@ async def nhentai(event):
     input_str = event.pattern_match.group(1)
     code = input_str
     is_nsfw = sql.is_nsfw(chat_id)
-        if not is_nsfw:
-            return
     if "nhentai" in input_str:
         link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
         match = re.match(link_regex, input_str)
