@@ -18,7 +18,6 @@ from DestinyBot.modules.disable import DisableAbleCommandHandler
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update, Message)
 from telegram.ext import CallbackContext, CallbackQueryHandler
-from urllib import quote_plus
 
 info_btn = "More Information"
 kaizoku_btn = "Kaizoku ☠️"
