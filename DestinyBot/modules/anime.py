@@ -614,6 +614,10 @@ async def nhentai(event):
         code = match.group(1)
     if input_str == "random":
         code = Utils.get_random_id()
+    if input_str == None or input_str == "" or input_str = " ":
+        return await event.reply("No doujin code was provided :-(, so sending some random cultured stuff.")
+        await event.delete()
+        code = Utils.get_random_id()
     try:
         doujin = Hentai(code)
     except BaseException as n_e:
