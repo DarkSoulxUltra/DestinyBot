@@ -678,7 +678,7 @@ Anime will be posted on [The Channel](https://t.me/trending_anime_series) then t
  """
 
 REQUEST_HANDLER = DisableAbleCommandHandler("request", request, run_async=True)
-G_HANDLER = DisableAbleCommandHandler("gsrch", gsearch, run_async=True)
+G_HANDLER = DisableAbleCommandHandler("google", gsearch, run_async=True)
 check_handler = DisableAbleCommandHandler("alive", awake, run_async=True)
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
 AIRING_HANDLER = DisableAbleCommandHandler("airing", airing, run_async=True)
