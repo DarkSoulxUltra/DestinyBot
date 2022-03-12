@@ -115,7 +115,7 @@ async def terminal(client, message):
         output = None
     if output:
         if len(output) > 4096:
-            with open("SaitamaRobot/output.txt", "w+") as file:
+            with open("DestinyBot/output.txt", "w+") as file:
                 file.write(output)
             await client.send_document(
                 message.chat.id,
