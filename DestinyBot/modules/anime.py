@@ -396,6 +396,7 @@ def awake(update: Update, context: CallbackContext):
     #progress_message.delete()
 
 def gsearch(update: Update, context: CallbackContext):
+    message = update.effective_message
     query = message.text.split(' ', 1)
     gresults = []
     for j in search(query, tld="co.in", num=10, stop=10, pause=2):
