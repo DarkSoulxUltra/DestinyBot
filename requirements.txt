@@ -89,3 +89,4 @@ git+https://github.com/python-telegram-bot/ptbcontrib.git
 google
 hentai --only-binary all
 natsort
+html-telegraph-poster
