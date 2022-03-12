@@ -677,7 +677,7 @@ async def nhentai(event):
 
         msg += "\n" + " ".join(natsorted(categories))
     msg += f"\n**Pages :**\n{doujin.num_pages}"
-    await event.reply(event, msg, link_preview=True)	
+    await event.reply(msg)	
 	
 def site_search(update: Update, context: CallbackContext, site: str):
     message = update.effective_message
