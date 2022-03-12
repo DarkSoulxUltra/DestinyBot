@@ -9,6 +9,7 @@ from telegram import TelegramError
 import bs4
 import jikanpy
 import requests
+from googlesearch import search
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 from DestinyBot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from DestinyBot.modules.helper_funcs.string_handling import extract_time
@@ -394,6 +395,18 @@ def awake(update: Update, context: CallbackContext):
     )
     #progress_message.delete()
 
+def gsearch(update: Update, context: CallbackContext):
+    query = message.text.split(' ', 1)
+    gresults = []
+    for j in search(query, tld="co.in", num=10, stop=10, pause=2):
+        gresults.append(j)
+    sendMessage=""
+    for entry_no in range(len(gresults)):
+        if entry_no == 10:
+            break
+        sendMessage += f"{entry_no + 1}. {gsearch[entry_no]}\n"
+    
+    update.effective_message.reply_text(sendMessage)
 
 def user(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -662,6 +675,7 @@ Anime will be posted on [The Channel](https://t.me/trending_anime_series) then t
  """
 
 REQUEST_HANDLER = DisableAbleCommandHandler("request", request, run_async=True)
+G_HANDLER = DisableAbleCommandHandler("gsrch", gsearch, run_async=True)
 check_handler = DisableAbleCommandHandler("alive", awake, run_async=True)
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
 AIRING_HANDLER = DisableAbleCommandHandler("airing", airing, run_async=True)
@@ -674,6 +688,7 @@ KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo, run_async=True)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(REQUEST_HANDLER)
+dispatcher.add_handler(G_HANDLER)
 dispatcher.add_handler(check_handler)
 dispatcher.add_handler(BUTTON_HANDLER)
 dispatcher.add_handler(ANIME_HANDLER)
@@ -688,10 +703,10 @@ dispatcher.add_handler(UPCOMING_HANDLER)
 __mod_name__ = "Anime"
 __command_list__ = [
     "anime", "manga", "character", "user", "upcoming", "kaizoku", "airing",
-    "kayo", "alive", "request"
+    "kayo", "alive", "request", "gsearch"
 ]
 __handlers__ = [
     ANIME_HANDLER, CHARACTER_HANDLER, MANGA_HANDLER, USER_HANDLER,
     UPCOMING_HANDLER, KAIZOKU_SEARCH_HANDLER, KAYO_SEARCH_HANDLER,
-    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER
+    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER
 ]
