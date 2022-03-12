@@ -593,11 +593,19 @@ def button(update: Update, context: CallbackContext):
 
 def nhentai(update: Update, context: CallbackContext):
     message = update.effective_message
-    code = message.text.split(' ', 1)
+    input_str = message.pattern_match.group(1)
 
-    if code == "random":
+    code = input_str
+    if "nhentai" in input_str:
+        link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
+        match = re.match(link_regex, input_str)
+        code = match.group(1)
+    if input_str == "random":
         code = Utils.get_random_id()
-    doujin = Hentai(code)
+    try:
+        doujin = Hentai(code)
+    except BaseException as n_e:
+	update.effective_message.reply_text(f"No doujin found for `{code}`. You shouldn't use nhentai :-(")
     msg = ""
     imgs = "".join(f"<img src='{url}'/>" for url in doujin.image_urls)
     imgs = f"&#8205; {imgs}"
