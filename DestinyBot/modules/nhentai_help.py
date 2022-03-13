@@ -1,3 +1,5 @@
+__mod_name__ = "Nhentai"
+
 __help__ = """
 *Nhentai / Doujins*
  ✮ `/nhentai <doujin code>`*:* To get a doujin for the provided code.
@@ -7,4 +9,3 @@ Note: 1. This will only work if you are in nsfw mode either in group or in priva
       2. If you need doujin codes, you can visit [Just Doujins](https://t.me/doujin_codes).
 Reach out to @unmei_support for any queries.
 """
-__mod_name__ = "Nhentai"
