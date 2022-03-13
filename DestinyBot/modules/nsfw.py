@@ -87,12 +87,12 @@ def list_nsfw_chats(update: Update, context: CallbackContext):
 
 @register(pattern=r"^/doujin ?(.*)")
 @register(pattern=r"^/nhentai ?(.*)")
-async def nhentai(event, update: Update, context: CallbackContext):
+async def nhentai(event):
     message_id = event.message.id
     chat_id = event.chat_id
     input_str = event.pattern_match.group(1)
     code = input_str
-    if not update.effective_message.chat.type == "private":
+    if not event.chat.type == "private":
         is_nsfw = sql.is_nsfw(chat_id)
         if not is_nsfw:
             await event.reply("Dude! enable NSFW before getting any doujins from me.")
