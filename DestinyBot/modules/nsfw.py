@@ -92,11 +92,10 @@ async def nhentai(event):
     chat_id = event.chat_id
     input_str = event.pattern_match.group(1)
     code = input_str
-    if not event.chat.type == "private":
-        is_nsfw = sql.is_nsfw(chat_id)
-        if not is_nsfw:
-            await event.reply("Dude! enable NSFW before getting any doujins from me.")
-            return
+    is_nsfw = sql.is_nsfw(chat_id)
+    if not is_nsfw:
+        await event.reply("Dude! enable NSFW before getting any doujins from me.")
+        return
     if "nhentai" in input_str:
         link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
         match = re.match(link_regex, input_str)
