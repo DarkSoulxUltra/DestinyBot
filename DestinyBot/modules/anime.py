@@ -417,8 +417,8 @@ def gsearch(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     query = str(message.text.split(' ', 1))
     gresults = []
-    searched_qry_msg = f"Chotto-Matte, Searching results for {query[1]}..."
-    replying = bot.send_message(chat_id, searched_qry_msg,reply_to_message_id=rtmid)
+    searched_qry_msg = "`Chotto-Matte, Searching for results...`"
+    replying = bot.send_message(chat_id, searched_qry_msg,reply_to_message_id=rtmid,parse_mode='Markdown)
     for j in search(query, tld="com", tbs='0', safe='off', num=10, start=0,
            stop=10, pause=2.0, country='India', extra_params=None,
            user_agent=None, verify_ssl=True):
