@@ -423,7 +423,12 @@ def gsearch(update: Update, context: CallbackContext):
            stop=10, pause=2.0, country='India', extra_params=None,
            user_agent=None, verify_ssl=True):
         gresults.append(j)
-    replying.edit_text("Found Some results, be grateful to me for searching this, you lazy A$$..")
+    if len(gresults) > 0:
+        replying.edit_text("Found Some results, be grateful to me for searching this, you lazy A$$..")
+        time.sleep(2)
+    else:
+        replying.edit_text("Gomenne, can't get any results here..")
+        return
     sendMessage=""
     for entry_no in range(len(gresults)):
         if entry_no == 10:
