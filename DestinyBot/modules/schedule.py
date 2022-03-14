@@ -17,6 +17,8 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeybo
 from requests import get
 import time , datetime
 from pyrogram import Client , filters
+from datetime import datetime, tzinfo
+import pytz
 from DestinyBot import pbot as bot
 
 def call_back_in_filter(data):
@@ -44,7 +46,8 @@ def latest():
 @bot.on_message(filters.command('latest'))
 def lates(_,message):
     mm = latest()
-    message.reply_text(f"Today's Schedule:\nTZ: UTC\n{mm}" , reply_markup=InlineKeyboardMarkup(
+    TIME_IN_UTC = datetime.now(tz=pytz.UTC).strftime("%H:%M")
+    message.reply_text(f"Today's Schedule:\nTZ: UTC\nCurrent Time: {TIME_IN_UTC} UTC\n\n{mm}" , reply_markup=InlineKeyboardMarkup(
     [    
         [InlineKeyboardButton("Refresh" , callback_data="fk")]
     ]      
@@ -54,9 +57,10 @@ def lates(_,message):
 def callbackk(_,query):
     if query.data == "fk":
         mm = latest()
+        TIME_IN_UTC = datetime.now(tz=pytz.UTC).strftime("%H:%M")
         time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
         try:
-            query.message.edit(f"Today\'s Schedule:\nTZ: UTC\n{mm}", reply_markup=InlineKeyboardMarkup(
+            query.message.edit(f"Today\'s Schedule:\nTZ: UTC\nCurrent Time: {TIME_IN_UTC} UTC\n\n{mm}", reply_markup=InlineKeyboardMarkup(
         [    
             [InlineKeyboardButton("Refresh" , callback_data="fk")]
         ]
