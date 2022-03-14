@@ -412,19 +412,25 @@ def awake(update: Update, context: CallbackContext):
 
 def gsearch(update: Update, context: CallbackContext):
     message = update.effective_message
+    bot, args = context.bot, context.args
+    rtmid = message.message_id
+    chat_id = update.effective_chat.id
     query = str(message.text.split(' ', 1))
     gresults = []
+    searched_qry_msg = f"Chotto-Matte, Searching results for {query}..."
+    replying = bot.send_message(chat_id, searched_qry_msg,reply_to_message_id=rtmid)
     for j in search(query, tld="com", tbs='0', safe='off', num=10, start=0,
            stop=10, pause=2.0, country='India', extra_params=None,
            user_agent=None, verify_ssl=True):
         gresults.append(j)
+    replying.edit_text("Found Some results, be grateful to me for searching this, you lazy A$$..")
     sendMessage=""
     for entry_no in range(len(gresults)):
         if entry_no == 10:
             break
         sendMessage += str(entry_no + 1)+". "+str(gresults[entry_no])+"\n"
     
-    update.effective_message.reply_text(sendMessage)
+    replying.edit_text(sendMessage,parse_mode='Markdown', disable_web_page_preview=True)
 
 def user(update: Update, context: CallbackContext):
     message = update.effective_message
