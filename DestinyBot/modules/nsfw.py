@@ -677,21 +677,6 @@ def baka(update, context):
     msg.reply_video(nekos.img(target))
 
 
-def dva(update, context):
-    chat_id = update.effective_chat.id
-    if not update.effective_message.chat.type == "private":
-        is_nsfw = sql.is_nsfw(chat_id)
-        if not is_nsfw:
-            return
-    msg = update.effective_message
-    nsfw = requests.get("https://api.computerfreaker.cf/v1/dva").json()
-    url = nsfw.get("url")
-    # do shit with url if you want to
-    if not url:
-        msg.reply_text("No URL was received from the API!")
-        return
-    msg.reply_photo(url)
-
 ADD_NSFW_HANDLER = CommandHandler("addnsfw", add_nsfw, run_async=True)
 REMOVE_NSFW_HANDLER = CommandHandler("rmnsfw", rem_nsfw, run_async=True)
 LIST_NSFW_CHATS_HANDLER = CommandHandler(
@@ -747,7 +732,6 @@ TITSGIF_HANDLER = CommandHandler("titsgif", titsgif, run_async=True)
 ERO_HANDLER = CommandHandler("ero", ero, run_async=True)
 SMUG_HANDLER = CommandHandler("smug", smug, run_async=True)
 BAKA_HANDLER = CommandHandler("baka", baka, run_async=True)
-DVA_HANDLER = CommandHandler("dva", dva, run_async=True)
 
 
 dispatcher.add_handler(ADD_NSFW_HANDLER)
@@ -804,7 +788,6 @@ dispatcher.add_handler(TITSGIF_HANDLER)
 dispatcher.add_handler(ERO_HANDLER)
 dispatcher.add_handler(SMUG_HANDLER)
 dispatcher.add_handler(BAKA_HANDLER)
-dispatcher.add_handler(DVA_HANDLER)
 
 __handlers__ = [
     ADD_NSFW_HANDLER,
@@ -861,7 +844,6 @@ __handlers__ = [
     ERO_HANDLER,
     SMUG_HANDLER,
     BAKA_HANDLER,
-    DVA_HANDLER,
 ]
 
 
@@ -925,7 +907,6 @@ __help__ = """
  ✮ /ero: Sends Random Ero source Images.
  ✮ /smug: Sends Random Smug GIFs.
  ✮ /baka: Sends Random Baka Shout GIFs.
- ✮ /dva: Sends Random D.VA source Images.
 """
 
 
