@@ -141,7 +141,7 @@ def list_all_chats(update: Update, context: CallbackContext):
 __help__ = """
 Chatbot utilizes the Kuki's api which allows Kuki to talk and provide a more interactive group chat experience.
 *Admins only Commands*:
-  ✮ `/Chatbot`*:* Shows chatbot control panel
+  ✮ `/chatbot`*:* Shows chatbot control panel
 *Powered by ItelAi*
 """
 
