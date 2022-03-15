@@ -93,8 +93,9 @@ async def nhentai(event):
     input_str = event.pattern_match.group(1)
     code = input_str
     is_nsfw = sql.is_nsfw(chat_id)
+    await event.reply(f"Searching for {code}...")
     if not is_nsfw:
-        await event.reply("Dude! enable NSFW before getting any doujins from me.")
+        await event.edit("Dude! enable NSFW before getting any doujins from me.")
         return
     if "nhentai" in input_str:
         link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
@@ -102,13 +103,17 @@ async def nhentai(event):
         code = match.group(1)
     if input_str == "random":
         code = Utils.get_random_id()
-    
+    if input_str == "" or input_str == " ":
+        await event.edit("Dude! Gimme some valid code to search.")
+        time.sleep(2)
+        await event.edit("It'll work like:\n/nhentai <code> or /nhentai random.")
+        return
     try:
         doujin = Hentai(code)
     except BaseException as n_e:
         if "404" in str(n_e):
-            return await event.reply(
-                f"No doujin found for `{code}`. You shouldn't use nhentai :-("
+            return await event.edit(
+                f"No doujin found for `{code}`. You shouldn't use nhentai:-("
             )
 
     msg = ""
@@ -166,7 +171,7 @@ async def nhentai(event):
 
         msg += "\n" + " ".join(natsorted(categories))
     msg += f"\n**Pages :**\n{doujin.num_pages}"
-    await event.reply(msg)
+    await event.edit(msg)
 
 def neko(update, context):
     msg = update.effective_message
