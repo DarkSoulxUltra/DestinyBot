@@ -163,7 +163,7 @@ def gban(update: Update, context: CallbackContext):
 
         return
 
-    message.reply_text("On it!")
+    message.reply_text("Wakatta! Breaking this person's A$$...")
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
@@ -258,9 +258,9 @@ def gban(update: Update, context: CallbackContext):
 
     if gban_time > 60:
         gban_time = round((gban_time / 60), 2)
-        message.reply_text("Done! Gbanned.", parse_mode=ParseMode.HTML)
+        message.reply_text("Done! Gbanned😈. Kimochii😌", parse_mode=ParseMode.HTML)
     else:
-        message.reply_text("Done! Gbanned.", parse_mode=ParseMode.HTML)
+        message.reply_text("Done! Gbanned😈. Kimochii😌", parse_mode=ParseMode.HTML)
 
     try:
         bot.send_message(
@@ -293,14 +293,14 @@ def ungban(update: Update, context: CallbackContext):
 
     user_chat = bot.get_chat(user_id)
     if user_chat.type != "private":
-        message.reply_text("That's not a user!")
+        message.reply_text("That's not even a user!")
         return
 
     if not sql.is_user_gbanned(user_id):
         message.reply_text("This user is not gbanned!")
         return
 
-    message.reply_text(f"I'll give {user_chat.first_name} a second chance, globally offcourse.\n Be Grateful..")
+    message.reply_text(f"Fine, I'll give {user_chat.first_name} another chance, globally offcourse.\nBe Grateful..")
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
@@ -383,9 +383,9 @@ def ungban(update: Update, context: CallbackContext):
 
     if ungban_time > 60:
         ungban_time = round((ungban_time / 60), 2)
-        message.reply_text(f"Person has been un-gbanned. Took {ungban_time} min")
+        message.reply_text(f"Great! This human has been un-gbanned. Took {ungban_time} min")
     else:
-        message.reply_text(f"Person has been un-gbanned. Took {ungban_time} sec")
+        message.reply_text(f"Took so long, this humam has been un-gbanned. Took {ungban_time} sec")
 
 
 @support_plus
@@ -440,8 +440,8 @@ def check_and_ban(update, user_id, should_message=True):
         update.effective_chat.ban_member(user_id)
         if should_message:
             text = (
-                f"<b>Alert</b>: this user is globally banned.\n"
-                f"<code>*bans them from here*</code>.\n"
+                f"<b>Whoa, Chotto!</b>: this user is globally banned.\n"
+                f"<code>*bans them from here😋*</code>.\n"
                 f"<b>Appeal chat</b>: @{SUPPORT_CHAT}\n"
                 f"<b>User ID</b>: <code>{user_id}</code>"
             )
@@ -558,9 +558,9 @@ Note: Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
 
 """
 
-GBAN_HANDLER = CommandHandler("gban", gban, run_async=True)
-UNGBAN_HANDLER = CommandHandler("ungban", ungban, run_async=True)
-GBAN_LIST = CommandHandler("gbanlist", gbanlist, run_async=True)
+GBAN_HANDLER = CommandHandler(("gban", "gslay"), gban, run_async=True)
+UNGBAN_HANDLER = CommandHandler(("ungban", "grevive"), ungban, run_async=True)
+GBAN_LIST = CommandHandler(("gbanlist", "killstreak"), gbanlist, run_async=True)
 GBAN_STATUS = CommandHandler(
     "antispam", gbanstat, filters=Filters.chat_type.groups, run_async=True
 )
