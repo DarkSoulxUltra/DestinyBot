@@ -94,7 +94,7 @@ async def nhentai(event):
     code = input_str
     is_nsfw = sql.is_nsfw(chat_id)
     if not is_nsfw:
-        await event.reply("Dude! enable NSFW before getting any doujins from me.")
+        await event.reply("`Dude! enable NSFW before getting any doujins from me.`")
         return
     if "nhentai" in input_str:
         link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
@@ -103,9 +103,7 @@ async def nhentai(event):
     if input_str == "random":
         code = Utils.get_random_id()
     if input_str == "" or input_str == " ":
-        await event.reply("Dude! Gimme some valid code to search.")
-        time.sleep(2)
-        await event.edit("It'll work like:\n/nhentai <code> or /nhentai random.")
+        await event.reply("Gimme some valid code to search. It'll work like:\n • `/nhentai <code>` or `/nhentai random`.")
         return
     try:
         doujin = Hentai(code)
