@@ -86,7 +86,7 @@ first_name_pm = ""
 PM_START_TEXT = """
 ───『 {} 』───
 *Hey there {}!,*
-* I am an advance group management bot with a lots of Features. My Anime theme is from Takt OP. Destiny *
+* I am Destiny (運命) an advance group management bot with a lot of Features. I am a Musicart named after Beethoven's Symphony No.5 in C Minor Op.67 *
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 ღღ    *Uptime:* `{}`    ღღ
@@ -95,19 +95,19 @@ PM_START_TEXT = """
 ➥ Users Interacted : `{}`
 ➥ Total Chats : `{}`
 
-♡ Try The Help Button below To Know My Abilities[.](https://telegra.ph/file/9473d3f0e989ee67bb4cd.jpg) ♡
+♡ Try The Help Button below To Know My Abilities[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4) ♡
 """
 
 
 HELP_STRINGS = """
-Hello there, I'm Unmei Bot! Some people do call me Destiny.
-To make me functional, make sure that i have enough rights in your group[.](https://telegra.ph/file/26c430892d2ce0e407443.jpg)
+Hello there, I'm Unmei! Some people do call me Destiny.
+To make me functional, make sure that I have enough rights in your group[.](https://telegra.ph/file/26c430892d2ce0e407443.jpg)
 Helpful commands:
 
-- /start: It will starts me! You've probably used this, as you are here now.
+- /start: It will start me by showing you some options! You've probably used this, as you are here now.
 - /donate: To show pity to my Dev... Shhhh! Just don't tell him I said this.
 
-All commands can be used with the following: / !
+All commands can be used with the following: / or !
 List of all the Modules:
 """.format(
     dispatcher.bot.first_name, "" if not ALLOW_EXCL else "📝All commands can either be used with / or !.")
