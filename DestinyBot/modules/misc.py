@@ -191,7 +191,7 @@ __help__ = """
 *Even Non-Admins can use in Group*
 ✮ /country <valid country name>*:* replies information about the mentioned country from Wikipedia.
 ✮ /carbon*:* Reply to some text to make it's carbon image.
-✮ /edit*:* Reply to any image and you will get some cool options to edit it.
+✮ /webss <page link>*:* To get the snapshot of the Webpage in the mentioned URL.
 ✮ /markdownhelp*:* quick summary of how markdown works in telegram - can only be called in private chats
 ✮ /paste*:* Saves replied content to `nekobin.com` and replies with a url
 ✮ /react*:* Reacts with a random reaction
