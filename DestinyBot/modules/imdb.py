@@ -106,4 +106,4 @@ async def imdb(e):
             parse_mode="HTML",
         )
     except IndexError:
-        await e.reply("Plox enter **Valid movie name** kthx")
+        await e.reply("Please enter **Valid movie name**.")
