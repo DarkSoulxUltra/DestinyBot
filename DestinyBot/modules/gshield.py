@@ -315,4 +315,11 @@ async def del_profanity(event):
                     await asyncio.sleep(10)
                     await dev.delete()
 
+__help__ = """
+*Shield:*
+ ✮ /globalmode [on/off]*:* To enable/disable globalmode option in your chat (profanity and nsfwguardian).
+ ✮ /gshield [on/off]*:* To enable/disable nsfwguardian in your chat.
+ ✮ /profanity [on/off]*:* To restrict the use of some profanity/slang words.
+"""
+
 __mod_name__ = "Shield"
