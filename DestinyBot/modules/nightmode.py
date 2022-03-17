@@ -167,3 +167,17 @@ async def job_open():
 scheduler = AsyncIOScheduler(timezone="Asia/Kolkata")
 scheduler.add_job(job_open, trigger="cron", hour=5, minute=58)
 scheduler.start()
+
+
+__mod_name__ = "Night Mode"
+
+__help__ = """
+*Nightmode*
+
+✮ /nightmode [On/Off]*:* Enables/Disables the Nightmode settings on your Group.
+
+Nightmode effects and Timezone:
+ • When Nightmode is activated, the chat is locked for messages, gifs, medias, stickers and all. It is to protect the group's Integrity when Admins are asleep.
+ • Timezone - It uses Asia/Kolkata's Timezone, which we usually call IST (+05:30 GMT)
+ • Command can be used from any of these with a parameter [On/Off] : nightmode, Nightmode, NightMode, Oyasumimode, oyasumimode
+"""
