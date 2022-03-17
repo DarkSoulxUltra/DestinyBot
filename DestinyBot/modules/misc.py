@@ -184,9 +184,17 @@ def wall(update: Update, context: CallbackContext):
 __help__ = """
 *Available commands:*
 
+*Requires Admin Privileges*
+✮ /echo <word>*:* Sends the exact word back in the group echoed by admin.
+✮ /karma [On/Off]*:* Enables/Disables karma system in your group.
+
+*Even Non-Admins can use in Group*
+✮ /country <valid country name>*:* replies information about the mentioned country from Wikipedia.
+✮ /carbon*:* Reply to some text to make it's carbon image.
+✮ /edit*:* Reply to any image and you will get some cool options to edit it.
 ✮ /markdownhelp*:* quick summary of how markdown works in telegram - can only be called in private chats
 ✮ /paste*:* Saves replied content to `nekobin.com` and replies with a url
-✮ /react*:* Reacts with a random reaction 
+✮ /react*:* Reacts with a random reaction
 ✮ /ud <word>*:* Type the word or expression you want to search use
 ✮ /reverse or /grs or /pp*:* Does a reverse image search of the media which it was replied to.
 ✮ /wiki <query>*:* wikipedia your query
