@@ -102,7 +102,7 @@ async def nsfw_watch(event):
             )
         else:
             await event.reply(
-                "I undestand `/nsfwguardian on` and `/nsfwguardian off` only"
+                "I undestand `/gshield on` and `/gshield off` only"
             )
     else:
         await event.reply("`You Should Be Admin To Do This!`")
@@ -122,7 +122,7 @@ async def profanity(event):
     if event.fwd_from:
         return
     if not event.is_group:
-        await event.reply("You Can Only profanity in Groups.")
+        await event.reply("You Can Only use profanity in Groups.")
         return
     event.pattern_match.group(1)
     if not await is_admin(event, BOT_ID):
