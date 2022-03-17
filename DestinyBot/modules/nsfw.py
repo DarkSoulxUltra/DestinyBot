@@ -170,9 +170,9 @@ async def nhentai(event):
         msg += "\n" + " ".join(natsorted(categories))
     msg += f"\n**Pages :**\n{doujin.num_pages}"
     #msg += f"\n[😋 Read 😋](buttonurl://{graph_link})"
-    button = InlineKeyboardButton(text="😋 Read 😋", url=graph_link)
+    #button = InlineKeyboardButton(text="😋 Read 😋", url=graph_link)
     #await event.send_message(chat_id, msg, button)
-    await event.reply(msg, button)
+    await event.reply(msg)
 
 def neko(update, context):
     msg = update.effective_message
