@@ -20,7 +20,7 @@ from DestinyBot.utils.filter_groups import karma_negative_group, karma_positive_
 from DestinyBot import arq
 
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|wauwww|wauw|wauww|wauwwww|thanx|thanks|nice|noice|piro|pro|cool|good|👍)$"
-regex_downvote = r"^(\-|\-\-|\-1|👎|chutiya|noob|weak)$"
+regex_downvote = r"^(\-|\-\-|\-1|👎|chutiya|baka|lolicon|noob|weak)$"
 
 
 
