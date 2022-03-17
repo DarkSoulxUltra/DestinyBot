@@ -86,7 +86,9 @@ first_name_pm = ""
 PM_START_TEXT = """
 ───『 {} 』───
 *Hey there {}!,*
-* I am Destiny (運命) an advance group management bot with a lot of Features. I am a Musicart named after Beethoven's Symphony No.5 in C Minor Op.67 *
+* I am Destiny (運命) an advanced group management bot with a lot of Features.*
+
+__**✧ I am a Musicart named after Beethoven's Symphony No.5 in C Minor Op.67**__
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 ღღ    *Uptime:* `{}`    ღღ
