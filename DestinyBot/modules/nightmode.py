@@ -176,8 +176,20 @@ __help__ = """
 
 ✮ /nightmode [On/Off]*:* Enables/Disables the Nightmode settings on your Group.
 
-Nightmode effects and Timezone:
- • When Nightmode is activated, the chat is locked for messages, gifs, medias, stickers and all. It is to protect the group's Integrity when Admins are asleep.
- • Timezone - It uses Asia/Kolkata's Timezone, which we usually call IST (+05:30 GMT)
- • Command can be used from any of these with a parameter [On/Off] : nightmode, Nightmode, NightMode, Oyasumimode, oyasumimode
+Nightmode Effects and Timezone:
+ • When Nightmode is activated, the chat is
+   locked for messages, gifs, medias, stickers
+   and all. It is to protect the group's
+   Integrity when Admins are asleep.
+
+ • Timezone - It uses Asia/Kolkata's Timezone,
+   which we usually call IST (+05:30 GMT)
+
+ • Any Command can be used from these
+   with a parameter as <On/Off>:
+    ✓ `/nightmode <On/Off>`
+    ✓ `/Nightmode <On/Off>`
+    ✓ `/NightMode <On/Off>`
+    ✓ `/Oyasumimode <On/Off>`
+    ✓ `/oyasumimode <On/Off>`
 """
