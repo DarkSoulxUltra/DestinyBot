@@ -242,9 +242,9 @@ async def del_profanity(event):
                     if sender.username is None:
                         st = sender.first_name
                         hh = sender.id
-                        final = f"[{st}](tg://user?id={hh}) **{msg}** is detected as a slang word and your message has been deleted"
+                        final = f"[{st}](tg://user?id={hh}) ||{msg}|| is detected as a slang word and your message has been deleted"
                     else:
-                        final = f"Sir **{msg}** is detected as a slang word and your message has been deleted"
+                        final = f"Sir ||{msg}|| is detected as a slang word and your message has been deleted"
                     dev = await event.respond(final)
                     await asyncio.sleep(10)
                     await dev.delete()
@@ -255,7 +255,7 @@ async def del_profanity(event):
                     await event.delete()
                     st = sender.first_name
                     hh = sender.id
-                    final = f"**NSFW DETECTED**\n\n{st}](tg://user?id={hh}) your message contain NSFW content.. So, Layla deleted the message\n\n **Nsfw Sender - User / Bot :** {st}](tg://user?id={hh})  \n\n`⚔️Automatic Detections Powered By LaylaAI` \n**#GROUP_GUARDIAN** "
+                    final = f"**NSFW DETECTED**\n\n{st}](tg://user?id={hh}) your message contain NSFW content.. So, Destiny deleted the message\n\n **Nsfw Sender - User / Bot :** {st}](tg://user?id={hh})  \n\n`⚔️Automatic Detections Powered By DestinyAI` \n**#GROUP_GUARDIAN** "
                     dev = await event.respond(final)
                     await asyncio.sleep(10)
                     await dev.delete()
