@@ -8,7 +8,7 @@ from DestinyBot import pbot as tomori
 @tomori.on_message(filters.command("pokedex"))
 async def PokeDex(_, message):
     if len(message.command) != 2:
-        await message.reply_text("/pokedex Pokemon Name")
+        await message.reply_text("/pokedex <Pokemon Name>")
         return
     pokemon = message.text.split(None, 1)[1]
     pokedex = f"https://some-random-api.ml/pokedex?pokemon={pokemon}"
@@ -43,3 +43,13 @@ async def PokeDex(_, message):
                 print(str(e))
                 pass
     await message.reply_photo(photo=poke_img, caption=caption)
+
+__mod_name__ = "Pokedex"
+
+__help__ = """
+*Pokedex*
+
+✮ /pokedex <pokemon name>*:* Fetches up the details about the Pokemon (if inserted correct).
+
+Note: Ensure you spell the Pokemon name correctly, else it won't work.
+"""
