@@ -4,6 +4,9 @@ __help__ = """
 *Sangmata Info bot*
 ✮ /sg <reply>*:* To check history name
 
+*Remove Background*
+✮ /rmbg*:* Reply to any Image to get a backgroundless Image.
+
 *Date-time-Weather*
 ✮ /time <country code>*:* Gives information about a timezone.
 ✮ /weather <city>*:* Get weather info in a particular place.
