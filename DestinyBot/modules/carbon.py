@@ -39,7 +39,7 @@ async def repo(_, message):
 **Telethon Version :** `{s}`
 **Pyrogram Version :** `{z}`
 
-**Wanna create your own Bot? Check my repo below.**
+**My repo is mentioned below. But it is private. Well, I used EmikoRobot's Repo.**
 """,
         reply_markup=InlineKeyboardMarkup(
             [
