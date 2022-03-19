@@ -462,12 +462,12 @@ def makepack_internal(
             )
         elif e.message == "Peer_id_invalid" or "bot was blocked by the user":
             msg.reply_text(
-                f"{context.bot.first_name} was blocked by you.",
+                f"Duh! Kang a sticker in my private first to unblock me.",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Unblock", url=f"t.me/{context.bot.username}?start="
+                                text="Unblock Me Senpai", url=f"t.me/{context.bot.username}?start="
                             )
                         ]
                     ]
