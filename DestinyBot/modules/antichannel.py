@@ -91,6 +91,7 @@ async def del_antichannel(event):
         return
     msg = str(event.text)
     sender = event.get_sender()
+    sender = str(sender)
     chat_id = event.chat_id
     is_antichannel = sql.is_antichannel(chat_id)
     if not is_antichannel:
