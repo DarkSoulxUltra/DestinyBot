@@ -103,8 +103,8 @@ async def del_antichannel(event):
             await event.delete()
             
 
-ADD_ANTICHANNEL_HANDLER = CommandHandler("addantichannel", add_nsfw, run_async=True)
-REMOVE_ANTICHANNEL_HANDLER = CommandHandler("rmantichannel", rem_nsfw, run_async=True)
+ADD_ANTICHANNEL_HANDLER = CommandHandler("addantichannel", add_antichannel, run_async=True)
+REMOVE_ANTICHANNEL_HANDLER = CommandHandler("rmantichannel", rem_antichannel, run_async=True)
 LIST_ANTICHANNEL_CHATS_HANDLER = CommandHandler(
     "antichannelchats", list_antichannel_chats, filters=CustomFilters.dev_filter, run_async=True)
 
