@@ -48,9 +48,9 @@ def list_antichannel_chats(update: Update, context: CallbackContext):
             name = x.title if x.title else x.first_name
             text += f"• <code>{name}</code>\n"
         except BadRequest:
-            sql.rem_nsfw(*chat)
+            sql.rem_antichannel(*chat)
         except Unauthorized:
-            sql.rem_nsfw(*chat)
+            sql.rem_antichannel(*chat)
         except RetryAfter as e:
             sleep(e.retry_after)
     update.effective_message.reply_text(text, parse_mode="HTML")
