@@ -86,9 +86,7 @@ first_name_pm = ""
 PM_START_TEXT = """
 ───『 {} 』───
 *Hey there {}!,*
-* I am Destiny (運命) an advanced group management bot with a lot of Features.*
-
-__**✧ I am a Musicart named after Beethoven's Symphony No.5 in C Minor Op.67**__
+* I am Destiny (運命), a Musicart named after Beethoven's Symphony No.5 in C Minor Op.67**
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 ღღ    *Uptime:* `{}`    ღღ
@@ -97,9 +95,12 @@ __**✧ I am a Musicart named after Beethoven's Symphony No.5 in C Minor Op.67**
 ➥ Users Interacted : `{}`
 ➥ Total Chats : `{}`
 
-♡ Try The Help Button below To Know My Abilities[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4) ♡
+♡ Try The Help Button below To Know My Abilities ♡
 """
 
+GROUP_START_MSG = "👋 Hi {}\nI won't sleep yet, because I believe someone is waiting for my Music.\n\nUptime - {}"
+
+START_IMG = "https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4"
 
 HELP_STRINGS = """
 Hello there, I'm Unmei! Some people do call me Destiny.
@@ -125,6 +126,13 @@ buttons = [
     [
         InlineKeyboardButton(text="『 🚑 Support 』",url="https://telegram.dog/unmei_support"),
         InlineKeyboardButton(text="『 📢 Updates 』",url="https://t.me/unmei_updates")
+    ]
+]
+
+grp_buttons = [
+    [
+        InlineKeyboardButton(text="『 🚑 Support 』", url="https://telegram.dog/unmei_support"),
+        InlineKeyboardButton(text="『 🙇 Help 』", url="http://t.me/Destiny_x_Bot?start=help")
     ]
 ]
 
@@ -204,7 +212,6 @@ def test(update: Update, context: CallbackContext):
 
 
 
-
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -238,21 +245,25 @@ def start(update: Update, context: CallbackContext):
 
         else:
             #first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
-                PM_START_TEXT.format(
+            update.effective_message.reply_photo(
+                START_IMG,
+                caption = PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
                     escape_markdown(update.effective_user.first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats()),                        
+                    sql.num_chats()),
+                parse_mode = ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
     else:
-        update.effective_message.reply_text(
-            "👋 Hi {}\nI won[']({})t sleep yet, because I believe someone is waiting for my Music.\n\n Uptime - {}".format(update.effective_user.first_name,GROUP_START_IMG,get_readable_time((time.time() - StartTime))),
-            parse_mode=ParseMode.MARKDOWN
+        update.effective_message.reply_photo(
+            GROUP_START_IMG,
+            caption = GROUP_START_MSG.format(update.effective_user.first_name,get_readable_time((time.time() - StartTime))),
+            parse_mode = ParseMode.HTML,
+            reply_markyp=InlineKeyboardMarkup(grp_buttons),
+            timeout=60,
        )
 
 def error_handler(update, context):
