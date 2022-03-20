@@ -1,3 +1,33 @@
+import datetime
+import re
+from DestinyBot import telethn as tbot
+from DestinyBot.modules.helper_funcs.tools import post_to_telegraph
+from hentai import Hentai, Utils
+from natsort import natsorted
+import textwrap
+client = tbot
+import asyncio
+import time
+from telethon import events
+from DestinyBot.events import register
+from telethon import Button
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+import os
+import html
+import nekos
+import requests
+from PIL import Image
+from telegram import ParseMode
+from DestinyBot import dispatcher, updater
+import DestinyBot.modules.sql.antichannel_sql as sql
+from DestinyBot.modules.log_channel import gloggable
+from telegram import Message, Chat, Update, Bot, MessageEntity
+from telegram.error import BadRequest, RetryAfter, Unauthorized
+from telegram.ext import CommandHandler, run_async, CallbackContext
+from DestinyBot.modules.helper_funcs.filters import CustomFilters
+from DestinyBot.modules.helper_funcs.chat_status import user_admin
+from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
+
 @user_admin
 @gloggable
 def add_antichannel(update: Update, context: CallbackContext):
@@ -26,7 +56,7 @@ def rem_antichannel(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
     is_antichannel = sql.is_antichannel(chat.id)
-    if not is_nsfw:
+    if not is_antichannel:
         msg.reply_text("Antichannel Filter is already Deactivated")
         return ""
     else:
@@ -56,19 +86,14 @@ def list_antichannel_chats(update: Update, context: CallbackContext):
     update.effective_message.reply_text(text, parse_mode="HTML")
 
 
-@tbot.on(events.NewMessage(pattern=None))
-async def del_antichannel(event):
-    if event.is_private:
-        return
-    msg = str(event.text)
-    sender = event.get_sender()
-    chat_id = event.chat_id
-    is_antichannel = sql.is_antichannel(chat_id)
+def eliminate_channel(update: Update, context: CallbackContext):
+    message = update.effective_message
+    chat = update.effective_chat
+    bot = context.bot
+    is_antichannel = sql.is_antichannel(chat.id)
     if not is_antichannel:
         return
-    else:
-        if sender == "136817688":
-            msg = f"Channel Spotted, antichannel is activated, deleting the message."
-            bot_reply = await event.respond(msg)
-            await asyncio.sleep(6)
-            await event.delete()
+    if message.sender_chat and message.sender_chat.type == "channel" and not message.is_automatic_forward:
+        message.delete()
+        sender_chat = message.sender_chat
+        
