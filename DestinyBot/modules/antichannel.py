@@ -55,7 +55,7 @@ def rem_antichannel(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
     is_antichannel = sql.is_antichannel(chat.id)
-    if not is_nsfw:
+    if not is_antichannel:
         msg.reply_text("Antichannel Filter is already Deactivated")
         return ""
     else:
