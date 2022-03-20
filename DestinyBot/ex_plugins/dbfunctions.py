@@ -13,6 +13,7 @@ from DestinyBot.mongo import db
 notesdb = db.notes
 filtersdb = db.filters
 warnsdb = db.warns
+antichanneldb = db.antichannel
 nsfwdb = db.nsfw
 karmadb = db.karma
 chatsdb = db.chats
@@ -327,6 +328,25 @@ async def nsfw_off(chat_id: int):
     if not is_nsfw:
         return
     return nsfwdb.insert_one({"chat_id": chat_id})
+
+async def is_antichannel_on(chat_id: int) -> bool:
+    chat = antichanneldb.find_one({"chat_id": chat_id})
+    if not chat:
+        return True
+    return False
+
+async def antichannel_on(chat_id: int):
+    is_antichannel = await is_antichannel_on(chat_id)
+    if is_antichannel:
+        return
+    return antichanneldb.delete_one({"chat_id": chat_id})
+
+
+async def antichannel_off(chat_id: int):
+    is_antichannel = await is_antichannel_on(chat_id)
+    if not is_antichannel:
+        return
+    return antichanneldb.insert_one({"chat_id": chat_id})
 
 
 async def is_served_chat(chat_id: int) -> bool:
