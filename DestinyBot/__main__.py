@@ -245,7 +245,7 @@ def start(update: Update, context: CallbackContext):
 
         else:
             #first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
+            update.effective_message.reply_animation(
                 START_IMG,
                 caption = PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
@@ -258,7 +258,7 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-        update.effective_message.reply_photo(
+        update.effective_message.reply_animation(
             GROUP_START_IMG,
             caption = GROUP_START_MSG.format(update.effective_user.first_name,get_readable_time((time.time() - StartTime))),
             parse_mode = ParseMode.HTML,
