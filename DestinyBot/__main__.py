@@ -85,15 +85,15 @@ first_name_pm = ""
 
 PM_START_TEXT = """
 ───『 {} 』───
-*Hey there {}!,*
-* I am Destiny (運命), a Musicart named after Beethoven's Symphony No.5 in C Minor Op.67**
+Hey there ✮ {} ✮,
+I am Destiny (運命), A Musicart named after Beethoven's Symphony No.5 in C Minor Op.67
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
-ღღ    *Uptime:* `{}`    ღღ
+ღღ   Uptime: 『 {} 』   ღღ
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 
-➥ Users Interacted : `{}`
-➥ Total Chats : `{}`
+✧ Users Interacted : 『 {} 』
+✧ Total Chats : 『 {} 』
 
 ♡ Try The Help Button below To Know My Abilities ♡
 """
