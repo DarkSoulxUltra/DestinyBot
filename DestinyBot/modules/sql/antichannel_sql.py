@@ -1,66 +1,49 @@
 import threading
-
-from sqlalchemy import Boolean
-from sqlalchemy.sql.sqltypes import String
-from sqlalchemy import Column
-
+from sqlalchemy import Column, String
 from DestinyBot.modules.sql import BASE, SESSION
-
-
-class AntiChannelSettings(BASE):
-    __tablename__ = "anti_channel_settings"
-    
+#   |----------------------------------|
+#   |  Test Module by @EverythingSuckz |
+#   |        Kang with Credits         |
+#   |----------------------------------|
+class AntiChannelChats(BASE):
+    __tablename__ = "antichannel_chats"
     chat_id = Column(String(14), primary_key=True)
-    setting = Column(Boolean, default=False, nullable=False)
 
-    def __init__(self, chat_id: int, disabled: bool):
-        self.chat_id = str(chat_id)
-        self.setting = disabled
+    def __init__(self, chat_id):
+        self.chat_id = chat_id
 
-    def __repr__(self):
-        return "<Antichannel setting {} ({})>".format(self.chat_id, self.setting)
+AntiChannelChats.__table__.create(checkfirst=True)
+INSERTION_LOCK = threading.RLock()
 
 
-AntiChannelSettings.__table__.create(checkfirst=True)
-ANTICHANNEL_SETTING_LOCK = threading.RLock()
-
-def enable_antichannel(chat_id: int):
-    with ANTICHANNEL_SETTING_LOCK:
-        chat = SESSION.query(AntiChannelSettings).get(str(chat_id))
-        if not chat:
-            chat = AntiChannelSettings(str(chat_id), True)
-
-        chat.setting = True
-        SESSION.add(chat)
-        SESSION.commit()
-
-
-def disable_antichannel(chat_id: int):
-    with ANTICHANNEL_SETTING_LOCK:
-        chat = SESSION.query(AntiChannelSettings).get(str(chat_id))
-        if not chat:
-            chat = AntiChannelSettings(str(chat_id), False)
-
-        chat.setting = False
-        SESSION.add(chat)
-        SESSION.commit()
-
-
-def antichannel_status(chat_id: int) -> bool:
-    with ANTICHANNEL_SETTING_LOCK:
-        d = SESSION.query(AntiChannelSettings).get(str(chat_id))
-        if not d:
-            return False
-        return d.setting
-
-
-
-
-def migrate_chat(old_chat_id, new_chat_id):
-    with ANTICHANNEL_SETTING_LOCK:
-        chat = SESSION.query(AntiChannelSettings).get(str(old_chat_id))
+def is_antichannel(chat_id):
+    try:
+        chat = SESSION.query(AntiChannelChats).get(str(chat_id))
         if chat:
-            chat.chat_id = new_chat_id
-            SESSION.add(chat)
+            return True
+        else:
+            return False
+    finally:
+        SESSION.close()
 
+def set_antichannel(chat_id):
+    with INSERTION_LOCK:
+        antichannelchat = SESSION.query(AntiChannelChats).get(str(chat_id))
+        if not antichannelchat:
+            antichannelchat = AntiChannelChats(str(chat_id))
+        SESSION.add(nsfwchat)
         SESSION.commit()
+
+def rem_antichannel(chat_id):
+    with INSERTION_LOCK:
+        antichannelchat = SESSION.query(AntiChannelChats).get(str(chat_id))
+        if antichannelchat:
+            SESSION.delete(antichannelchat)
+        SESSION.commit()
+
+
+def get_all_antichannel_chats():
+    try:
+        return SESSION.query(AntiChannelChats.chat_id).all()
+    finally:
+        SESSION.close()
