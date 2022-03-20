@@ -90,7 +90,7 @@ async def del_antichannel(event):
     if event.is_private:
         return
     msg = str(event.text)
-    sender = event.get_sender()
+    sender = await event.get_sender()
     sender = str(sender)
     chat_id = event.chat_id
     is_antichannel = sql.is_antichannel(chat_id)
