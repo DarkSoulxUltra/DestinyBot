@@ -114,10 +114,11 @@ __handlers__ = [
 ]
 
 __mod_name__ = "Anti-Channel"
-
+'''
 __help__ = """
 *Anti-Channel:*
  ✮ /addantichannel : Enables Antichannel filter
  ✮ /rmantichannel : Disables Antichannel filter
  ✮ /antichannelchats : Lists all the chats where antichannel filter is activated
  """
+'''
