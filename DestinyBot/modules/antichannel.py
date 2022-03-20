@@ -96,7 +96,7 @@ async def del_antichannel(event):
     if not is_antichannel:
         return
     else:
-        if sender == "136817688":
+        if sender.startswith("-"):
             msg = f"Channel Spotted, antichannel is activated, deleting the message."
             bot_reply = await event.respond(msg)
             await asyncio.sleep(6)
