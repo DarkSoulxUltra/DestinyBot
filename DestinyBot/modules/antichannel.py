@@ -1,56 +1,74 @@
-import html
-
-from telegram.ext.filters import Filters
-from telegram import Update, message, ParseMode
-from telegram.ext import CallbackContext
-
-from DestinyBot.modules.helper_funcs.decorators import unmeicmd, unmeimsg
-from DestinyBot.modules.helper_funcs.channel_mode import user_admin, AdminPerms
-from DestinyBot.modules.sql.antichannel_sql import antichannel_status, disable_antichannel, enable_antichannel
-from DestinyBot.modules.language import gs
-
-@unmeicmd(command="antichannelmode", group=100)
-@user_admin(AdminPerms.CAN_RESTRICT_MEMBERS)
-def set_antichannel(update: Update, context: CallbackContext):
-    message = update.effective_message
+@user_admin
+@gloggable
+def add_antichannel(update: Update, context: CallbackContext):
     chat = update.effective_chat
-    args = context.args
-    if len(args) > 0:
-        s = args[0].lower()
-        if s in ["yes", "on"]:
-            enable_antichannel(chat.id)
-            message.reply_html(text=gs(chat.id, "active_antichannel").format(html.escape(chat.title)))
-        elif s in ["off", "no"]:
-            disable_antichannel(chat.id)
-            message.reply_html(text=gs(chat.id, "disable_antichannel").format(html.escape(chat.title)))
-        else:
-            message.reply_text(text=gs(chat.id, "invalid_antichannel").format(s))
-        return
-    message.reply_html(
-        text=gs(chat.id, "status_antichannel").format(antichannel_status(chat.id), html.escape(chat.title)))
+    msg = update.effective_message
+    user = update.effective_user #Remodified by @EverythingSuckz
+    is_antichannel = sql.is_antichannel(chat.id)
+    if not is_antichannel:
+        sql.set_antichannel(chat.id)
+        msg.reply_text("Antichannel Filter Activated!!!")
+        message = (
+            f"<b>{html.escape(chat.title)}:</b>\n"
+            f"ACTIVATED_ANTI_CHANNEL\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        )
+        return message
+    else:
+        msg.reply_text("Antichannel is already ACTIVATED!")
+        return ""
 
-@unmeimsg(Filters.chat_type.groups, group=110)
-def eliminate_channel(update: Update, context: CallbackContext):
-    message = update.effective_message
+
+@user_admin
+@gloggable
+def rem_antichannel(update: Update, context: CallbackContext):
+    msg = update.effective_message
     chat = update.effective_chat
-    bot = context.bot
-    if not antichannel_status(chat.id):
+    user = update.effective_user
+    is_antichannel = sql.is_antichannel(chat.id)
+    if not is_nsfw:
+        msg.reply_text("Antichannel Filter is already Deactivated")
+        return ""
+    else:
+        sql.rem_antichannel(chat.id)
+        msg.reply_text("Antichannel Filter Deactivated! Be aware of channel spammers")
+        message = (
+            f"<b>{html.escape(chat.title)}:</b>\n"
+            f"DEACTIVATED_ANTI_CHANNEL\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        )
+        return message
+
+def list_antichannel_chats(update: Update, context: CallbackContext):
+    chats = sql.get_all_antichannel_chats()
+    text = "<b>Antichannel Activated Chats</b>\n"
+    for chat in chats:
+        try:
+            x = context.bot.get_chat(int(*chat))
+            name = x.title if x.title else x.first_name
+            text += f"• <code>{name}</code>\n"
+        except BadRequest:
+            sql.rem_nsfw(*chat)
+        except Unauthorized:
+            sql.rem_nsfw(*chat)
+        except RetryAfter as e:
+            sleep(e.retry_after)
+    update.effective_message.reply_text(text, parse_mode="HTML")
+
+
+@tbot.on(events.NewMessage(pattern=None))
+async def del_antichannel(event):
+    if event.is_private:
         return
-    if message.sender_chat and message.sender_chat.type == "channel" and not message.is_automatic_forward:
-        message.delete()
-        sender_chat = message.sender_chat
-        bot.ban_chat_sender_chat(sender_chat_id=sender_chat.id, chat_id=chat.id)
-        
-
-
-__help__ = """
-──「 Anti-Channels 」──
-⚠️ WARNING ⚠️
-*IF YOU USE THIS MODE, THE RESULT IS IN THE GROUP FOREVER YOU CAN'T CHAT USING THE CHANNEL*
-Anti Channel Mode is a mode to automatically ban users who chat using Channels. 
-This command can only be used by *Admins*.
-✮ /antichannelmode <'on'/'yes'> *:* enables anti-channel-mode
-✮ /antichannelmode <'off'/'no'> *:* disabled anti-channel-mode
-"""
-
-__mod_name__ = "Anti-Channel"
+    msg = str(event.text)
+    sender = event.get_sender()
+    chat_id = event.chat_id
+    is_antichannel = sql.is_antichannel(chat_id)
+    if not is_antichannel:
+        return
+    else:
+        if sender == "136817688":
+            msg = f"Channel Spotted, antichannel is activated, deleting the message."
+            bot_reply = await event.respond(msg)
+            await asyncio.sleep(6)
+            await event.delete()
