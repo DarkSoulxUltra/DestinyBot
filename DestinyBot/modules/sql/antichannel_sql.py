@@ -31,7 +31,7 @@ def set_antichannel(chat_id):
         antichannelchat = SESSION.query(AntiChannelChats).get(str(chat_id))
         if not antichannelchat:
             antichannelchat = AntiChannelChats(str(chat_id))
-        SESSION.add(nsfwchat)
+        SESSION.add(antichannelchatchat)
         SESSION.commit()
 
 def rem_antichannel(chat_id):
