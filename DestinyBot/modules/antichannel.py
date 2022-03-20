@@ -1,4 +1,4 @@
-import datetime
+'''import datetime
 import re
 from DestinyBot import telethn as tbot
 from telethon import events
@@ -131,3 +131,4 @@ Contact @unmei_support for more queries.
 """
 
 __mod_name__ = "Anti-Channel"
+'''
