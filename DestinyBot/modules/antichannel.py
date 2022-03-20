@@ -1,6 +1,7 @@
 import datetime
 import re
 from DestinyBot import telethn as tbot
+from telethon import events
 import html
 import textwrap
 client = tbot
