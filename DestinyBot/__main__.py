@@ -262,7 +262,7 @@ def start(update: Update, context: CallbackContext):
             GROUP_START_IMG,
             caption = GROUP_START_MSG.format(update.effective_user.first_name,get_readable_time((time.time() - StartTime))),
             parse_mode = ParseMode.HTML,
-            reply_markyp=InlineKeyboardMarkup(grp_buttons),
+            reply_markup=InlineKeyboardMarkup(grp_buttons),
             timeout=60,
        )
 
