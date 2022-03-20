@@ -97,3 +97,27 @@ def eliminate_channel(update: Update, context: CallbackContext):
         message.delete()
         sender_chat = message.sender_chat
         
+
+ADD_ANTICHANNEL_HANDLER = CommandHandler("addantichannel", add_antichannel, run_async=True)
+REMOVE_ANTICHANNEL_HANDLER = CommandHandler("rmantichannel", rem_antichannel, run_async=True)
+LIST_ANTICHANNEL_CHATS_HANDLER = CommandHandler(
+    "antichannelchats", list_antichannel_chats, filters=CustomFilters.dev_filter, run_async=True)
+
+dispatcher.add_handler(ADD_ANTICHANNEL_HANDLER)
+dispatcher.add_handler(REMOVE_ANTICHANNEL_HANDLER)
+dispatcher.add_handler(LIST_ANTICHANNEL_CHATS_HANDLER)
+
+__handlers__ = [
+    ADD_ANTICHANNEL_HANDLER,
+    REMOVE_ANTICHANNEL_HANDLER,
+    LIST_ANTICHANNEL_CHATS_HANDLER,
+]
+
+__mod_name__ = "Anti-Channel"
+
+__help__ = """
+*Anti-Channel:*
+ ✮ /addantichannel : Enables Antichannel filter
+ ✮ /rmantichannel : Disables Antichannel filter
+ ✮ /antichannelchats : Lists all the chats where antichannel filter is activated
+ """
