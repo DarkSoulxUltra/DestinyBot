@@ -11,7 +11,7 @@ import asyncio
 import os
 import time
 from datetime import datetime
-from DestinyBot import OWNER_ID, DEV_USERS
+from DestinyBot import OWNER_ID, DEV_USERS, LOGGER
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY as path
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY
 from datetime import datetime
