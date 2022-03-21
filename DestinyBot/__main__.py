@@ -86,14 +86,14 @@ first_name_pm = ""
 PM_START_TEXT = """
 ───『 {} 』───
 Hey there ✮ {} ✮,
-I am Destiny (運命), A Musicart named after Beethoven's Symphony No.5 in C Minor Op.67
+Watashi Wa `Destiny (運命)`, A Musicart named after Beethoven's Symphony No[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4)5 in C Minor Op.67
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
-ღღ   Uptime: 『 {} 』   ღღ
+ღღ   Uptime: 『 `{}` 』   ღღ
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 
-✧ Users Interacted : 『 {} 』
-✧ Total Chats : 『 {} 』
+✧ Users Interacted : 『 `{}` 』
+✧ Total Chats : 『 `{}` 』
 
 ♡ Try The Help Button below To Know My Abilities ♡
 """
@@ -245,16 +245,15 @@ def start(update: Update, context: CallbackContext):
 
         else:
             #first_name = update.effective_user.first_name
-            update.effective_message.reply_animation(
-                START_IMG,
-                caption = PM_START_TEXT.format(
+            update.effective_message.reply_text(
+                PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
                     escape_markdown(update.effective_user.first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
                     sql.num_chats()),
-                parse_mode = ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode = ParseMode.MARKDOWN,
                 timeout=60,
             )
     else:
