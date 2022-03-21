@@ -85,17 +85,18 @@ first_name_pm = ""
 
 PM_START_TEXT = """
 ───『 {} 』───
-Hey there ✮ {} ✮,
-Watashi Wa `Destiny (運命)`, A Musicart named after Beethoven's Symphony No[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4)5 in C Minor Op.67
+Hey there **✮ {} ✮**,
+
+**Watashi Wo Namae Wa "`Destiny (運命)`", A Musicart named after Beethoven's Symphony No[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4)5 in C Minor Op.67**
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
-ღღ   Uptime: 『 `{}` 』   ღღ
+ღღ   **Uptime**: 『 `{}` 』   ღღ
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 
-✧ Users Interacted : 『 `{}` 』
-✧ Total Chats : 『 `{}` 』
+✧ **Users Interacted**: 『 `{}` 』
+✧ **Total Chats**: 『 `{}` 』
 
-♡ Try The Help Button below To Know My Abilities ♡
+♡ Try The Help Button below To Know My Abilities, or simply do /help 🙂. ♡
 """
 
 GROUP_START_MSG = "👋 Hi {}\nI won't sleep yet, because I believe someone is waiting for my Music.\n\nUptime - {}"
