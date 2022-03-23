@@ -10,9 +10,9 @@ client = tbot
 import asyncio
 import aiohttp
 import time
-from pyrogram import filters
-from DestinyBot import pbot
-from telegram.ext import run_async
+#from pyrogram import filters
+#from DestinyBot import pbot
+#from telegram.ext import run_async
 from DestinyBot.events import register
 from telethon import Button
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -202,24 +202,6 @@ def feet(update, context):
     msg = update.effective_message
     target = "feet"
     msg.reply_photo(nekos.img(target))
-
-@run_async
-def cosplay(update: Update, context: CallbackContext):
-    message = update.effective_message
-    chat_id = update.effective_chat.id
-    if not update.effective_message.chat.type == "private":
-        is_nsfw = sql.is_nsfw(chat_id)
-        if not is_nsfw:
-            return
-    search_str = extract_arg(message)
-    if search_str:
-        pass
-    with aiohttp.ClientSession() as destiny_session:
-        with destiny_session.get("https://meme-api.herokuapp.com/gimme/CosplayLewd"
-        ) as resp:
-            r = resp.json()
-    update.effective_message.reply_photo(r["url"], caption=r["title"])
-
 
 def yuri(update, context):
     chat_id = update.effective_chat.id
@@ -720,7 +702,7 @@ LIST_NSFW_CHATS_HANDLER = CommandHandler(
     "nsfwchats", list_nsfw_chats, filters=CustomFilters.dev_filter, run_async=True)
 LEWDKEMO_HANDLER = CommandHandler("lewdkemo", lewdkemo, run_async=True)
 NEKO_HANDLER = CommandHandler("neko", neko, run_async=True)
-COSPLAY_HANDLER = CommandHandler("cosplay", cosplay, run_async=True)
+#COSPLAY_HANDLER = CommandHandler("cosplay", cosplay, run_async=True)
 FEET_HANDLER = CommandHandler("feet", feet, run_async=True)
 YURI_HANDLER = CommandHandler("yuri", yuri, run_async=True)
 TRAP_HANDLER = CommandHandler("trap", trap, run_async=True)
@@ -777,7 +759,6 @@ dispatcher.add_handler(REMOVE_NSFW_HANDLER)
 dispatcher.add_handler(LIST_NSFW_CHATS_HANDLER)
 dispatcher.add_handler(LEWDKEMO_HANDLER)
 dispatcher.add_handler(NEKO_HANDLER)
-dispatcher.add_handler(COSPLAY_HANDLER)
 dispatcher.add_handler(FEET_HANDLER)
 dispatcher.add_handler(YURI_HANDLER)
 dispatcher.add_handler(TRAP_HANDLER)
@@ -833,7 +814,6 @@ __handlers__ = [
     REMOVE_NSFW_HANDLER,
     LIST_NSFW_CHATS_HANDLER,
     NEKO_HANDLER,
-    COSPLAY_HANDLER,
     FEET_HANDLER,
     YURI_HANDLER,
     TRAP_HANDLER,
