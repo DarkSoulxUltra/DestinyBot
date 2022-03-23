@@ -47,6 +47,38 @@ SLAP_SAITAMA_TEMPLATES = (
     ],
 )
 
+SIGMA = (
+    "https://te.legra.ph/file/4b69fbe424844911b8918.mp4",
+    "https://te.legra.ph/file/cdb29d414660966a13c1d.mp4",
+    "https://te.legra.ph/file/3692afc4a4c220cddd143.mp4",
+    "https://te.legra.ph/file/9bec36decc0fa670b0972.mp4",
+    "https://te.legra.ph/file/121f5914ec63a093833d4.mp4",
+    "https://te.legra.ph/file/6da80542da78694e72772.mp4",
+    "https://te.legra.ph/file/7612481a412ba8d6526f9.mp4",
+    "https://te.legra.ph/file/c6fd080571a3184cf70fd.mp4",
+    "https://te.legra.ph/file/d42c92ba73e4d6597cdaf.mp4",
+    "https://te.legra.ph/file/26cf83b7e0c4919a7387f.mp4",
+    "https://te.legra.ph/file/966efafa8444612ce17eb.mp4",
+    "https://te.legra.ph/file/67d5b7bf76568da737bb3.mp4",
+    "https://te.legra.ph/file/8bd84143da145f22efe7e.mp4",
+    "https://te.legra.ph/file/5ef3b05e62a3d79bc134c.mp4",
+    "https://te.legra.ph/file/9059707b626f16512902c.mp4",
+    "https://te.legra.ph/file/eb8fd689e5bf148a3bccd.mp4",
+    "https://te.legra.ph/file/7ae9f34f7bab75c62721a.mp4",
+    "https://te.legra.ph/file/74c869332615283cbfcec.mp4",
+    "https://te.legra.ph/file/18080231bf03cad0e36fb.mp4",
+    "https://te.legra.ph/file/36b067368cbf3a506c42a.mp4",
+    "https://te.legra.ph/file/cd0319a58d40f3c4bc2d0.mp4",
+    "https://te.legra.ph/file/08a830bbcdbd8666d1fd8.mp4",
+    "https://te.legra.ph/file/3a455d09e381d736a162e.mp4",
+    "https://te.legra.ph/file/74c869332615283cbfcec.mp4",
+    "https://te.legra.ph/file/a8cde9a02b2562ddc99f5.mp4",
+    "https://te.legra.ph/file/5cb619fdc491eb9a86134.mp4",
+    "https://te.legra.ph/file/3ca0f0637f5431a422818.mp4",
+    "https://te.legra.ph/file/1e38235febfe52cdd0490.mp4",
+    "https://te.legra.ph/file/e27fd617cc4e52835cb76.mp4",
+)
+
 ATTEMPT_WITH_BOT = (
     "Really {user1}? Know your place! Fool.",
     "{user1}, Dude, get a girlfriend already!",
