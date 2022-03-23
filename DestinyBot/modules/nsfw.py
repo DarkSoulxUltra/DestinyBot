@@ -216,7 +216,7 @@ def cosplay(update: Update, context: CallbackContext):
         with destiny_session.get("https://meme-api.herokuapp.com/gimme/CosplayLewd"
         ) as resp:
             r = resp.json()
-   update.effective_message.reply_photo(r["url"], caption=r["title"])
+    update.effective_message.reply_photo(r["url"], caption=r["title"])
 
 
 def yuri(update, context):
