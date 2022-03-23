@@ -33,8 +33,6 @@ async def shitpost(client, message):
         ) as resp:
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
-
-__mod_name__ = "Memes"
 _help_ = """
 *Memes*
 Note: This module utilizes meme-api.heroku.com, which uses reddit as a source.
@@ -42,3 +40,5 @@ Note: This module utilizes meme-api.heroku.com, which uses reddit as a source.
  ✮ `/cursed`*:* To get random Cursed Comments posts from the subreddit r/cursedcomments.
  ✮ `/shitpost`*:* To get random memes from subreddit r/shitposting.
 """
+
+__mod_name__ = "Memes"
