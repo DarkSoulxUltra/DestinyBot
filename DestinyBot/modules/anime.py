@@ -179,14 +179,16 @@ query ($id: Int,$search: String) {
     }
 """
 
-AWAKE_MSG = f"""✩✮ ɪ ᴀᴍ ᴜɴᴍᴇɪ, ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ.
+AWAKE_MSG = f"""✮ ɪ ᴀᴍ ᴜɴᴍᴇɪ, ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ. ✮
 
-Python Version: {py_ver()}
-Library Version: {tg_ver}
-Telethon Version : {teleth_ver}
-Pyrogram Version : {pyro_ver}
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━
+┣━ ✧ Python Version: 『 {py_ver()} 』
+┣━ ✧ Library Version: 『 {tg_ver} 』
+┣━ ✧ Telethon Version : 『 {teleth_ver} 』
+┣━ ✧ Pyrogram Version : 『 {pyro_ver} 』
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✩✮ 💞 ᴛʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ 💞**
+ ♡💞 ᴛʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ 💞♡
 """
 
 url = 'https://graphql.anilist.co'
