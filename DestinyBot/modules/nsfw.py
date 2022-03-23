@@ -12,6 +12,7 @@ import aiohttp
 import time
 from pyrogram import filters
 from DestinyBot import pbot
+from telegram.ext import run_async
 from DestinyBot.events import register
 from telethon import Button
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -202,6 +203,7 @@ def feet(update, context):
     target = "feet"
     msg.reply_photo(nekos.img(target))
 
+@run_async
 def cosplay(update: Update, context: CallbackContext):
     message = update.effective_message
     chat_id = update.effective_chat.id
