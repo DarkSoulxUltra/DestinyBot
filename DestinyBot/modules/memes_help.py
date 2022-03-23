@@ -1,6 +1,6 @@
 __mod_name__ = "Memes"
 
-_help_ = """
+__help__ = """
 *Random Memes*
 Note: This module utilizes meme-api.heroku.com, which uses reddit as a source.
  ✮ `/meme`*:* To get random wholesome memes from subreddit r/wholesomememes.
