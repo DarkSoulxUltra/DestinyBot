@@ -44,10 +44,10 @@ ujson
 pretty_errors
 pygithub
 TgCrypto
-pyrogram==1.4.8
+pyrogram==1.4.9
 PyDictionary
 git+https://github.com/Sorrybabe/downloader
-youtube_search_python==1.4.9
+youtube_search_python==1.6.3
 youtube_search
 lyrics_extractor
 asyncio
