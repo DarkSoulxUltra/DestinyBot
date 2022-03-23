@@ -205,7 +205,7 @@ def feet(update, context):
 def cosplay(update: Update, context: CallbackContext):
     message = update.effective_message
     chat_id = update.effective_chat.id
-    if not update.effective.chat.type == "private":
+    if not update.effective_message.chat.type == "private":
         is_nsfw = sql.is_nsfw(chat_id)
         if not is_nsfw:
             return
