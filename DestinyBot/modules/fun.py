@@ -115,6 +115,9 @@ def slap(update: Update, context: CallbackContext):
 
     reply_text(reply, parse_mode=ParseMode.HTML)
 
+
+def sigma(update: Update, context: CallbackContext):
+    update.effective_message.reply_video(random.choice(fun_strings.SIGMA))
     
 def semx(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -412,6 +415,7 @@ __help__ = """
 ✮ /lined <text>: lined your text!
 """
 
+SIGMA_HANDLER = DisableAbleCommandHandler("sigma", sigma, run_async=True)
 ANIFLIRT_HANDLER = DisableAbleCommandHandler("aniflirt", aniflirt, run_async=True)
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
@@ -429,6 +433,7 @@ TABLE_HANDLER = DisableAbleCommandHandler("table", table, run_async=True)
 SHOUT_HANDLER = DisableAbleCommandHandler("shout", shout, run_async=True)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, run_async=True)
 
+dispatcher.add_handler(SIGMA_HANDLER)
 dispatcher.add_handler(ANIFLIRT_HANDLER)
 dispatcher.add_handler(SEMX_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
@@ -464,8 +469,10 @@ __command_list__ = [
     "8ball",
     "aniflirt",
     "sex",
+    "sigma",
 ]
 __handlers__ = [
+    SIGMA_HANDLER,
     ANIFLIRT_HANDLER,
     RUNS_HANDLER,
     SLAP_HANDLER,
