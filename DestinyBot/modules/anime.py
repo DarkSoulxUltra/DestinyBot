@@ -179,18 +179,14 @@ query ($id: Int,$search: String) {
     }
 """
 
-AWAKE_MSG = f"""**✩✮ ɪ ᴀᴍ ᴜɴᴍᴇɪ, ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ. **
+AWAKE_MSG = f"""✩✮ ɪ ᴀᴍ ᴜɴᴍᴇɪ, ᴀ ᴘᴏᴡᴇʀꜰᴜʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ.
 
-**Python Version :** `{py_ver()}`
-
-**Library Version :** `{tg_ver}`
-
-**Telethon Version :** `{teleth_ver}`
-
-**Pyrogram Version :** `{pyro_ver}`
+Python Version: {py_ver()}
+Library Version: {tg_ver}
+Telethon Version : {teleth_ver}
+Pyrogram Version : {pyro_ver}
 
 ✩✮ 💞 ᴛʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ 💞**
-
 """
 
 url = 'https://graphql.anilist.co'
@@ -391,7 +387,7 @@ def manga(update: Update, context: CallbackContext):
 
 def awake(update: Update, context: CallbackContext):
     message = update.effective_message
-    IMAGE = "https://telegra.ph/file/a4f96c30605ece22664ea.jpg"
+    IMAGE = "https://telegra.ph/file/02f23680b59d520875c4a.mp4"
     msg = ""
     msg += f"{AWAKE_MSG}"
     support = "t.me/unmei_support"
@@ -402,7 +398,7 @@ def awake(update: Update, context: CallbackContext):
 	    InlineKeyboardButton("『 ♥ Maestro ♥ 』", url=owner)
         ]
     ]
-    update.effective_message.reply_photo(
+    update.effective_message.reply_animation(
 	IMAGE,
         caption=msg,
         parse_mode=ParseMode.HTML,
