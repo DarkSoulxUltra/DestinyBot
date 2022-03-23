@@ -33,3 +33,21 @@ async def shitpost(client, message):
         ) as resp:
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
+
+@pbot.on_message(filters.command("fbi"))
+async def fbi(client, message):
+    async with aiohttp.ClientSession() as destiny_session:
+        async with destiny_session.get(
+            "https://meme-api.herokuapp.com/gimme/FBI_Memes"
+        ) as resp:
+            r = await resp.json()
+            await message.reply_photo(r["url"], caption=r["title"])
+
+@pbot.on_message(filters.command("teenmemes|teenagers"))
+async def teenagers(client, message):
+    async with aiohttp.ClientSession() as destiny_session:
+        async with destiny_session.get(
+            "https://meme-api.herokuapp.com/gimme/teenagers"
+        ) as resp:
+            r = await resp.json()
+            await message.reply_photo(r["url"], caption=r["title"])
