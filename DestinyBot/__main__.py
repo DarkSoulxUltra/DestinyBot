@@ -87,7 +87,7 @@ PM_START_TEXT = """
 ───『 {} 』───
 Hey there *✮ {} ✮*,
 
-*Watashi No Namae Wa "`Destiny (運命)`", A Musicart named after Beethoven's Symphony No[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4)5 in C Minor Op.67*
+*Watashi No Namae Wa* "`Destiny (運命)`"*, A Musicart named after Beethoven's Symphony No*[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4)*5 in C Minor Op.67*
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 ღღ   *Uptime*: 『 `{}` 』   ღღ
