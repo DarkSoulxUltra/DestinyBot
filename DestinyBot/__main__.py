@@ -85,16 +85,16 @@ first_name_pm = ""
 
 PM_START_TEXT = """
 ───『 {} 』───
-Hey there **✮ {} ✮**,
+Hey there *✮ {} ✮*,
 
-**Watashi Wo Namae Wa "`Destiny (運命)`", A Musicart named after Beethoven's Symphony No[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4)5 in C Minor Op.67**
+*Watashi No Namae Wa "`Destiny (運命)`", A Musicart named after Beethoven's Symphony No[.](https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4)5 in C Minor Op.67*
 
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
-ღღ   **Uptime**: 『 `{}` 』   ღღ
+ღღ   *Uptime*: 『 `{}` 』   ღღ
 ➳➳➳➳➳➳➳➳➳➳➳➳➳➳➳
 
-✧ **Users Interacted**: 『 `{}` 』
-✧ **Total Chats**: 『 `{}` 』
+✧ *Users Interacted*: 『 `{}` 』
+✧ *Total Chats*: 『 `{}` 』
 
 ♡ Try The Help Button below To Know My Abilities, or simply do /help 🙂. ♡
 """
@@ -104,12 +104,12 @@ GROUP_START_MSG = "👋 Hi {}\nI won't sleep yet, because I believe someone is w
 START_IMG = "https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4"
 
 HELP_STRINGS = """
-Hello there, I'm Unmei! Some people do call me Destiny.
+Hello there, I'm Unmei (Destiny), A powerful group management bot.
 To make me functional, make sure that I have enough rights in your group[.](https://telegra.ph/file/26c430892d2ce0e407443.jpg)
 Helpful commands:
 
-- /start: It will start me by showing you some options! You've probably used this, as you are here now.
-- /donate: To show pity to my Dev... Shhhh! Just don't tell him I said this.
+- /start: It will start me by showing you some options! You've probably used this, as you are here now. Hehe
+- /donate: To show some pity to my Dev... Shhhh! Just don't tell him that I ever said this.
 
 All commands can be used with the following: / or !
 List of all the Modules:
@@ -117,11 +117,10 @@ List of all the Modules:
     dispatcher.bot.first_name, "" if not ALLOW_EXCL else "📝All commands can either be used with / or !.")
 buttons = [
     [
-        InlineKeyboardButton(text="『 ➕ Add Me 』",url="https://telegram.dog/Destiny_x_Bot?startgroup=true"),
-        InlineKeyboardButton(text="『 🙇 Help 』", callback_data="help_back")
+        InlineKeyboardButton(text="『 ➕ Add Me to your Group! Onegaii! 』",url="https://telegram.dog/Destiny_x_Bot?startgroup=true")
     ],
     [
-        InlineKeyboardButton(text="『 🌟 Anime Channel 』",url="https://t.me/trending_anime_series"),
+        InlineKeyboardButton(text="『 🙇 Help 』", callback_data="help_back"),
         InlineKeyboardButton(text="『 ❔ Otaku Talks 』", url="https://t.me/tas_support")
     ],
     [
@@ -134,6 +133,9 @@ grp_buttons = [
     [
         InlineKeyboardButton(text="『 🚑 Support 』", url="https://telegram.dog/unmei_support"),
         InlineKeyboardButton(text="『 🙇 Help 』", url="http://t.me/Destiny_x_Bot?start=help")
+    ],
+    [
+        InlineKeyboardButton(text="『 🎧 Add Music Bot here 』", url="https://telegram.dog/DestinyMusic_bot?startgroup=true")
     ]
 ]
 
@@ -141,9 +143,9 @@ GROUP_START_IMG = "https://telegra.ph/file/2d9b9613c4c7f8310c6d1.mp4"
 DESTINY_IMG = "https://telegra.ph/file/a4f96c30605ece22664ea.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting [Shoto](t.me/yameteee_yamete_kudasai)
- Supporting isn't always financial!
- Those who cannot provide monetary support are welcome to help us develop the bot at our
+You can support the project by contacting [Shoto](t.me/yameteee_yamete_kudasai)
+Supporting isn't always financial!
+Those who cannot provide monetary support are welcome to help us develop the bot at our
 [Support Group](t.me/unmei_support)."""
 
 IMPORTED = {}
