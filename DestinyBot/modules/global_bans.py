@@ -163,7 +163,7 @@ def gban(update: Update, context: CallbackContext):
 
         return
 
-    message.reply_text("Wakatta! Breaking this person's A$$...")
+    message.reply_text("Wakatta!\nBreaking this person's A$$")
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
@@ -385,7 +385,7 @@ def ungban(update: Update, context: CallbackContext):
         ungban_time = round((ungban_time / 60), 2)
         message.reply_text(f"Great! This human has been un-gbanned. Took {ungban_time} min")
     else:
-        message.reply_text(f"Took so long, this humam has been un-gbanned. Took {ungban_time} sec")
+        message.reply_text(f"That took so long, this humam has been un-gbanned. Took {ungban_time} sec")
 
 
 @support_plus
