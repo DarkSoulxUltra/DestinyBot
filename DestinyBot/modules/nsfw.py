@@ -99,7 +99,8 @@ def list_nsfw_chats(update: Update, context: CallbackContext):
             sleep(e.retry_after)
     update.effective_message.reply_text(text, parse_mode="HTML")
 
-@register(pattern=r"^/doujin|nhentai|doujin@Destiny_x_Bot|nhentai@Destiny_x_Bot ?(.*)")
+@register(pattern=r"^/nhentai ?(.*)")
+@register(pattern=r"^/doujin ?(.*)")
 async def nhentai(event):
     message_id = event.message.id
     chat_id = event.chat_id
