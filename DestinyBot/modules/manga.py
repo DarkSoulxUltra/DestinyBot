@@ -1,7 +1,7 @@
 from telethon import events, Button
 from DestinyBot.modules.helper_funcs.Kissmangaapi import kissmangaapi as kiss
 import DestinyBot.modules.helper_funcs.formating_results as format
-from DestinyBot import bot
+from DestinyBot import pbot as bot
 #from Helper.helper_functions import *
 
 class Manga():
