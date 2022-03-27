@@ -7,7 +7,7 @@ from DestinyBot.events import register
 
 class Manga():
 
-    @register(pattern=r"^/kmanga|^/kmanga@Destiny_x_Bot")
+    @register(pattern=r"^/kmanga ?(.*)")
     async def event_handler_manga(event):
         if '/kmanga' == event.raw_text:
             await bot.send_message(
@@ -42,7 +42,7 @@ class Manga():
                 except:
                     pass
 
-    @register(pattern="/read")
+    @register(pattern="/read ?(.*)")
     async def event_handler_manga(event):
         try:
             text = event.raw_text.split()
