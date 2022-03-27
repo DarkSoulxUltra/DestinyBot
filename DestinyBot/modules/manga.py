@@ -1,12 +1,13 @@
-'''from telethon import events, Button
+from telethon import events, Button
 from DestinyBot.modules.helper_funcs.Kissmangaapi import kissmangaapi as kiss
 import DestinyBot.modules.helper_funcs.formating_results as format
 from DestinyBot import pbot as bot
+from DestinyBot.events import register
 #from Helper.helper_functions import *
 
 class Manga():
 
-    @bot.on(events.NewMessage(pattern=r"^/kmanga|^/kmanga@Destiny_x_Bot"))
+    @register(pattern=r"^/kmanga|^/kmanga@Destiny_x_Bot")
     async def event_handler_manga(event):
         if '/kmanga' == event.raw_text:
             await bot.send_message(
@@ -41,7 +42,7 @@ class Manga():
                 except:
                     pass
 
-    @bot.on(events.NewMessage(pattern="/read"))
+    @register(pattern="/read")
     async def event_handler_manga(event):
         try:
             text = event.raw_text.split()
@@ -63,7 +64,7 @@ class Manga():
             await event.reply("Something went wrong.....\nCheck if you entered command properly\n\nUse /help or go to \n@unmei_support if you have any doubts")
             print(e)
 
-    @bot.on(events.CallbackQuery(pattern="mid:"))
+    @register(pattern="mid:")
     async def callback_for_mangadets(event):
         data = event.data.decode('utf-8')
         dets = kiss.get_manga_details(data[4:])
