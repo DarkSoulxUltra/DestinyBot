@@ -70,7 +70,7 @@ def callbackk(_,query):
         except:
             query.answer("Refreshed!")
         
-__mod_name__ = "✧Scheldude✧"
+__mod_name__ = "✧Schedule✧"
 
 __help__ = """
 To check the scheduled Anime for the current day
