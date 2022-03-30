@@ -101,7 +101,7 @@ Hey there *✮ {} ✮*,
 
 GROUP_START_MSG = "👋 Hi {}\nI won't sleep yet, because I believe someone is waiting for my Music.\n\nUptime - {}"
 
-START_IMG = "https://telegra.ph/file/8ca2ecf0e69797d8dac29.mp4"
+START_IMG = "https://telegra.ph/file/3cfeb559dc1ec093d21d8.mp4"
 
 HELP_STRINGS = """
 Hello there, I'm Unmei (Destiny), A powerful group management bot.
