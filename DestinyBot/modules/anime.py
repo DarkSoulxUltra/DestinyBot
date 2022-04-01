@@ -776,7 +776,7 @@ __help__ = """
 ✮ /animequotes: for anime quotes randomly as photos.
 ✮ /quote: send quotes randomly as text
 
-──「 Anime search 」──
+──「 Request Anime 」──
 ✮ /request <anime>: Triggers a request for anime to our channel.
 Anime will be posted on [The Channel](https://t.me/trending_anime_series) then the request is marked as completed.
 
