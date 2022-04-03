@@ -6,21 +6,12 @@ import requests
 from pyrogram import filters
 from DestinyBot import pbot
 
-Subreddits = [
-    "Animemes", "dankmemes", "wholesomememes", "cursedcomments",
-    "shitposting", "FBI_Memes", "teenagers", "hornyresistance",
-    "PewdiepieSubmissions", "Hornyjail"
+MemesReddit = [
+    "Animemes", "lostpause", "LoliMemes", "cleananimemes",
+    "animememes", "goodanimemes", "AnimeFunny", "dankmemes",
+    "teenagers", "shitposting", Hornyjail", "wholesomememes",
+    "cursedcomments"
 ]
-
-@pbot.on_message(filters.command("rmeme"))
-async def rmeme(client, message):
-    sbrt = random.choice(Subreddits)
-    meme_link = f"https://meme-api.herokuapp.com/gimme/{sbrt}"
-    async with aiohttp.ClientSession() as destiny_session:
-        async with destiny_session.get(meme_link) as resp:
-            r = await resp.json()
-            await message.reply_photo(r["url"], caption=r["title"])
-
 
 @pbot.on_message(filters.command("meme"))
 async def meme(client, message):
@@ -88,10 +79,10 @@ async def pewds(client, message):
 
 @pbot.on_message(filters.command("memes"))
 async def memes(client, message):
+    memereddit = random.choice(MemesReddit)
+    meme_link = f"https://meme-api.herokuapp.com/gimme/{memereddit}"
     async with aiohttp.ClientSession() as destiny_session:
-        async with destiny_session.get(
-            "https://meme-api.herokuapp.com/gimme/Animemes"
-        ) as resp:
+        async with destiny_session.get(meme_link) as resp:
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
 
