@@ -9,7 +9,7 @@ from DestinyBot import pbot
 MemesReddit = [
     "Animemes", "lostpause", "LoliMemes", "cleananimemes",
     "animememes", "goodanimemes", "AnimeFunny", "dankmemes",
-    "teenagers", "shitposting", Hornyjail", "wholesomememes",
+    "teenagers", "shitposting", "Hornyjail", "wholesomememes",
     "cursedcomments"
 ]
 
