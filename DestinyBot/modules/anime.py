@@ -208,8 +208,8 @@ def extract_arg(message: Message):
 
 def aschedule (update: Update, context: CallbackContext):
     message = update.effective_message
-    input_str = extract_arg(message)
-    input_str = str(input_str).lower
+    input_str = message.text.split(' ', 1)
+    input_str = input_str.lower
     if not input_str:
         update.effective_message.reply_text("Give proper weekday\ne.g. /aschedule monday")
         return
