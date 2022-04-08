@@ -1,18 +1,12 @@
 import requests
-
 from telegram import Bot, Update
 from telegram.ext import CommandHandler, run_async
-
 from DestinyBot import dispatcher, CASH_API_KEY
 
-
-def convert(bot: Bot, update: Update):
-
+def convert(update: Update, context: CallbackContext):
     args = update.effective_message.text.split(" ", 3)
     if len(args) > 1:
-
         orig_cur_amount = float(args[1])
-
         try:
             orig_cur = args[2].upper()
         except IndexError:
