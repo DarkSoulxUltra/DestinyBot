@@ -215,11 +215,11 @@ def aschedule (update: Update, context: CallbackContext):
         return
     if input_str in weekdays:
         input_str = weekdays[input_str]
-
+    
     if input_str not in [0, 1, 2, 3, 4, 5, 6]:
         update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
-    result = get_anime_schedule(input_str)
-    update.effective_message.reply_text(result[0])
+    result = str(get_anime_schedule(input_str))
+    update.effective_message.reply_text(result)
 
 def airing(update: Update, context: CallbackContext):
     message = update.effective_message
