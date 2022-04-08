@@ -11,14 +11,14 @@ client = tbot
 import asyncio
 import os
 import time
-from DestinyBot.utils.pluginhelper import edit_or_reply
+#from DestinyBot.utils.pluginhelper import edit_or_reply
 from datetime import datetime
 from DestinyBot import OWNER_ID, DEV_USERS, LOGGER
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY as path
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY
 from datetime import datetime
 from DestinyBot.events import register
-from DestinyBot.modules.helper_funcs.managers import edit_delete
+from DestinyBot.modules.helper_funcs.managers import edit_delete, edit_or_reply
 from platform import python_version as py_ver
 from telegram import __version__ as tg_ver
 from pyrogram import __version__ as pyro_ver
