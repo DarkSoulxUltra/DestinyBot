@@ -73,8 +73,15 @@ def callbackk(_,query):
 __mod_name__ = "✧Schedule✧"
 
 __help__ = """
-To check the scheduled Anime for the current day
+To check the scheduled Anime for the current day from URL: https://subsplease.org/
  ✮ `/latest`*:* to see latest anime episode
 
-Note: Timezone is set to UTC by default, as IST was showing incorrect results in the API.
+To check the scheduled Anime by days from MAL
+ ✮ `/aschedule`*:* to see today's scheduled anime.
+ ✮ `/aschedule <monday/tuesday/.../sunday>`*:* to see animes schedule on that particular day of the week.
+    e.g. /aschedule friday
+
+Note:
+1. To ease it up, you can also use /schedule instead of /aschedule for now.
+2. For /latest command, Timezone is set to UTC by default, as IST was showing incorrect results in the API.
 """
