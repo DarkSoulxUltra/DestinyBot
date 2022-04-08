@@ -216,7 +216,7 @@ def aschedule (update: Update, context: CallbackContext):
     if input_str in weekdays:
         input_str = weekdays[input_str]
     if not isinstance(input_str, int):
-        input_str = int(input_str)
+        input_str = int(str(input_str))
 
     if input_str not in [0, 1, 2, 3, 4, 5, 6]:
         update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
