@@ -50,9 +50,9 @@ async def edit_or_reply(
         await reply_to.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
-    await event.reply(caption, file=file_name)
+    await event.client.send_file(event.chat_id, file_name, caption=caption)
     await event.delete()
-    return os.remove(file_name)
+    os.remove(file_name)
 
 async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
     #sudo_users = DEV_USERS
