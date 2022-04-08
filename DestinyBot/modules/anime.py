@@ -18,7 +18,7 @@ from DestinyBot import TEMP_DOWNLOAD_DIRECTORY as path
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY
 from datetime import datetime
 from DestinyBot.events import register
-from DestinyBot.modules.helper_funcs.managers import edit_delete, 
+from DestinyBot.modules.helper_funcs.managers import edit_delete
 from platform import python_version as py_ver
 from telegram import __version__ as tg_ver
 from pyrogram import __version__ as pyro_ver
