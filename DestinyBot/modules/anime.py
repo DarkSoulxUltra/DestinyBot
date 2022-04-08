@@ -209,16 +209,15 @@ def extract_arg(message: Message):
 def aschedule (update: Update, context: CallbackContext):
     message = update.effective_message
     input_str = extract_arg(message)
+    input_str = str(input_str).lower
     if not input_str:
         update.effective_message.reply_text("Give proper weekday\ne.g. /aschedule monday")
         return
-    input_str = str(input_str).lower
     if input_str in weekdays:
         input_str = weekdays[input_str]
-    try:
+    if not isinstance(input_str, int)
         input_str = int(input_str)
-    except ValueError:
-        update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
+
     if input_str not in [0, 1, 2, 3, 4, 5, 6]:
         update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
     result = get_anime_schedule(input_str)
