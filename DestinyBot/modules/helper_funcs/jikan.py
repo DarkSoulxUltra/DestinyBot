@@ -38,5 +38,5 @@ async def get_anime_schedule(weekid):
         scheduled_list = (await animesession.schedule(day=dayname)).get(dayname)
         for a_name in scheduled_list:
             result += f"• [{a_name['title']}]({a_name['url']})\n"
-    return result
+    return result, dayname
 
