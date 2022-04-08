@@ -215,7 +215,7 @@ def aschedule (update: Update, context: CallbackContext):
         return
     if input_str in weekdays:
         input_str = weekdays[input_str]
-    if not isinstance(input_str, int)
+    if not isinstance(input_str, int):
         input_str = int(input_str)
 
     if input_str not in [0, 1, 2, 3, 4, 5, 6]:
