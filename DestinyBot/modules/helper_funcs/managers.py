@@ -64,22 +64,17 @@ async def edit_or_reply(
 
 
 async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
-    sudo_users = DEV_USERS
+    #sudo_users = DEV_USERS
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
     time = time or 5
-    if event.sender_id in sudo_users:
-        reply_to = await event.get_reply_message()
-        catevent = (
-            await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
-            if reply_to
-            else await event.reply(
-                text, link_preview=link_preview, parse_mode=parse_mode
-            )
-        )
-    else:
-        catevent = await event.edit(
+    reply_to = await event.get_reply_message()
+    Unmeievent = (
+        await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
+        if reply_to
+        else await event.reply(
             text, link_preview=link_preview, parse_mode=parse_mode
         )
+    )
     await asyncio.sleep(time)
-    return await catevent.delete()
+    return await Unmeievent.delete()
