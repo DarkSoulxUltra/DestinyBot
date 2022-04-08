@@ -12,8 +12,8 @@ async def writer(e):
     elif e.pattern_match.group(1):
         text = e.text.split(maxsplit=1)[1]
     else:
-        return await edit_delete(e, "`Give Some Text`")
-    await edit_delete(e, "`Writing wait....`")
+        return await edit_delete(e, "`Give me something to write..`")
+    await edit_delete(e, "`Matte-Kudasai, writing....`")
     img = Image.open("DestinyBot/resources/template.jpg")
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("DestinyBot/resources/fonts/assfont.ttf", 30)
@@ -25,3 +25,12 @@ async def writer(e):
     img.save(file)
     await e.reply(file=file)
     os.remove(file)
+
+
+__mod_name__ = "Write"
+
+__help__ = """
+*Write Text*
+ ✮ /write <text>*:* To get image of handwriting text mentioned infront or replied to.
+ ✮ /write (reply this to some text)*:* Reply it to some text to get a page of handwritten text.
+"""
