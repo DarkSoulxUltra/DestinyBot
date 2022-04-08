@@ -11,6 +11,7 @@ SQLAlchemy==1.4.34
 psycopg2-binary
 feedparser
 faker
+markdown
 hachoir
 pykeyboard
 pynewtonmath
