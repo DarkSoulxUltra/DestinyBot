@@ -2,6 +2,7 @@ import datetime
 import re
 from DestinyBot import telethn as tbot
 from DestinyBot.modules.helper_funcs.tools import post_to_telegraph
+from DestinyBot.modules.helper_funcs.jikan import weekdays, get_anime_schedule
 from hentai import Hentai, Utils
 from natsort import natsorted
 import html
@@ -23,6 +24,8 @@ from telethon import __version__ as teleth_ver
 from telegram import TelegramError
 import bs4
 import jikanpy
+from jikanpy import Jikan
+from jikanpy.exceptions import APIException
 import requests
 from googlesearch import search
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
@@ -41,6 +44,7 @@ prequel_btn = "⬅️ Prequel"
 sequel_btn = "Sequel ➡️"
 close_btn = "Close ❌"
 
+jikan = Jikan()
 
 def shorten(description, info='anilist.co'):
     msg = ""
@@ -202,6 +206,23 @@ def extract_arg(message: Message):
         return reply.text
     return None
 
+def aschedule (update: Update, context: CallbackContext):
+    message = update.effective_message
+    input_str = extract_arg(message)
+    if not input_str:
+        update.effective_message.reply_text("Give proper weekday\ne.g. /aschedule monday")
+        return
+    input_str = str(input_str).lower
+    if input_str in weekdays:
+        input_str = weekdays[input_str]
+    try:
+        input_str = int(input_str)
+    except ValueError:
+        update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
+    if input_str not in [0, 1, 2, 3, 4, 5, 6]:
+        update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
+    result = get_anime_schedule(input_str)
+    update.effective_message.reply_text(result[0])
 
 def airing(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -783,7 +804,7 @@ Anime will be posted on [The Channel](https://t.me/trending_anime_series) then t
  """
 
 REQUEST_HANDLER = DisableAbleCommandHandler("request", request, run_async=True)
-#DOUJIN_HANDLER = DisableAbleCommandHandler(("nhentai","doujin"), nhentai, run_async=True)
+ASCHEDULE_HANDLER = DisableAbleCommandHandler(("aschedule"), aschedule, run_async=True)
 G_HANDLER = DisableAbleCommandHandler("google", gsearch, run_async=True)
 check_handler = DisableAbleCommandHandler("alive", awake, run_async=True)
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
@@ -797,7 +818,7 @@ KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo, run_async=True)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(REQUEST_HANDLER)
-#dispatcher.add_handler(DOUJIN_HANDLER)
+dispatcher.add_handler(ASCHEDULE_HANDLER)
 dispatcher.add_handler(G_HANDLER)
 dispatcher.add_handler(check_handler)
 dispatcher.add_handler(BUTTON_HANDLER)
@@ -818,5 +839,5 @@ __command_list__ = [
 __handlers__ = [
     ANIME_HANDLER, CHARACTER_HANDLER, MANGA_HANDLER, USER_HANDLER,
     UPCOMING_HANDLER, KAIZOKU_SEARCH_HANDLER, KAYO_SEARCH_HANDLER,
-    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER
+    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER, ASCHEDULE_HANDLER
 ]
