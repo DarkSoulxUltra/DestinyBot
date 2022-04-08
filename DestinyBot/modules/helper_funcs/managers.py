@@ -19,7 +19,7 @@ async def edit_or_reply(
     linktext=None,
     caption=None,
 ):  # sourcery no-metrics
-    sudo_users = DEV_USERS
+    #sudo_users = DEV_USERS
     link_preview = link_preview or False
     reply_to = await event.get_reply_message()
     if len(text) < 4096 and not deflink:
@@ -50,14 +50,9 @@ async def edit_or_reply(
         await reply_to.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
-    if event.sender_id in sudo_users:
-        await event.reply(caption, file=file_name)
-        await event.delete()
-        return os.remove(file_name)
-    await event.client.send_file(event.chat_id, file_name, caption=caption)
+    await event.reply(caption, file=file_name)
     await event.delete()
-    os.remove(file_name)
-
+    return os.remove(file_name)
 
 async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
     #sudo_users = DEV_USERS
