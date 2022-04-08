@@ -11,12 +11,14 @@ client = tbot
 import asyncio
 import os
 import time
+from DestinyBot.utils.pluginhelper import edit_or_reply
 from datetime import datetime
 from DestinyBot import OWNER_ID, DEV_USERS, LOGGER
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY as path
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY
 from datetime import datetime
 from DestinyBot.events import register
+from DestinyBot.modules.helper_funcs.managers import edit_delete, 
 from platform import python_version as py_ver
 from telegram import __version__ as tg_ver
 from pyrogram import __version__ as pyro_ver
@@ -206,6 +208,22 @@ def extract_arg(message: Message):
         return reply.text
     return None
 
+@register(pattern=r"^/aschedule ?(.*)")
+async def aschedule_fetch(event):
+    input_str = event.pattern_match.group(1) or datetime.now().weekday()
+    if input_str in weekdays:
+        input_str = weekdays[input_str]
+    try:
+        input_str = int(input_str)
+    except ValueError:
+        return await edit_delete(event, "`You have given and invalid weekday`", 7)
+    if input_str not in [0, 1, 2, 3, 4, 5, 6]:
+        return await edit_delete(event, "`You have given and invalid weekday`", 7)
+    result = await get_anime_schedule(input_str)
+    await edit_or_reply(event, result[0])
+
+
+'''
 def aschedule (update: Update, context: CallbackContext):
     message = update.effective_message
     input_str = message.text.split(' ', 1)
@@ -220,6 +238,7 @@ def aschedule (update: Update, context: CallbackContext):
         update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
     result = str(get_anime_schedule(input_str))
     update.effective_message.reply_text(result)
+'''
 
 def airing(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -801,7 +820,7 @@ Anime will be posted on [The Channel](https://t.me/trending_anime_series) then t
  """
 
 REQUEST_HANDLER = DisableAbleCommandHandler("request", request, run_async=True)
-ASCHEDULE_HANDLER = DisableAbleCommandHandler(("aschedule"), aschedule, run_async=True)
+#ASCHEDULE_HANDLER = DisableAbleCommandHandler(("aschedule"), aschedule, run_async=True)
 G_HANDLER = DisableAbleCommandHandler("google", gsearch, run_async=True)
 check_handler = DisableAbleCommandHandler("alive", awake, run_async=True)
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
@@ -815,7 +834,7 @@ KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo, run_async=True)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(REQUEST_HANDLER)
-dispatcher.add_handler(ASCHEDULE_HANDLER)
+#dispatcher.add_handler(ASCHEDULE_HANDLER)
 dispatcher.add_handler(G_HANDLER)
 dispatcher.add_handler(check_handler)
 dispatcher.add_handler(BUTTON_HANDLER)
@@ -836,5 +855,5 @@ __command_list__ = [
 __handlers__ = [
     ANIME_HANDLER, CHARACTER_HANDLER, MANGA_HANDLER, USER_HANDLER,
     UPCOMING_HANDLER, KAIZOKU_SEARCH_HANDLER, KAYO_SEARCH_HANDLER,
-    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER, ASCHEDULE_HANDLER
+    BUTTON_HANDLER, AIRING_HANDLER, REQUEST_HANDLER, G_HANDLER
 ]
