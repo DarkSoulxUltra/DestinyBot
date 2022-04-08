@@ -207,10 +207,11 @@ def extract_arg(message: Message):
     if reply is not None:
         return reply.text
     return None
-
+@register(pattern=r"^/schedule ?(.*)")
 @register(pattern=r"^/aschedule ?(.*)")
 async def aschedule_fetch(event):
     input_str = event.pattern_match.group(1) or datetime.now().weekday()
+    input_str = input_str.lower()
     if input_str in weekdays:
         input_str = weekdays[input_str]
     try:
@@ -222,23 +223,6 @@ async def aschedule_fetch(event):
     result = await get_anime_schedule(input_str)
     await edit_or_reply(event, result[0])
 
-
-'''
-def aschedule (update: Update, context: CallbackContext):
-    message = update.effective_message
-    input_str = message.text.split(' ', 1)
-    input_str = str(input_str[1]).lower()
-    if not input_str:
-        update.effective_message.reply_text("Give proper weekday\ne.g. /aschedule monday")
-        return
-    if input_str in weekdays:
-        input_str = weekdays[input_str]
-    
-    if input_str not in [0, 1, 2, 3, 4, 5, 6]:
-        update.effective_message.reply_text("Wait!! Are you discovering a new weekday??")
-    result = str(get_anime_schedule(input_str))
-    update.effective_message.reply_text(result)
-'''
 
 def airing(update: Update, context: CallbackContext):
     message = update.effective_message
