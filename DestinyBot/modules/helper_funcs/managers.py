@@ -24,7 +24,7 @@ async def edit_or_reply(
     reply_to = await event.get_reply_message()
     if len(text) < 4096 and not deflink:
         parse_mode = parse_mode or "md"
-        if not event.sender_id.startswith("-1"):
+        if not str(event.sender_id).startswith("-1"):
             if reply_to:
                 return await reply_to.reply(
                     text, parse_mode=parse_mode, link_preview=link_preview
@@ -40,7 +40,7 @@ async def edit_or_reply(
         linktext = linktext or "Message was to big so pasted to bin"
         response = await paste_message(text, pastetype="s")
         text = linktext + f" [here]({response})"
-        if not event.sender_id.startswith("-1"):
+        if not str(event.sender_id).startswith("-1"):
             if reply_to:
                 return await reply_to.reply(text, link_preview=link_preview)
             return await event.reply(text, link_preview=link_preview)
@@ -54,7 +54,7 @@ async def edit_or_reply(
         await reply_to.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
-    if not event.sender_id.startswith("-1"):
+    if not str(event.sender_id).startswith("-1"):
         await event.reply(caption, file=file_name)
         await event.delete()
         return os.remove(file_name)
