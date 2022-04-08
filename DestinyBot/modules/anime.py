@@ -211,7 +211,7 @@ def extract_arg(message: Message):
 @register(pattern=r"^/aschedule ?(.*)")
 async def aschedule_fetch(event):
     input_str = event.pattern_match.group(1) or datetime.now().weekday()
-    input_str = input_str.lower()
+    #input_str = input_str.lower()
     if input_str in weekdays:
         input_str = weekdays[input_str]
     try:
