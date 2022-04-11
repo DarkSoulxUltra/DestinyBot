@@ -845,13 +845,18 @@ def kayo(update: Update, context: CallbackContext):
 __help__ = """
  ──「 Anime search 」──                           
 ✮ /anime <anime>: returns information about the anime.
-✮ /whatanime: returns source of anime when replied to photo or gif.                                                          
+✮ /fillers -n{index} <Anime Name>: returns a list of canons, mixed (filler-canons), fillers of that searched anime)
+Note:
+   1. You can check index by simply searching by /fillers <anime name>
+   2. By simply running `/fillers` will return a file with a list of all Anime containing fillers.
+   3. For example, by running `/fillers Naruto`, it will reply user to search one of the 7 results as per index.
+   Next you can search for one of them, e.g. `/fillers -n4 Naruto`
+
 ✮ /character <character>: returns information about the character.
 ✮ /manga <manga>: returns information about the manga.
 ✮ /user <user>: returns information about a MyAnimeList user.
 ✮ /upcoming: returns a list of new anime in the upcoming seasons.
 ✮ /airing <anime>: returns anime airing info.
-✮ /whatanime <anime>: reply to gif or photo.
 ✮ /kaizoku <anime>: search an anime on animekaizoku.com
 ✮ /kayo <anime>: search an anime on animekayo.com
 
@@ -862,8 +867,7 @@ __help__ = """
 ──「 Request Anime 」──
 ✮ /request <anime>: Triggers a request for anime to our channel.
 Anime will be posted on [The Channel](https://t.me/trending_anime_series) then the request is marked as completed.
-
- """
+"""
 
 REQUEST_HANDLER = DisableAbleCommandHandler("request", request, run_async=True)
 #ASCHEDULE_HANDLER = DisableAbleCommandHandler(("aschedule"), aschedule, run_async=True)
