@@ -3,8 +3,8 @@ import re
 from DestinyBot import telethn as tbot
 from DestinyBot.modules.helper_funcs.tools import post_to_telegraph
 from DestinyBot.modules.helper_funcs.jikan import weekdays, get_anime_schedule, get_filler_episodes, search_in_animefiller
-from hentai import Hentai, Utils
-from natsort import natsorted
+#from hentai import Hentai, Utils
+#from natsort import natsorted
 import html
 import textwrap
 client = tbot
@@ -12,7 +12,7 @@ import asyncio
 import os
 import time
 #from DestinyBot.utils.pluginhelper import edit_or_reply
-from datetime import datetime
+#from datetime import datetime
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY as path
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY
 from datetime import datetime
@@ -250,7 +250,7 @@ async def get_anime(event):
             msg += f"{i}. {an}\n"
         return await edit_or_reply(event, msg)
     response = await get_filler_episodes(result[list(result.keys())[anime - 1]])
-    If ((anime>len(results)) or (anime<1)):
+    If anime>len(results):
         msg = f"**Given index for {input_str} is wrong check again for correct index and then try** `/fillers -n<index> {input_str}`\n\n"
         for i, an in enumerate(list(result.keys()), start=1):
             msg += f"{i}. {an}\n"
