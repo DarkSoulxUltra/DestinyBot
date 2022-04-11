@@ -8,6 +8,7 @@ import requests
 import wget
 import yt_dlp
 from urllib.parse import urlparse
+from DestinyBot import EVENT_LOGS, LOGGER
 from pyrogram import filters
 from pyrogram.types import Message
 from DestinyBot.utils.pluginhelper import get_text, progress
@@ -42,7 +43,7 @@ async def shazamcmd(event):
         recognize_generator = shazam.recognizeSong()
         track = next(recognize_generator)[1]["track"]
     except Exception as e:
-        LOGS.error(e)
+        LOGGER.error(e)
         return await edit_delete(
             unmei_event, f"Error while reverse searching song:\n{e}"
         )
