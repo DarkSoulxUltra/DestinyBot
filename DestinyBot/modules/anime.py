@@ -250,7 +250,7 @@ async def get_anime(event):
             msg += f"{i}. {an}\n"
         return await edit_or_reply(event, msg)
     response = await get_filler_episodes(result[list(result.keys())[anime - 1]])
-    If anime>len(results):
+    If len(result) < anime:
         msg = f"**Given index for {input_str} is wrong check again for correct index and then try** `/fillers -n<index> {input_str}`\n\n"
         for i, an in enumerate(list(result.keys()), start=1):
             msg += f"{i}. {an}\n"
