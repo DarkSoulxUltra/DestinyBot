@@ -230,10 +230,6 @@ async def get_anime(event):
         anime = 0
     input_str = input_str.strip()
     result = await search_in_animefiller(input_str)
-    if result == {}:
-        return await edit_or_reply(
-            event, f"**No filler episodes for the given anime**` {input_str}`"
-        )
     if len(result) == 1:
         response = await get_filler_episodes(result[list(result.keys())[0]])
         msg = ""
@@ -274,6 +270,10 @@ async def get_anime(event):
         msg += str(response.get("anime_canon_episodes"))
     msg += "`"
     await edit_or_reply(event, msg)
+    if len{result} == 0:
+        return await edit_or_reply(
+            event, f"**No filler episodes for the given anime**` {input_str}`"
+        )
 
 
 @register(pattern=r"^/schedule ?(.*)")
