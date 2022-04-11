@@ -7,6 +7,7 @@ import time
 import requests
 import wget
 import yt_dlp
+from telethon import types
 from urllib.parse import urlparse
 from DestinyBot import EVENT_LOGS, LOGGER
 from pyrogram import filters
