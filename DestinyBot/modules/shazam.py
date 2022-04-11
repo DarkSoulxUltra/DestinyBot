@@ -14,7 +14,7 @@ from DestinyBot.utils.pluginhelper import get_text, progress
 from DestinyBot import pbot
 from ShazamAPI import Shazam
 from DestinyBot.modules.helper_funcs.managers import edit_delete, edit_or_reply
-from DestinyBot.modules.helper_funcs.tools.import media_type
+from DestinyBot.modules.helper_funcs.tools import media_type
 from DestinyBot.events import register
 
 
