@@ -35,8 +35,8 @@ async def shazamcmd(event):
                 name = attr.file_name
         dl = io.FileIO(name, "a")
         await event.client.download_media(
-            location=reply.document,
-            out=dl,
+            reply.document,
+            dl,
         )
         dl.close()
         mp3_fileto_recognize = open(name, "rb").read()
