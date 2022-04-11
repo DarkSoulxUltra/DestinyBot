@@ -34,7 +34,7 @@ async def shazamcmd(event):
             if isinstance(attr, types.DocumentAttributeFilename):
                 name = attr.file_name
         dl = io.FileIO(name, "a")
-        await event.client.fast_download_file(
+        await event.client.download_media(
             location=reply.document,
             out=dl,
         )
