@@ -2,7 +2,7 @@ import datetime
 import re
 from DestinyBot import telethn as tbot
 from DestinyBot.modules.helper_funcs.tools import post_to_telegraph
-from DestinyBot.modules.helper_funcs.jikan import weekdays, get_anime_schedule
+from DestinyBot.modules.helper_funcs.jikan import weekdays, get_anime_schedule, get_filler_episodes, search_in_animefiller
 from hentai import Hentai, Utils
 from natsort import natsorted
 import html
@@ -207,6 +207,75 @@ def extract_arg(message: Message):
     if reply is not None:
         return reply.text
     return None
+
+@register(pattern=r"^/fillers ?(.*)")
+@regoster(pattern=r"^/filler ?(.*)")
+async def get_anime(event):
+    input_str = event.pattern_match.group(1)
+    reply = await event.get_reply_message()
+    if not input_str:
+        if reply:
+            input_str = reply.text
+        else:
+            return await edit_delete(
+                event, "__What should i search ? Gib me Something to Search__"
+            )
+    anime = re.findall(r"-n\d+", input_str)
+    try:
+        anime = anime[0]
+        anime = anime.replace("-n", "")
+        input_str = input_str.replace("-n" + anime, "")
+        anime = int(anime)
+    except IndexError:
+        anime = 0
+    input_str = input_str.strip()
+    result = await search_in_animefiller(input_str)
+    if result == {}:
+        return await edit_or_reply(
+            event, f"**No filler episodes for the given anime**` {input_str}`"
+        )
+    if len(result) == 1:
+        response = await get_filler_episodes(result[list(result.keys())[0]])
+        msg = ""
+        msg += f"**Fillers for anime** `{list(result.keys())[0]}`**"
+        msg += "\n\n• Manga Canon episodes:**`\n"
+        msg += str(response.get("total_ep"))
+        msg += "\n\n`**• Mixed/Canon fillers:**`\n"
+        msg += str(response.get("mixed_ep"))
+        msg += "\n\n`**• Fillers:**\n`"
+        msg += str(response.get("filler_episodes"))
+        if response.get("anime_canon_episodes") is not None:
+            msg += "\n\n`**• Anime Canon episodes:**\n`"
+            msg += str(response.get("anime_canon_episodes"))
+        msg += "`"
+        return await edit_or_reply(event, msg)
+    if anime == 0:
+        msg = f"**More than 1 result found for {input_str}. so try as** `{Config.COMMAND_HAND_LER}fillers -n<number> {input_str}`\n\n"
+        for i, an in enumerate(list(result.keys()), start=1):
+            msg += f"{i}. {an}\n"
+        return await edit_or_reply(event, msg)
+    try:
+        response = await get_filler_episodes(result[list(result.keys())[anime - 1]])
+    except IndexError:
+        msg = f"**Given index for {input_str} is wrong check again for correct index and then try** `{Config.COMMAND_HAND_LER}fillers -n<index> {input_str}`\n\n"
+        for i, an in enumerate(list(result.keys()), start=1):
+            msg += f"{i}. {an}\n"
+        return await edit_or_reply(event, msg)
+    msg = ""
+    msg += f"**Fillers for anime** `{list(result.keys())[anime-1]}`**"
+    msg += "\n\n• Manga Canon episodes:**`\n"
+    msg += str(response.get("total_ep"))
+    msg += "\n\n`**• Mixed/Canon fillers:**`\n"
+    msg += str(response.get("mixed_ep"))
+    msg += "\n\n`**• Fillers:**\n`"
+    msg += str(response.get("filler_episodes"))
+    if response.get("anime_canon_episodes") is not None:
+        msg += "\n\n`**• Anime Canon episodes:**\n`"
+        msg += str(response.get("anime_canon_episodes"))
+    msg += "`"
+    await edit_or_reply(event, msg)
+
+
 @register(pattern=r"^/schedule ?(.*)")
 @register(pattern=r"^/aschedule ?(.*)")
 async def aschedule_fetch(event):
