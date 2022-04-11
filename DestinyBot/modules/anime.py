@@ -13,7 +13,6 @@ import os
 import time
 #from DestinyBot.utils.pluginhelper import edit_or_reply
 from datetime import datetime
-from DestinyBot import OWNER_ID, DEV_USERS, LOGGER
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY as path
 from DestinyBot import TEMP_DOWNLOAD_DIRECTORY
 from datetime import datetime
@@ -33,7 +32,7 @@ from googlesearch import search
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 from DestinyBot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from DestinyBot.modules.helper_funcs.string_handling import extract_time
-from DestinyBot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher, REQUEST_CHAT_ID
+from DestinyBot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher, REQUEST_CHAT_ID, LOGGER
 from DestinyBot.modules.disable import DisableAbleCommandHandler
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update, Message)
@@ -250,9 +249,8 @@ async def get_anime(event):
         for i, an in enumerate(list(result.keys()), start=1):
             msg += f"{i}. {an}\n"
         return await edit_or_reply(event, msg)
-    try:
-        response = await get_filler_episodes(result[list(result.keys())[anime - 1]])
-    except IndexError:
+    response = await get_filler_episodes(result[list(result.keys())[anime - 1]])
+    If anime>len(results) or anime<1:
         msg = f"**Given index for {input_str} is wrong check again for correct index and then try** `/fillers -n<index> {input_str}`\n\n"
         for i, an in enumerate(list(result.keys()), start=1):
             msg += f"{i}. {an}\n"
