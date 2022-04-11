@@ -93,3 +93,4 @@ natsort
 html-telegraph-poster
 NHentai-API
 pyYAML>=5.1.2
+ShazamAPI
