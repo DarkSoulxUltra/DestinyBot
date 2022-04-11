@@ -209,7 +209,7 @@ def extract_arg(message: Message):
     return None
 
 @register(pattern=r"^/fillers ?(.*)")
-@regoster(pattern=r"^/filler ?(.*)")
+@register(pattern=r"^/filler ?(.*)")
 async def get_anime(event):
     input_str = event.pattern_match.group(1)
     reply = await event.get_reply_message()
