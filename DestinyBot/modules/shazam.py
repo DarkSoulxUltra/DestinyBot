@@ -55,3 +55,14 @@ async def shazamcmd(event):
         event.chat_id, image, caption=f"Song: {song}", reply_to=reply
     )
     await unmei_event.delete()
+
+
+__mod_name__ = "Shazam"
+
+__help__ = """
+*Shazam*
+ ✮ `/shazam`*:* reply to a mp3 media file to reverse search a song.
+
+It is used in case you receive a media and doesn't know it's name.
+`Video to mp3 conversion will be added soon...`
+"""
