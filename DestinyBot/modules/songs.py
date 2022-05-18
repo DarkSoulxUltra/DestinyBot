@@ -1,13 +1,9 @@
-__help__ = """
+#__help__ = """
 
-*Music Modules:*
+#*Music Modules:*
+#✮ /video or /vsong (query): download video from youtube
+#✮ /music or /song (query): download song from yt servers. (API BASED)
+#✮ /lyrics (song name) : This plugin searches for song lyrics with song name.
+#"""
 
-✮ /video or /vsong (query): download video from youtube
-
-✮ /music or /song (query): download song from yt servers. (API BASED)
-
-✮ /lyrics (song name) : This plugin searches for song lyrics with song name.
-
-"""
-
-__mod_name__ = "Songs"
+#__mod_name__ = "Songs"
