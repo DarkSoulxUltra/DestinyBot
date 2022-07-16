@@ -1,4 +1,4 @@
-"""from __future__ import unicode_literals
+from __future__ import unicode_literals
 import asyncio
 import math
 import io
@@ -242,4 +242,4 @@ async def lyrics_func(_, message):
         return await m.edit(f"**__{lyrics}__**")
     lyrics = await paste(lyrics)
     await m.edit(f"**LYRICS_TOO_LONG:** [URL]({lyrics})")
-"""
+
