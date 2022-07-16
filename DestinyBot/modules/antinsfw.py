@@ -7,6 +7,7 @@ from DestinyBot.utils.errors import capture_err
 from DestinyBot.utils.permissions import adminsOnly
 from DestinyBot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
 
+
 async def get_file_id_from_message(message):
     file_id = None
     if message.document:
@@ -156,4 +157,3 @@ async def nsfw_enable_disable(_, message):
         await message.reply_text("Disabled AntiNSFW System. Yeah, enjoy your fap now.")
     else:
         await message.reply_text("Unknown Suffix, Use /antinsfw [on/off]")
-

@@ -176,7 +176,6 @@ def listmodules(update: Update, context: CallbackContext):
     message.reply_text(module_list, parse_mode=ParseMode.HTML)
 
 
-
 LOAD_HANDLER = CommandHandler("load", load, run_async=True)
 UNLOAD_HANDLER = CommandHandler("unload", unload, run_async=True)
 LISTMODULES_HANDLER = CommandHandler("listmodules", listmodules, run_async=True)

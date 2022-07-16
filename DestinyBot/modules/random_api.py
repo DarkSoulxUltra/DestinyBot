@@ -30,7 +30,9 @@ async def _(hilih):
         await hilih.reply("Usage: /hilih <text>")
         return
     try:
-        resp = requests.get(f"https://tede-api.herokuapp.com/api/hilih?kata={kuntul}").json()
+        resp = requests.get(
+            f"https://tede-api.herokuapp.com/api/hilih?kata={kuntul}"
+        ).json()
         hilihnya = f"{resp['result']}"
         return await hilih.reply(hilihnya)
     except Exception:
@@ -59,6 +61,8 @@ async def boobs(client, message):
     await a.edit("` Sending pic for boobs, Matte-kudasai...`")
     nsfw = requests.get("http://api.oboobs.ru/noise/1").json()[0]["preview"]
     urllib.request.urlretrieve("http://media.oboobs.ru/{}".format(nsfw), pic_loc)
-    await client.send_photo(message.chat.id, pic_loc, caption="**Here's the Oppai pic.**")
+    await client.send_photo(
+        message.chat.id, pic_loc, caption="**Here's the Oppai pic.**"
+    )
     os.remove(pic_loc)
     await a.delete()

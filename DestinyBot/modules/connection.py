@@ -12,6 +12,7 @@ from DestinyBot.modules.helper_funcs.alternate import send_message, typing_actio
 
 user_admin = chat_status.user_admin
 
+
 @user_admin
 @typing_action
 def allow_connections(update, context) -> str:

@@ -18,6 +18,7 @@ from telethon.utils import is_image, is_video
 
 from DestinyBot.events import register
 
+
 @register(pattern="^/sauce(.*)")
 @register(pattern="^/whatanime(.*)")
 async def whatanime(e):
@@ -95,6 +96,7 @@ def is_gif(file):
     if not is_video(file):
         return False
     return DocumentAttributeAnimated() in getattr(file, "document", file).attributes
+
 
 __help__ = """
 

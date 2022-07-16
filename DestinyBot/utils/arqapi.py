@@ -4,7 +4,7 @@ from random import randint
 from time import time
 
 import aiohttp
-from DestinyBot import aiohttpsession 
+from DestinyBot import aiohttpsession
 from aiohttp import ClientSession
 
 from google_trans_new import google_translator
@@ -16,7 +16,7 @@ from DestinyBot import pbot
 
 SUDOERS = OWNER_ID
 ARQ_API_URL = "https://thearq.tech"
-#ARQ_API_KEY = "BFQHDW-PXKPWW-LHRZCV-LWBBRL-ARQ"
+# ARQ_API_KEY = "BFQHDW-PXKPWW-LHRZCV-LWBBRL-ARQ"
 
 # Aiohttp Client
 print("[INFO]: INITIALZING AIOHTTP SESSION")

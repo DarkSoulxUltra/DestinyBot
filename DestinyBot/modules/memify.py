@@ -10,14 +10,18 @@ async def handler(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.reply("`Provide Some Text To Draw! And Reply To Image/Stickers EXAMPLE: /mmf text`")
+        await event.reply(
+            "`Provide Some Text To Draw! And Reply To Image/Stickers EXAMPLE: /mmf text`"
+        )
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
         await event.reply("```Reply to a image/sticker.```")
         return
     file = await bot.download_media(reply_message)
-    msg = await event.reply("```Matte, Matee-kudasai, memifying this image! (」ﾟﾛﾟ)｣ ```")
+    msg = await event.reply(
+        "```Matte, Matee-kudasai, memifying this image! (」ﾟﾛﾟ)｣ ```"
+    )
     text = str(event.pattern_match.group(1)).strip()
     if len(text) < 1:
         return await msg.edit("You might want to try `/mmf text`")

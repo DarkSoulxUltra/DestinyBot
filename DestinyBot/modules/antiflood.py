@@ -397,6 +397,7 @@ def __chat_settings__(chat_id, user_id):
         return "Not enforcing to flood control."
     return "Antiflood has been set to`{}`.".format(limit)
 
+
 __help__ = """
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood will result in restricting that user.
  This will mute users if they send more than 10 messages in a row, bots are ignored.

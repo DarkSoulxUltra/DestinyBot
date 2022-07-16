@@ -158,7 +158,7 @@ def kang(update, context):
                         packnum,
                         png_sticker=open("kangsticker.png", "rb"),
                     )
-                    
+
                 elif e.message == "Sticker_png_dimensions":
                     im.save(kangsticker, "PNG")
                     context.bot.add_sticker_to_set(
@@ -260,7 +260,7 @@ def kang(update, context):
                         packnum,
                         tgs_sticker=open("kangsticker.tgs", "rb"),
                     )
-                    
+
                 elif e.message == "Invalid sticker emojis":
                     msg.reply_text("Invalid emoji(s).")
                 elif e.message == "Internal Server Error: sticker set not found (500)":
@@ -347,7 +347,7 @@ def kang(update, context):
                     packnum,
                     png_sticker=open("kangsticker.png", "rb"),
                 )
-                
+
             elif e.message == "Sticker_png_dimensions":
                 im.save(kangsticker, "PNG")
                 context.bot.add_sticker_to_set(
@@ -467,7 +467,8 @@ def makepack_internal(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Unblock Me Senpai", url=f"t.me/{context.bot.username}?start="
+                                text="Unblock Me Senpai",
+                                url=f"t.me/{context.bot.username}?start=",
                             )
                         ]
                     ]
@@ -574,6 +575,7 @@ def delsticker(update, context):
             "Please reply to sticker message to del sticker"
         )
 
+
 __mod_name__ = "Stickers"
 
 __help__ = """
@@ -591,8 +593,12 @@ __help__ = """
 
 STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid, run_async=True)
 GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker, run_async=True)
-KANG_HANDLER = DisableAbleCommandHandler(("kang", "steal"), kang, pass_args=True, run_async=True)
-DEL_HANDLER = DisableAbleCommandHandler(("delsticker", "delkang"), delsticker, run_async=True)
+KANG_HANDLER = DisableAbleCommandHandler(
+    ("kang", "steal"), kang, pass_args=True, run_async=True
+)
+DEL_HANDLER = DisableAbleCommandHandler(
+    ("delsticker", "delkang"), delsticker, run_async=True
+)
 STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker, run_async=True)
 
 dispatcher.add_handler(STICKERS_HANDLER)

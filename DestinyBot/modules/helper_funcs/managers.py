@@ -19,7 +19,7 @@ async def edit_or_reply(
     linktext=None,
     caption=None,
 ):  # sourcery no-metrics
-    #sudo_users = _sudousers_list()
+    # sudo_users = _sudousers_list()
     link_preview = link_preview or False
     reply_to = await event.get_reply_message()
     if len(text) < 4096 and not deflink:
@@ -62,8 +62,9 @@ async def edit_or_reply(
     await event.delete()
     os.remove(file_name)
 
+
 async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None):
-    #sudo_users = DEV_USERS
+    # sudo_users = DEV_USERS
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
     time = time or 5
@@ -71,9 +72,7 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
     Unmeievent = (
         await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
         if reply_to
-        else await event.reply(
-            text, link_preview=link_preview, parse_mode=parse_mode
-        )
+        else await event.reply(text, link_preview=link_preview, parse_mode=parse_mode)
     )
     await asyncio.sleep(time)
     return await Unmeievent.delete()

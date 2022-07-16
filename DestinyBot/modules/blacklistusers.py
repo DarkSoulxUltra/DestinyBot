@@ -9,7 +9,7 @@ from DestinyBot import (
     TIGERS,
     WOLVES,
     dispatcher,
-) 
+)
 from DestinyBot.modules.helper_funcs.chat_status import dev_plus
 from DestinyBot.modules.helper_funcs.extraction import (
     extract_user,

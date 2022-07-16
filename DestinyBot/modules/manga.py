@@ -1,4 +1,4 @@
-'''from telethon import events, Button
+"""from telethon import events, Button
 from DestinyBot.modules.helper_funcs.Kissmangaapi import kissmangaapi as kiss
 import DestinyBot.modules.helper_funcs.formating_results as format
 from DestinyBot import pbot as bot
@@ -74,4 +74,4 @@ class Manga():
             f"Name: {dets[0]}\nGenre: {', '.join(dets[2])}\nLatest Chapter: {dets[3]}\n\n\nCopy This command and add chapter number at end\n\n`/read {data[4:]}:`",
             file=dets[1]
         )
-'''
+"""

@@ -18,9 +18,7 @@ from DestinyBot.utils.pastebin import paste
 
 __mod_name__ = "Paste​"
 
-pattern = re.compile(
-    r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$"
-)
+pattern = re.compile(r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$")
 
 
 async def isPreviewUp(preview: str) -> bool:
@@ -42,18 +40,14 @@ async def isPreviewUp(preview: str) -> bool:
 @capture_err
 async def paste_func(_, message):
     if not message.reply_to_message:
-        return await message.reply_text(
-            "Reply To A Message With /paste"
-        )
+        return await message.reply_text("Reply To A Message With /paste")
     m = await message.reply_text("Pasting...")
     if message.reply_to_message.text:
         content = str(message.reply_to_message.text)
     elif message.reply_to_message.document:
         document = message.reply_to_message.document
         if document.file_size > 1048576:
-            return await m.edit(
-                "You can only paste files smaller than 1MB."
-            )
+            return await m.edit("You can only paste files smaller than 1MB.")
         if not pattern.search(document.mime_type):
             return await m.edit("Only text files can be pasted.")
         doc = await message.reply_to_message.download()
@@ -67,13 +61,12 @@ async def paste_func(_, message):
 
     if await isPreviewUp(preview):
         try:
-            await message.reply_photo(
-                photo=preview, quote=False, reply_markup=button
-            )
+            await message.reply_photo(photo=preview, quote=False, reply_markup=button)
             return await m.delete()
         except Exception:
             pass
     return await m.edit(link)
+
 
 async def p_paste(message, extension=None):
     """
@@ -204,6 +197,7 @@ async def d_paste(message, extension=None):
         }
     return {"error": "Unable to reach dogbin."}
 
+
 async def pastetext(text_to_print, pastetype=None, extension=None):
     response = {"error": "something went wrong"}
     if pastetype is not None:
@@ -229,6 +223,7 @@ async def pastetext(text_to_print, pastetype=None, extension=None):
     if "error" in response:
         response = await d_paste(text_to_print, extension)
     return response
+
 
 def utc_to_local(utc_datetime):
     now_timestamp = time.time()

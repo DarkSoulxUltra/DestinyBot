@@ -25,10 +25,12 @@ weekdays = {
     "sunday": 6,
 }
 
+
 def get_weekday(dayid):
     for key, value in weekdays.items():
         if value == dayid:
             return key
+
 
 async def get_anime_schedule(weekid):
     "get anime schedule"
@@ -41,6 +43,7 @@ async def get_anime_schedule(weekid):
             sr_no += 1
             result += f"{sr_no}. [{a_name['title']}]({a_name['url']})\n"
     return result, dayname
+
 
 async def search_in_animefiller(query):
     html = requests.get(animnefillerurl).text
