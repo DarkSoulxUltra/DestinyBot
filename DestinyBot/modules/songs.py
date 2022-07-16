@@ -6,4 +6,4 @@ __help__ = """
 ✮ /lyrics (song name) : This plugin searches for song lyrics with song name.
 """
 
-#__mod_name__ = "Songs"
+# __mod_name__ = "Songs"

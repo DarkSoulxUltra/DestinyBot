@@ -13,12 +13,20 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
 
-from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity, __version__ as ptbver, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import (
+    MAX_MESSAGE_LENGTH,
+    ParseMode,
+    Update,
+    MessageEntity,
+    __version__ as ptbver,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+)
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
-    
+
 from DestinyBot import (
     DEV_USERS,
     OWNER_ID,
@@ -42,6 +50,7 @@ from DestinyBot.modules.sql.users_sql import get_user_num_chats
 from DestinyBot.modules.helper_funcs.chat_status import sudo_plus
 from DestinyBot.modules.helper_funcs.extraction import extract_user
 from DestinyBot import telethn
+
 
 def no_by_per(totalhp, percentage):
     """
@@ -125,7 +134,6 @@ def make_bar(per):
     return "✭" * done + "☆" * (10 - done)
 
 
-
 def get_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -159,18 +167,21 @@ def get_id(update: Update, context: CallbackContext):
 
         if chat.type == "private":
             msg.reply_text(
-                f"Your id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
+                f"Your id is <code>{chat.id}</code>.",
+                parse_mode=ParseMode.HTML,
             )
 
         else:
             msg.reply_text(
-                f"This group's id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML,
+                f"This group's id is <code>{chat.id}</code>.",
+                parse_mode=ParseMode.HTML,
             )
 
 
 @telethn.on(
     events.NewMessage(
-        pattern="/ginfo ", from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or []),
+        pattern="/ginfo ",
+        from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or []),
     ),
 )
 async def group_info(event) -> None:
@@ -178,7 +189,8 @@ async def group_info(event) -> None:
     try:
         entity = await event.client.get_entity(chat)
         totallist = await event.client.get_participants(
-            entity, filter=ChannelParticipantsAdmins,
+            entity,
+            filter=ChannelParticipantsAdmins,
         )
         ch_full = await event.client(GetFullChannelRequest(channel=entity))
     except:
@@ -206,7 +218,6 @@ async def group_info(event) -> None:
     await event.reply(msg)
 
 
-
 def gifid(update: Update, context: CallbackContext):
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.animation:
@@ -216,7 +227,6 @@ def gifid(update: Update, context: CallbackContext):
         )
     else:
         update.effective_message.reply_text("Please reply to a gif to get its ID.")
-
 
 
 def info(update: Update, context: CallbackContext):
@@ -246,7 +256,10 @@ def info(update: Update, context: CallbackContext):
     else:
         return
 
-    rep = message.reply_text("<code>Retrieving Info from the Symphonica DB...</code>", parse_mode=ParseMode.HTML)
+    rep = message.reply_text(
+        "<code>Retrieving Info from the Symphonica DB...</code>",
+        parse_mode=ParseMode.HTML,
+    )
 
     text = (
         f"『 <b>Database of {user.first_name}</b> 』\n\n"
@@ -305,12 +318,16 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
     elif user.id in DEMONS:
         text += "\n\nThe Disaster level of this person is 'D2 Slayer', that's basically a Demon."
-        disaster_level_present = True 
+        disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n\nThe Disaster level of this person is 'Defender', a Tiger, Rawrrr!!!."
+        text += (
+            "\n\nThe Disaster level of this person is 'Defender', a Tiger, Rawrrr!!!."
+        )
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n\nThe Disaster level of this person is 'Melody Creator', Haah!! a Wolf."
+        text += (
+            "\n\nThe Disaster level of this person is 'Melody Creator', Haah!! a Wolf."
+        )
         disaster_level_present = True
 
     if disaster_level_present:
@@ -351,29 +368,34 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/unmei_updates/5"),
+                                "Health", url="https://t.me/unmei_updates/5"
+                            ),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/unmei_updates/4")
+                                "Disaster", url="https://t.me/unmei_updates/4"
+                            ),
                         ],
                     ]
                 ),
                 parse_mode=ParseMode.HTML,
             )
             os.remove(f"{user.id}.png")
-            
+
         # Incase user don't have profile pic, send normal text
         except IndexError:
             message.reply_text(
-                text, parse_mode=ParseMode.HTML, disable_web_page_preview=True,
+                text,
+                parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True,
             )
 
     else:
         message.reply_text(
-            text, parse_mode=ParseMode.HTML, disable_web_page_preview=True,
+            text,
+            parse_mode=ParseMode.HTML,
+            disable_web_page_preview=True,
         )
 
     rep.delete()
-
 
 
 def about_me(update: Update, context: CallbackContext):
@@ -403,7 +425,6 @@ def about_me(update: Update, context: CallbackContext):
         update.effective_message.reply_text("There isnt one, use /setme to set one.")
 
 
-
 def set_about_me(update: Update, context: CallbackContext):
     message = update.effective_message
     user_id = message.from_user.id
@@ -430,10 +451,10 @@ def set_about_me(update: Update, context: CallbackContext):
         else:
             message.reply_text(
                 "The info needs to be under {} characters! You have {}.".format(
-                    MAX_MESSAGE_LENGTH // 4, len(info[1]),
+                    MAX_MESSAGE_LENGTH // 4,
+                    len(info[1]),
                 ),
             )
-
 
 
 @sudo_plus
@@ -442,7 +463,7 @@ def stats(update, context):
     status = "*╒═══『 System statistics 』*\n\n"
     status += "*✧ Python Version:* " + python_version() + "\n"
     status += "*✧ python-Telegram-Bot:* " + str(ptbversion) + "\n"
-    status += "*✧ Uptime:* " + get_readable_time((time.time()-StartTime)) + "\n"
+    status += "*✧ Uptime:* " + get_readable_time((time.time() - StartTime)) + "\n"
     try:
         update.effective_message.reply_text(
             status
@@ -468,8 +489,6 @@ def stats(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
         )
-        
-        
 
 
 def about_bio(update: Update, context: CallbackContext):
@@ -501,7 +520,6 @@ def about_bio(update: Update, context: CallbackContext):
         )
 
 
-
 def set_about_bio(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -525,11 +543,12 @@ def set_about_bio(update: Update, context: CallbackContext):
             message.reply_text(
                 "Erm... yeah, I only trust the Conductors to set my bio.",
             )
-            return      
+            return
 
         text = message.text
         bio = text.split(
-            None, 1,
+            None,
+            1,
         )  # use python's maxsplit to only remove the cmd, hence keeping newlines.
 
         if len(bio) == 2:
@@ -541,7 +560,8 @@ def set_about_bio(update: Update, context: CallbackContext):
             else:
                 message.reply_text(
                     "Bio needs to be under {} characters! You tried to set {}.".format(
-                        MAX_MESSAGE_LENGTH // 4, len(bio[1]),
+                        MAX_MESSAGE_LENGTH // 4,
+                        len(bio[1]),
                     ),
                 )
     else:

@@ -1,5 +1,6 @@
 RUN_STRINGS = (
-    "Now you see me, now you don't.", "ε=ε=ε=ε=┌(;￣▽￣)┘",
+    "Now you see me, now you don't.",
+    "ε=ε=ε=ε=┌(;￣▽￣)┘",
     "Get over here!",
     "Nigheroooooooo!!!!!!",
     "Look out for the wall!",
@@ -27,7 +28,7 @@ GIFS = [
     "CgACAgUAAx0CU_rCTAABAjdgX1s4NVaeCls6YaH3p43vgdCRwQIAAqsAA4P_MFUYQhyoR-kgpRsE",
     "CgACAgUAAx0CU_rCTAABAjdSX1s3fq5iEJ64YeQLKI8cD7CSuSEAAlUBAAJu09hW5iqWB0hTPD4bBA",
     "CgACAgQAAx0CY2kfkQACA81iBIz0YP_fRSp0ugSbj7QqmB0RwwAC-wIAAoNwvVK5kEmgsGl6tyME",
-    "CgACAgQAAx0CY2kfkQACA9BiBI0Wq1gMLVdKVALAnOtdZQABn8kAAsgCAAIhfjVTqg-aXh5k3PgjBA"
+    "CgACAgQAAx0CY2kfkQACA9BiBI0Wq1gMLVdKVALAnOtdZQABn8kAAsgCAAIhfjVTqg-aXh5k3PgjBA",
 ]
 
 SLAP_SAITAMA_TEMPLATES = (
@@ -43,7 +44,7 @@ SLAP_SAITAMA_TEMPLATES = (
         "Urusei!",
         "Baka ka Omae? Why slapping me?",
         "Yeah, Noob... Get wrecked!!",
-        "Are waah.... Bhaimya!!!"
+        "Are waah.... Bhaimya!!!",
     ],
 )
 
@@ -99,14 +100,14 @@ ATTEMPT_WITH_BOT = (
     "LMAO bruh! I'm really not interested in a 5 second round.",
     "Dude, you unzip your pants and held me down, but 'No thanks! I don't smoke.'",
     "Yeah, keep trying that! I might sit on your face. Be grateful.",
-    "*Sits on {user1}'s face.*\n You perv masochist, take this."
+    "*Sits on {user1}'s face.*\n You perv masochist, take this.",
 )
 
 SAVAGE_BOT = (
     "{user1} nutted in his pants.",
     "{user1} wetted the entire floor.",
     "{user1} starts wanking openly in the public.",
-    "{user1} became a man from a kid and f*cks his Girlfriend i.e.\"His Hand\"",
+    '{user1} became a man from a kid and f*cks his Girlfriend i.e."His Hand"',
     "{user1} moans with pleasure.\n*Wanking continues*",
     "Have you saw a fountain in the group? if not then {user1} has created one with the white liquid.",
     "{user1} tries to put his screw in the pillow.",
@@ -114,7 +115,7 @@ SAVAGE_BOT = (
     "{user1} dies due to excessive wanking.",
     "{user1} made some biceps, but only on his right hand.",
     "{user1} drills a hole in a wall, and you know the rest.",
-    "{user1} creampie's his shoe."
+    "{user1} creampie's his shoe.",
 )
 
 WRECKED_TEMPLATES = (
@@ -217,8 +218,7 @@ SLAP_TEMPLATES = (
     "{user1} {throws} a master ball at {user2}, resistance is futile.",
     "{user1} hits {user2} with an action beam...bbbbbb (ง・ω・)ง ====*",
     "{user1} ara ara's {user2}.",
-    "{user1} Kamehame ha's {user2}."
-    "{user1} ora ora's {user2}.",
+    "{user1} Kamehame ha's {user2}." "{user1} ora ora's {user2}.",
     "{user1} muda muda's {user2}.",
     "{user2} was turned into a Jojo reference!",
     "{user1} hits {user2} with {item}.",
@@ -264,7 +264,7 @@ ANIME_FLIRT_LINES = (
     "Do you have any Uzumaki in you? Would you like some?",
     "Do you like tentacles? Because I just drugged your beverage while you weren’t paying attention.",
     "Ever been shukaku'd?\n\n - Gaara",
-    "Ever notice how \"End of Evangelion\" and \"Let's Get It On\" rhyme?",
+    'Ever notice how "End of Evangelion" and "Let\'s Get It On" rhyme?',
     "Everybody calls me shark but you can call me tonight.",
     "Excuse me, is your name Hina? Because I think I'm in love.",
     "Front Crowd isn't my strongest style, but I've been told I'm a master at breaststroke.",
@@ -278,7 +278,7 @@ ANIME_FLIRT_LINES = (
     "Hey Girl, want to do 25 episodes of blushing at each other and then looking away?",
     "Hey Girl! Wanna see my deck?🃏",
     "Hey Sasuke! How’d you like have your Throwing-knife in my Shuriken hole?",
-    "Hey sweetie, they call me \"White Lightning.\" Care to find out why?",
+    'Hey sweetie, they call me "White Lightning." Care to find out why?',
     "How'd you like to see my kunai?",
     "I don’t mind fangirls.",
     "I don’t need to use byakugan to see into your heart.",
@@ -343,7 +343,7 @@ ANIME_FLIRT_LINES = (
     "I seem to have gone beyond 100% love for you.",
     "Perhaps I will allow myself to be eaten by such an adorable titan as you.",
     "I am like a Colossal Titan ready to break through the wall to your heart.",
-    "It’s like the Curse of the Abyss. I can’t stop loving you so easily."
+    "It’s like the Curse of the Abyss. I can’t stop loving you so easily.",
 )
 
 
@@ -392,7 +392,7 @@ PAT_GIFS = (
     "CgACAgQAAx0CY2kfkQACA9diBI6bU-hg3zyK1KC0vhvac_w3JgACTwMAArL4tFKQj-2FTJFrViME",
     "CgACAgQAAx0CY2kfkQACA9hiBI6cRYhyN2yKRRINneEpNsIK6AACEgMAAjgk3VIjeqiqw1sV_SME",
     "CgACAgQAAx0CY2kfkQACA9liBI6fuPJW7Di2haYcS250Jf3gBgACAwMAApzrtFI7x0zvXF1KvyME",
-    "CgACAgQAAx0CY2kfkQACA9piBI6gLs9Hm28G43s8tAcxRzo-6wAC-wIAAoaivVI2rsRPncJY_CME"
+    "CgACAgQAAx0CY2kfkQACA9piBI6gLs9Hm28G43s8tAcxRzo-6wAC-wIAAoaivVI2rsRPncJY_CME",
 )
 
 PAT_STICKERS = (

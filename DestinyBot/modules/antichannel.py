@@ -5,6 +5,7 @@ from DestinyBot.modules.helper_funcs.tools import post_to_telegraph
 from hentai import Hentai, Utils
 from natsort import natsorted
 import textwrap
+
 client = tbot
 import asyncio
 import time
@@ -28,12 +29,13 @@ from DestinyBot.modules.helper_funcs.filters import CustomFilters
 from DestinyBot.modules.helper_funcs.chat_status import user_admin
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
+
 @user_admin
 @gloggable
 def add_antichannel(update: Update, context: CallbackContext):
     chat = update.effective_chat
     msg = update.effective_message
-    user = update.effective_user #Remodified by @EverythingSuckz
+    user = update.effective_user  # Remodified by @EverythingSuckz
     is_antichannel = sql.is_antichannel(chat.id)
     if not is_antichannel:
         sql.set_antichannel(chat.id)
@@ -69,6 +71,7 @@ def rem_antichannel(update: Update, context: CallbackContext):
         )
         return message
 
+
 def list_antichannel_chats(update: Update, context: CallbackContext):
     chats = sql.get_all_antichannel_chats()
     text = "<b>Antichannel Activated Chats</b>\n"
@@ -93,15 +96,27 @@ def eliminate_channel(update: Update, context: CallbackContext):
     is_antichannel = sql.is_antichannel(chat.id)
     if not is_antichannel:
         return
-    if message.sender_chat and message.sender_chat.type == "channel" and not message.is_automatic_forward:
+    if (
+        message.sender_chat
+        and message.sender_chat.type == "channel"
+        and not message.is_automatic_forward
+    ):
         message.delete()
         sender_chat = message.sender_chat
-        
 
-ADD_ANTICHANNEL_HANDLER = CommandHandler("addantichannel", add_antichannel, run_async=True)
-REMOVE_ANTICHANNEL_HANDLER = CommandHandler("rmantichannel", rem_antichannel, run_async=True)
+
+ADD_ANTICHANNEL_HANDLER = CommandHandler(
+    "addantichannel", add_antichannel, run_async=True
+)
+REMOVE_ANTICHANNEL_HANDLER = CommandHandler(
+    "rmantichannel", rem_antichannel, run_async=True
+)
 LIST_ANTICHANNEL_CHATS_HANDLER = CommandHandler(
-    "antichannelchats", list_antichannel_chats, filters=CustomFilters.dev_filter, run_async=True)
+    "antichannelchats",
+    list_antichannel_chats,
+    filters=CustomFilters.dev_filter,
+    run_async=True,
+)
 
 dispatcher.add_handler(ADD_ANTICHANNEL_HANDLER)
 dispatcher.add_handler(REMOVE_ANTICHANNEL_HANDLER)

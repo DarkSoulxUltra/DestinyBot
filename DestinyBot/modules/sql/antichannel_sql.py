@@ -1,6 +1,7 @@
 import threading
 from sqlalchemy import Column, String
 from DestinyBot.modules.sql import BASE, SESSION
+
 #   |----------------------------------|
 #   |  Test Module by @EverythingSuckz |
 #   |        Kang with Credits         |
@@ -11,6 +12,7 @@ class AntiChannelChats(BASE):
 
     def __init__(self, chat_id):
         self.chat_id = chat_id
+
 
 AntiChannelChats.__table__.create(checkfirst=True)
 INSERTION_LOCK = threading.RLock()
@@ -26,6 +28,7 @@ def is_antichannel(chat_id):
     finally:
         SESSION.close()
 
+
 def set_antichannel(chat_id):
     with INSERTION_LOCK:
         antichannelchat = SESSION.query(AntiChannelChats).get(str(chat_id))
@@ -33,6 +36,7 @@ def set_antichannel(chat_id):
             antichannelchat = AntiChannelChats(str(chat_id))
         SESSION.add(antichannelchat)
         SESSION.commit()
+
 
 def rem_antichannel(chat_id):
     with INSERTION_LOCK:

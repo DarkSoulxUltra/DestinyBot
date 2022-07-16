@@ -7,11 +7,21 @@ from pyrogram import filters
 from DestinyBot import pbot
 
 MemesReddit = [
-    "Animemes", "lostpause", "LoliMemes", "cleananimemes",
-    "animememes", "goodanimemes", "AnimeFunny", "dankmemes",
-    "teenagers", "shitposting", "Hornyjail", "wholesomememes",
-    "cursedcomments"
+    "Animemes",
+    "lostpause",
+    "LoliMemes",
+    "cleananimemes",
+    "animememes",
+    "goodanimemes",
+    "AnimeFunny",
+    "dankmemes",
+    "teenagers",
+    "shitposting",
+    "Hornyjail",
+    "wholesomememes",
+    "cursedcomments",
 ]
+
 
 @pbot.on_message(filters.command("meme"))
 async def meme(client, message):
@@ -22,6 +32,7 @@ async def meme(client, message):
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
 
+
 @pbot.on_message(filters.command("cursed"))
 async def cursedmemes(client, message):
     async with aiohttp.ClientSession() as destiny_session:
@@ -30,6 +41,7 @@ async def cursedmemes(client, message):
         ) as resp:
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
+
 
 @pbot.on_message(filters.command("shitpost"))
 async def shitpost(client, message):
@@ -40,6 +52,7 @@ async def shitpost(client, message):
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
 
+
 @pbot.on_message(filters.command("fbi"))
 async def fbi(client, message):
     async with aiohttp.ClientSession() as destiny_session:
@@ -48,6 +61,7 @@ async def fbi(client, message):
         ) as resp:
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
+
 
 @pbot.on_message(filters.command("teenmemes|teenagers"))
 async def teenagers(client, message):
@@ -68,6 +82,7 @@ async def hmemes(client, message):
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
 
+
 @pbot.on_message(filters.command("pewds"))
 async def pewds(client, message):
     async with aiohttp.ClientSession() as destiny_session:
@@ -76,6 +91,7 @@ async def pewds(client, message):
         ) as resp:
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
+
 
 @pbot.on_message(filters.command("memes"))
 async def memes(client, message):
@@ -86,6 +102,7 @@ async def memes(client, message):
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
 
+
 @pbot.on_message(filters.command("hornyjail"))
 async def hornyjail(client, message):
     async with aiohttp.ClientSession() as destiny_session:
@@ -94,4 +111,3 @@ async def hornyjail(client, message):
         ) as resp:
             r = await resp.json()
             await message.reply_photo(r["url"], caption=r["title"])
-

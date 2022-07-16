@@ -1,4 +1,3 @@
-
 import random, html
 
 from DestinyBot import dispatcher
@@ -43,7 +42,6 @@ def afk(update: Update, context: CallbackContext):
     else:
         reason = ""
 
-    
     sql.set_afk(update.effective_user.id, reason)
     fname = update.effective_user.first_name
     random_afk_msg = (
@@ -66,7 +64,7 @@ def afk(update: Update, context: CallbackContext):
         "Wtf, going already? Not like I care about it.",
         "Do you know what it feels like in lava? Just go and sink in it 🔥",
         "Bye bye!!! Cum back soon",
-        "Before leaving, He told me \"Be the tsun to my dere\". Such a lewd brat",
+        'Before leaving, He told me "Be the tsun to my dere". Such a lewd brat',
         "Enjoy fapping.. I mean napping*.",
         "Stop dreaming that you'll find a date.",
         "A Snowball fight? No thanks! You might hit me on my chest.",
@@ -79,11 +77,13 @@ def afk(update: Update, context: CallbackContext):
         "Did you just shot some sticky stuff on your phone by seeing my pic? That's why going away.",
         "Fine! I won't be a bother, like I care if you are away. Hmmphh",
         "You playing CS:GO now? My kill streak is 13, but I don't play any games.🔪🪓🩸",
-        "Yeah, Go away Horny."
+        "Yeah, Go away Horny.",
     )
     afk_msg = random.choice(random_afk_msg)
     try:
-        update.effective_message.reply_text("{} is now away!{}.\n{}".format(fname, notice,afk_msg))
+        update.effective_message.reply_text(
+            "{} is now away!{}.\n{}".format(fname, notice, afk_msg)
+        )
     except BadRequest:
         pass
 
@@ -120,7 +120,7 @@ def no_longer_afk(update: Update, context: CallbackContext):
                 "{}, I know what you were doing.😏✊.\nAnyway, welcome back.",
                 "Okairinasai {} Nii-Chan!!",
                 "Where is {}?\nIn the chat!",
-                "{}, were you doing something lewd?\nI just saw a white stain on your T-shirt."
+                "{}, were you doing something lewd?\nI just saw a white stain on your T-shirt.",
             ]
             chosen_option = random.choice(options)
             update.effective_message.reply_text(chosen_option.format(firstname))

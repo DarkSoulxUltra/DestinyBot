@@ -78,7 +78,8 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-#def PM_start(update: Update, context: CallbackContext):
+
+# def PM_start(update: Update, context: CallbackContext):
 #    args = context.args
 uptime_pm = get_readable_time((time.time() - StartTime))
 first_name_pm = ""
@@ -114,29 +115,43 @@ Helpful commands:
 All commands can be used with the following: / or !
 List of all the Modules:
 """.format(
-    dispatcher.bot.first_name, "" if not ALLOW_EXCL else "📝All commands can either be used with / or !.")
+    dispatcher.bot.first_name,
+    "" if not ALLOW_EXCL else "📝All commands can either be used with / or !.",
+)
 buttons = [
     [
-        InlineKeyboardButton(text="『 ➕ Add Me to your Group! Onegaii! 』",url="https://telegram.dog/Destiny_x_Bot?startgroup=true")
+        InlineKeyboardButton(
+            text="『 ➕ Add Me to your Group! Onegaii! 』",
+            url="https://telegram.dog/Destiny_x_Bot?startgroup=true",
+        )
     ],
     [
         InlineKeyboardButton(text="『 🙇 Help 』", callback_data="help_back"),
-        InlineKeyboardButton(text="『 ❔ Otaku Talks 』", url="https://t.me/tas_support")
+        InlineKeyboardButton(text="『 ❔ Otaku Talks 』", url="https://t.me/tas_support"),
     ],
     [
-        InlineKeyboardButton(text="『 🚑 Support 』",url="https://telegram.dog/unmei_support"),
-        InlineKeyboardButton(text="『 📢 Updates 』",url="https://t.me/unmei_updates")
-    ]
+        InlineKeyboardButton(
+            text="『 🚑 Support 』", url="https://telegram.dog/unmei_support"
+        ),
+        InlineKeyboardButton(text="『 📢 Updates 』", url="https://t.me/unmei_updates"),
+    ],
 ]
 
 grp_buttons = [
     [
-        InlineKeyboardButton(text="『 🚑 Support 』", url="https://telegram.dog/unmei_support"),
-        InlineKeyboardButton(text="『 🙇 Help 』", url="http://t.me/Destiny_x_Bot?start=help")
+        InlineKeyboardButton(
+            text="『 🚑 Support 』", url="https://telegram.dog/unmei_support"
+        ),
+        InlineKeyboardButton(
+            text="『 🙇 Help 』", url="http://t.me/Destiny_x_Bot?start=help"
+        ),
     ],
     [
-        InlineKeyboardButton(text="『 🎧 Add Music Bot here 』", url="https://telegram.dog/DestinyMusic_bot?startgroup=true")
-    ]
+        InlineKeyboardButton(
+            text="『 🎧 Add Music Bot here 』",
+            url="https://telegram.dog/DestinyMusic_bot?startgroup=true",
+        )
+    ],
 ]
 
 GROUP_START_IMG = "https://telegra.ph/file/2d9b9613c4c7f8310c6d1.mp4"
@@ -214,7 +229,6 @@ def test(update: Update, context: CallbackContext):
     print(update.effective_message)
 
 
-
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -230,7 +244,13 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="[『 ⫷ Back 』]", callback_data="help_back")]]
+                        [
+                            [
+                                InlineKeyboardButton(
+                                    text="[『 ⫷ Back 』]", callback_data="help_back"
+                                )
+                            ]
+                        ]
                     ),
                 )
 
@@ -247,26 +267,31 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            #first_name = update.effective_user.first_name
+            # first_name = update.effective_user.first_name
             update.effective_message.reply_text(
                 PM_START_TEXT.format(
                     escape_markdown(context.bot.first_name),
                     escape_markdown(update.effective_user.first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats()),
+                    sql.num_chats(),
+                ),
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode = ParseMode.MARKDOWN,
+                parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
     else:
         update.effective_message.reply_animation(
             GROUP_START_IMG,
-            caption = GROUP_START_MSG.format(update.effective_user.first_name,get_readable_time((time.time() - StartTime))),
-            parse_mode = ParseMode.HTML,
+            caption=GROUP_START_MSG.format(
+                update.effective_user.first_name,
+                get_readable_time((time.time() - StartTime)),
+            ),
+            parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(grp_buttons),
             timeout=60,
-       )
+        )
+
 
 def error_handler(update, context):
     """Log the error and send a telegram message to notify the developer."""
@@ -349,7 +374,13 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="『 ⫷ Go Back 』", callback_data="help_back")]]
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="『 ⫷ Go Back 』", callback_data="help_back"
+                            )
+                        ]
+                    ]
                 ),
             )
 
@@ -407,20 +438,31 @@ def unmei_about_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Admins", callback_data="unmei_admin"),
-                    InlineKeyboardButton(text="Notes", callback_data="unmei_notes"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Support", callback_data="unmei_support"),
-                    InlineKeyboardButton(text="Credits", callback_data="unmei_credit"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/DarkSoulxUltra/DestinyBot"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="unmei_back"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="Admins", callback_data="unmei_admin"
+                        ),
+                        InlineKeyboardButton(text="Notes", callback_data="unmei_notes"),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Support", callback_data="unmei_support"
+                        ),
+                        InlineKeyboardButton(
+                            text="Credits", callback_data="unmei_credit"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Source Code",
+                            url="https://github.com/DarkSoulxUltra/DestinyBot",
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="Go Back", callback_data="unmei_back"
+                        ),
+                    ],
                 ]
             ),
         )
@@ -428,16 +470,17 @@ def unmei_about_callback(update, context):
         first_name = update.effective_user.first_name
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(context.bot.first_name),
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
         )
 
     elif query.data == "unmei_admin":
@@ -475,18 +518,18 @@ def unmei_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Support", url="t.me/unmei_support"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/unmei_updates"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="unmei_"),
-                 
-                 ]
+                    [
+                        InlineKeyboardButton(text="Support", url="t.me/unmei_support"),
+                        InlineKeyboardButton(
+                            text="Updates", url="https://t.me/unmei_updates"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Go Back", callback_data="unmei_"),
+                    ],
                 ]
             ),
         )
-
 
     elif query.data == "unmei_credit":
         query.message.edit_text(
@@ -495,19 +538,26 @@ def unmei_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-		 [
-                    InlineKeyboardButton(text="Shoto", url="https://github.com/DarkSoulxUltra"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="sena-ex", url="https://github.com/kennedy-ex"),
-                    InlineKeyboardButton(text="TheHamkerCat", url="https://github.com/TheHamkerCat"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="unmei_"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="Shoto", url="https://github.com/DarkSoulxUltra"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="sena-ex", url="https://github.com/kennedy-ex"
+                        ),
+                        InlineKeyboardButton(
+                            text="TheHamkerCat", url="https://github.com/TheHamkerCat"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Go Back", callback_data="unmei_"),
+                    ],
                 ]
             ),
         )
+
 
 def Source_about_callback(update, context):
     query = update.callback_query
@@ -527,27 +577,25 @@ def Source_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="unmei_")
-                 ]
-                ]
+                [[InlineKeyboardButton(text="Go Back", callback_data="unmei_")]]
             ),
         )
     elif query.data == "source_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(context.bot.first_name),
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
         )
+
 
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -820,9 +868,9 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.sendMessage(
-                f"@{SUPPORT_CHAT}", 
+                f"@{SUPPORT_CHAT}",
                 "👋 Hey there Symphonicas,\nI['](https://telegra.ph/file/6931b8ee3a04aef8af314.mp4)m awake again.",
-                parse_mode=ParseMode.MARKDOWN
+                parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
             LOGGER.warning(
@@ -832,7 +880,7 @@ def main():
             LOGGER.warning(e.message)
 
     test_handler = CommandHandler("test", test, run_async=True)
-    start_handler = CommandHandler("start", start, run_async=True) 
+    start_handler = CommandHandler("start", start, run_async=True)
     help_handler = CommandHandler("help", get_help, run_async=True)
     help_callback_handler = CallbackQueryHandler(
         help_button, pattern=r"help_.*", run_async=True
@@ -857,7 +905,7 @@ def main():
     )
 
     dispatcher.add_handler(test_handler)
-    #dispatcher.add_handler(check_handler)
+    # dispatcher.add_handler(check_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(about_callback_handler)

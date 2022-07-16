@@ -30,6 +30,7 @@ client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
 db = client["unmeirobot"]
 
+
 async def is_nsfw(event):
     lmao = event
     if not (
@@ -101,9 +102,7 @@ async def nsfw_watch(event):
                 f"**Removed Chat {event.chat.title} With Id {event.chat_id} From Nsfw Watch**"
             )
         else:
-            await event.reply(
-                "I undestand `/gshield on` and `/gshield off` only"
-            )
+            await event.reply("I undestand `/gshield on` and `/gshield off` only")
     else:
         await event.reply("`You Should Be Admin To Do This!`")
         return
@@ -314,6 +313,7 @@ async def del_profanity(event):
                     dev = await event.respond(final)
                     await asyncio.sleep(10)
                     await dev.delete()
+
 
 __help__ = """
 *Shield:*

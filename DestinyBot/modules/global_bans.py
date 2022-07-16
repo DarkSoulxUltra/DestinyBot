@@ -300,7 +300,9 @@ def ungban(update: Update, context: CallbackContext):
         message.reply_text("This user is not gbanned!")
         return
 
-    message.reply_text(f"Fine, I'll give {user_chat.first_name} another chance, globally offcourse.\nBe Grateful..")
+    message.reply_text(
+        f"Fine, I'll give {user_chat.first_name} another chance, globally offcourse.\nBe Grateful.."
+    )
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
@@ -383,9 +385,13 @@ def ungban(update: Update, context: CallbackContext):
 
     if ungban_time > 60:
         ungban_time = round((ungban_time / 60), 2)
-        message.reply_text(f"Great! This human has been un-gbanned. Took {ungban_time} min")
+        message.reply_text(
+            f"Great! This human has been un-gbanned. Took {ungban_time} min"
+        )
     else:
-        message.reply_text(f"That took so long, this humam has been un-gbanned. Took {ungban_time} sec")
+        message.reply_text(
+            f"That took so long, this humam has been un-gbanned. Took {ungban_time} sec"
+        )
 
 
 @support_plus
@@ -535,6 +541,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *gbans*: `{sql.does_chat_gban(chat_id)}`."
+
 
 __help__ = """ 
 *Admins only:*

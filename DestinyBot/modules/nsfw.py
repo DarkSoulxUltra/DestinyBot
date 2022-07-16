@@ -6,13 +6,15 @@ from hentai import Hentai, Utils
 from natsort import natsorted
 import html
 import textwrap
+
 client = tbot
 import asyncio
 import aiohttp
 import time
-#from pyrogram import filters
-#from DestinyBot import pbot
-#from telegram.ext import run_async
+
+# from pyrogram import filters
+# from DestinyBot import pbot
+# from telegram.ext import run_async
 from DestinyBot.events import register
 from telethon import Button
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -32,6 +34,7 @@ from DestinyBot.modules.helper_funcs.filters import CustomFilters
 from DestinyBot.modules.helper_funcs.chat_status import user_admin
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
+
 def extract_arg(message: Message):
     split = message.text.split(" ", 1)
     if len(split) > 1:
@@ -47,7 +50,7 @@ def extract_arg(message: Message):
 def add_nsfw(update: Update, context: CallbackContext):
     chat = update.effective_chat
     msg = update.effective_message
-    user = update.effective_user #Remodified by @EverythingSuckz
+    user = update.effective_user  # Remodified by @EverythingSuckz
     is_nsfw = sql.is_nsfw(chat.id)
     if not is_nsfw:
         sql.set_nsfw(chat.id)
@@ -71,7 +74,9 @@ def rem_nsfw(update: Update, context: CallbackContext):
     user = update.effective_user
     is_nsfw = sql.is_nsfw(chat.id)
     if not is_nsfw:
-        msg.reply_text("You look innocent to me by following the morales. NSFW Mode is already Deactivated")
+        msg.reply_text(
+            "You look innocent to me by following the morales. NSFW Mode is already Deactivated"
+        )
         return ""
     else:
         sql.rem_nsfw(chat.id)
@@ -82,6 +87,7 @@ def rem_nsfw(update: Update, context: CallbackContext):
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         )
         return message
+
 
 def list_nsfw_chats(update: Update, context: CallbackContext):
     chats = sql.get_all_nsfw_chats()
@@ -99,6 +105,7 @@ def list_nsfw_chats(update: Update, context: CallbackContext):
             sleep(e.retry_after)
     update.effective_message.reply_text(text, parse_mode="HTML")
 
+
 @register(pattern=r"^/nhentai ?(.*)")
 @register(pattern=r"^/doujin ?(.*)")
 async def nhentai(event):
@@ -107,9 +114,9 @@ async def nhentai(event):
     input_str = event.pattern_match.group(1)
     code = input_str
     is_nsfw = sql.is_nsfw(chat_id)
-    #if not is_nsfw:
-        #await event.reply("`Dude! enable NSFW before getting any doujins from me.`")
-        #return
+    # if not is_nsfw:
+    # await event.reply("`Dude! enable NSFW before getting any doujins from me.`")
+    # return
     if "nhentai" in input_str:
         link_regex = r"(?:https?://)?(?:www\.)?nhentai\.net/g/(\d+)"
         match = re.match(link_regex, input_str)
@@ -117,7 +124,9 @@ async def nhentai(event):
     if input_str == "random":
         code = Utils.get_random_id()
     if input_str == "" or input_str == " ":
-        await event.reply("Gimme some valid code to search. It'll work like:\n • `/nhentai <code>` or `/nhentai random`.")
+        await event.reply(
+            "Gimme some valid code to search. It'll work like:\n • `/nhentai <code>` or `/nhentai random`."
+        )
         return
     try:
         doujin = Hentai(code)
@@ -182,10 +191,11 @@ async def nhentai(event):
 
         msg += "\n" + " ".join(natsorted(categories))
     msg += f"\n**Pages :**\n{doujin.num_pages}"
-    #msg += f"\n[😋 Read 😋](buttonurl://{graph_link})"
-    #button = InlineKeyboardButton(text="😋 Read 😋", url=graph_link)
-    #await event.send_message(chat_id, msg, button)
+    # msg += f"\n[😋 Read 😋](buttonurl://{graph_link})"
+    # button = InlineKeyboardButton(text="😋 Read 😋", url=graph_link)
+    # await event.send_message(chat_id, msg, button)
     await event.reply(msg)
+
 
 def neko(update, context):
     msg = update.effective_message
@@ -203,6 +213,7 @@ def feet(update, context):
     target = "feet"
     msg.reply_photo(nekos.img(target))
 
+
 def yuri(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -212,6 +223,7 @@ def yuri(update, context):
     msg = update.effective_message
     target = "yuri"
     msg.reply_photo(nekos.img(target))
+
 
 def trap(update, context):
     chat_id = update.effective_chat.id
@@ -223,6 +235,7 @@ def trap(update, context):
     target = "trap"
     msg.reply_photo(nekos.img(target))
 
+
 def futanari(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -233,6 +246,7 @@ def futanari(update, context):
     target = "futanari"
     msg.reply_photo(nekos.img(target))
 
+
 def hololewd(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -242,6 +256,7 @@ def hololewd(update, context):
     msg = update.effective_message
     target = "hololewd"
     msg.reply_photo(nekos.img(target))
+
 
 def lewdkemo(update, context):
     chat_id = update.effective_chat.id
@@ -275,6 +290,7 @@ def feetgif(update, context):
     target = "feetg"
     msg.reply_video(nekos.img(target))
 
+
 def cumgif(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -284,6 +300,7 @@ def cumgif(update, context):
     msg = update.effective_message
     target = "cum"
     msg.reply_video(nekos.img(target))
+
 
 def erokemo(update, context):
     chat_id = update.effective_chat.id
@@ -295,6 +312,7 @@ def erokemo(update, context):
     target = "erokemo"
     msg.reply_photo(nekos.img(target))
 
+
 def lesbian(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -305,10 +323,12 @@ def lesbian(update, context):
     target = "les"
     msg.reply_video(nekos.img(target))
 
+
 def wallpaper(update, context):
     msg = update.effective_message
     target = "wallpaper"
     msg.reply_photo(nekos.img(target))
+
 
 def lewdk(update, context):
     chat_id = update.effective_chat.id
@@ -319,6 +339,7 @@ def lewdk(update, context):
     msg = update.effective_message
     target = "lewdk"
     msg.reply_photo(nekos.img(target))
+
 
 def ngif(update, context):
     chat_id = update.effective_chat.id
@@ -332,9 +353,10 @@ def ngif(update, context):
 
 
 def tickle(update, context):
-     msg = update.effective_message
-     target = "tickle"
-     msg.reply_video(nekos.img(target))
+    msg = update.effective_message
+    target = "tickle"
+    msg.reply_video(nekos.img(target))
+
 
 def lewd(update, context):
     chat_id = update.effective_chat.id
@@ -363,6 +385,7 @@ def eroyuri(update, context):
     target = "eroyuri"
     msg.reply_photo(nekos.img(target))
 
+
 def eron(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -372,6 +395,7 @@ def eron(update, context):
     msg = update.effective_message
     target = "eron"
     msg.reply_photo(nekos.img(target))
+
 
 def cum(update, context):
     chat_id = update.effective_chat.id
@@ -383,6 +407,7 @@ def cum(update, context):
     target = "cum_jpg"
     msg.reply_photo(nekos.img(target))
 
+
 def bjgif(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -392,6 +417,7 @@ def bjgif(update, context):
     msg = update.effective_message
     target = "bj"
     msg.reply_video(nekos.img(target))
+
 
 def bj(update, context):
     chat_id = update.effective_chat.id
@@ -403,6 +429,7 @@ def bj(update, context):
     target = "blowjob"
     msg.reply_photo(nekos.img(target))
 
+
 def nekonsfw(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -412,6 +439,7 @@ def nekonsfw(update, context):
     msg = update.effective_message
     target = "nsfw_neko_gif"
     msg.reply_video(nekos.img(target))
+
 
 def solo(update, context):
     chat_id = update.effective_chat.id
@@ -423,6 +451,7 @@ def solo(update, context):
     target = "solo"
     msg.reply_photo(nekos.img(target))
 
+
 def kemonomimi(update, context):
     chat_id = update.effective_chat.id
     if not update.effective_message.chat.type == "private":
@@ -432,6 +461,7 @@ def kemonomimi(update, context):
     msg = update.effective_message
     target = "kemonomimi"
     msg.reply_photo(nekos.img(target))
+
 
 def avatarlewd(update, context):
     chat_id = update.effective_chat.id
@@ -447,6 +477,7 @@ def avatarlewd(update, context):
     img.save("temp.webp", "webp")
     msg.reply_document(open("temp.webp", "rb"))
     os.remove("temp.webp")
+
 
 def gasm(update, context):
     chat_id = update.effective_chat.id
@@ -527,7 +558,7 @@ def keta(update, context):
         if not is_nsfw:
             return
     msg = update.effective_message
-    target = 'keta'
+    target = "keta"
     if not target:
         msg.reply_text("No URL was received from the API!")
         return
@@ -699,10 +730,11 @@ def baka(update, context):
 ADD_NSFW_HANDLER = CommandHandler("addnsfw", add_nsfw, run_async=True)
 REMOVE_NSFW_HANDLER = CommandHandler("rmnsfw", rem_nsfw, run_async=True)
 LIST_NSFW_CHATS_HANDLER = CommandHandler(
-    "nsfwchats", list_nsfw_chats, filters=CustomFilters.dev_filter, run_async=True)
+    "nsfwchats", list_nsfw_chats, filters=CustomFilters.dev_filter, run_async=True
+)
 LEWDKEMO_HANDLER = CommandHandler("lewdkemo", lewdkemo, run_async=True)
 NEKO_HANDLER = CommandHandler("neko", neko, run_async=True)
-#COSPLAY_HANDLER = CommandHandler("cosplay", cosplay, run_async=True)
+# COSPLAY_HANDLER = CommandHandler("cosplay", cosplay, run_async=True)
 FEET_HANDLER = CommandHandler("feet", feet, run_async=True)
 YURI_HANDLER = CommandHandler("yuri", yuri, run_async=True)
 TRAP_HANDLER = CommandHandler("trap", trap, run_async=True)

@@ -16,7 +16,7 @@ GIF_ID = [
     "CgACAgQAAx0CXiWt4wACjEhiEKov41CQtbplxIQFDizay69cpQACKQMAAtZGtFLemSECQkC3_SME",
     "CgACAgQAAx0CXiWt4wACjE1iEKq3tMLVnF6K1t-Od35gO3GwVAAC7wIAAmwttFIkCuHvMkle_CME",
     "CgACAgQAAx0CXiWt4wACjE5iEKq7AtYlCaDGgoP5VR7s7sZZ7gACFgMAAq3GzFJXsgPyMtGIEyME",
-    "CgACAgQAAx0CXiWt4wACjE9iEKrBCDgQng6sVbqmU-LxGkFbsQAC3AIAAiudtFIUgy45-_1c2iME"
+    "CgACAgQAAx0CXiWt4wACjE9iEKrBCDgQng6sVbqmU-LxGkFbsQAC3AIAAiudtFIUgy45-_1c2iME",
 ]
 
 BOT_FLIRTED = (
@@ -32,7 +32,7 @@ BOT_FLIRTED = (
     "B.. Baka, don't flirt with me out of nowhere, I feel little bit shy.",
     "I always thought of you as my Onii-Chan, you sure wanna ruin our relationship?",
     "Ara Ara! My kouhai is trying to flirt with me, O Kawaii Kotto.",
-    "Urusei, leave me alone, find some partner already to flirt with."
+    "Urusei, leave me alone, find some partner already to flirt with.",
 )
 
 
@@ -118,7 +118,8 @@ def slap(update: Update, context: CallbackContext):
 
 def sigma(update: Update, context: CallbackContext):
     update.effective_message.reply_video(random.choice(fun_strings.SIGMA))
-    
+
+
 def semx(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -156,6 +157,7 @@ def semx(update: Update, context: CallbackContext):
     reply = temp.format(user1=user1, user2=user2)
 
     reply_text(reply, parse_mode=ParseMode.HTML)
+
 
 def pat(update: Update, context: CallbackContext):
     bot = context.bot
@@ -199,11 +201,11 @@ def pat(update: Update, context: CallbackContext):
 
 def aniflirt(update: Update, context: CallbackContext):
     temp = random.choice(fun_strings.ANIME_FLIRT_LINES)
-    bottemp= random.choice(BOT_FLIRTED)
+    bottemp = random.choice(BOT_FLIRTED)
     message = update.effective_message
     bot, args = context.bot, context.args
     user_id = extract_user(message, args)
-    
+
     reply_text = (
         message.reply_to_message.reply_text
         if message.reply_to_message

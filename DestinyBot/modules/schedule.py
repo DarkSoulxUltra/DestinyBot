@@ -12,30 +12,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 """
 
 
-from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
-from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
+from pyrogram.types.bots_and_keyboards.inline_keyboard_button import (
+    InlineKeyboardButton,
+)
+from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import (
+    InlineKeyboardMarkup,
+)
 from requests import get
-import time , datetime
-from pyrogram import Client , filters
+import time, datetime
+from pyrogram import Client, filters
 from datetime import datetime, tzinfo
 import pytz
 from DestinyBot import pbot as bot
 
+
 def call_back_in_filter(data):
-    return filters.create(
-        lambda flt, _, query: flt.data in query.data,
-        data=data
-    )
+    return filters.create(lambda flt, _, query: flt.data in query.data, data=data)
+
 
 def latest():
-    url = 'https://subsplease.org/api/?f=schedule&h=true&tz=UTC'
+    url = "https://subsplease.org/api/?f=schedule&h=true&tz=UTC"
     res = get(url).json()
-    k = None 
-    for x in res['schedule']:
-        title = x['title']
-        time = x['time']
-        aired = bool(x['aired'])
-        title = f"**[{title}](https://subsplease.org/shows/{x['page']})**" if not aired else f"**~~[{title}](https://subsplease.org/shows/{x['page']})~~**"
+    k = None
+    for x in res["schedule"]:
+        title = x["title"]
+        time = x["time"]
+        aired = bool(x["aired"])
+        title = (
+            f"**[{title}](https://subsplease.org/shows/{x['page']})**"
+            if not aired
+            else f"**~~[{title}](https://subsplease.org/shows/{x['page']})~~**"
+        )
         data = f"{title} :: `{time}`"
         if k:
             k = f"{k}\n{data}"
@@ -43,33 +50,37 @@ def latest():
             k = data
     return k
 
-@bot.on_message(filters.command('latest'))
-def lates(_,message):
+
+@bot.on_message(filters.command("latest"))
+def lates(_, message):
     mm = latest()
     TIME_IN_UTC = datetime.now(tz=pytz.UTC).strftime("%H:%M")
-    message.reply_text(f"Today's Schedule:\nTZ: UTC\nCurrent Time: {TIME_IN_UTC} UTC\n\n{mm}" , reply_markup=InlineKeyboardMarkup(
-    [    
-        [InlineKeyboardButton("Refresh" , callback_data="fk")]
-    ]      
-    ))
+    message.reply_text(
+        f"Today's Schedule:\nTZ: UTC\nCurrent Time: {TIME_IN_UTC} UTC\n\n{mm}",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Refresh", callback_data="fk")]]
+        ),
+    )
+
 
 @bot.on_callback_query(call_back_in_filter("fk"))
-def callbackk(_,query):
+def callbackk(_, query):
     if query.data == "fk":
         mm = latest()
         TIME_IN_UTC = datetime.now(tz=pytz.UTC).strftime("%H:%M")
         time_ = datetime.datetime.now(datetime.timezone.utc).strftime("%H:%M")
         try:
-            query.message.edit(f"Today\'s Schedule:\nTZ: UTC\nCurrent Time: {TIME_IN_UTC} UTC\n\n{mm}", reply_markup=InlineKeyboardMarkup(
-        [    
-            [InlineKeyboardButton("Refresh" , callback_data="fk")]
-        ]
-            
-        ))
+            query.message.edit(
+                f"Today's Schedule:\nTZ: UTC\nCurrent Time: {TIME_IN_UTC} UTC\n\n{mm}",
+                reply_markup=InlineKeyboardMarkup(
+                    [[InlineKeyboardButton("Refresh", callback_data="fk")]]
+                ),
+            )
             query.answer("Refreshed!")
         except:
             query.answer("Refreshed!")
-        
+
+
 __mod_name__ = "✧Schedule✧"
 
 __help__ = """
